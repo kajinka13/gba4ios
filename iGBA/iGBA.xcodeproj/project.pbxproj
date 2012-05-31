@@ -1,0 +1,604 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BF3DD1C215755F4E00F918CE /* arm_stub.S in Sources */ = {isa = PBXBuildFile; fileRef = BF3DD1C015755F4E00F918CE /* arm_stub.S */; };
+		BF3DD1C8157560D600F918CE /* x86_stub.S in Sources */ = {isa = PBXBuildFile; fileRef = BF3DD1C7157560D600F918CE /* x86_stub.S */; };
+		BF3DD1CA157560F400F918CE /* video_blend.S in Sources */ = {isa = PBXBuildFile; fileRef = BF3DD1C9157560F400F918CE /* video_blend.S */; };
+		BF3DD1CC1575611500F918CE /* bios_cache.S in Sources */ = {isa = PBXBuildFile; fileRef = BF3DD1CB1575611500F918CE /* bios_cache.S */; };
+		BF3DD1CE1575615100F918CE /* mips_stub.S in Sources */ = {isa = PBXBuildFile; fileRef = BF3DD1CD1575615100F918CE /* mips_stub.S */; };
+		BF924F651574B22F00036778 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF924F641574B22F00036778 /* Foundation.framework */; };
+		BF924FB51574B3F200036778 /* cheats.c in Sources */ = {isa = PBXBuildFile; fileRef = BF924F7D1574B3F200036778 /* cheats.c */; };
+		BF924FB61574B3F200036778 /* cheats.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F7E1574B3F200036778 /* cheats.h */; };
+		BF924FB71574B3F200036778 /* cpu.c in Sources */ = {isa = PBXBuildFile; fileRef = BF924F7F1574B3F200036778 /* cpu.c */; };
+		BF924FB81574B3F200036778 /* cpu.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F801574B3F200036778 /* cpu.h */; };
+		BF924FB91574B3F200036778 /* AVSystemController.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F821574B3F200036778 /* AVSystemController.h */; };
+		BF924FBA1574B3F200036778 /* CDAnonStruct.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F831574B3F200036778 /* CDAnonStruct.h */; };
+		BF924FBB1574B3F200036778 /* CGDirectDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F841574B3F200036778 /* CGDirectDisplay.h */; };
+		BF924FBC1574B3F200036778 /* CoreSurface.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F851574B3F200036778 /* CoreSurface.h */; };
+		BF924FBD1574B3F200036778 /* GraphicsServices.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F861574B3F200036778 /* GraphicsServices.h */; };
+		BF924FBE1574B3F200036778 /* IOBSD.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F881574B3F200036778 /* IOBSD.h */; };
+		BF924FBF1574B3F200036778 /* IOKitKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F891574B3F200036778 /* IOKitKeys.h */; };
+		BF924FC01574B3F200036778 /* IOKitLib.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F8A1574B3F200036778 /* IOKitLib.h */; };
+		BF924FC11574B3F200036778 /* IOReturn.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F8B1574B3F200036778 /* IOReturn.h */; };
+		BF924FC21574B3F200036778 /* IOSerialKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F8C1574B3F200036778 /* IOSerialKeys.h */; };
+		BF924FC31574B3F200036778 /* ioss.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F8D1574B3F200036778 /* ioss.h */; };
+		BF924FC41574B3F200036778 /* IOTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F8E1574B3F200036778 /* IOTypes.h */; };
+		BF924FC51574B3F200036778 /* OSMessageNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F8F1574B3F200036778 /* OSMessageNotification.h */; };
+		BF924FC61574B3F200036778 /* LKLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F911574B3F200036778 /* LKLayer.h */; };
+		BF924FC71574B3F200036778 /* LKTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F921574B3F200036778 /* LKTransform.h */; };
+		BF924FC81574B3F200036778 /* UIAlertSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F941574B3F200036778 /* UIAlertSheet.h */; };
+		BF924FC91574B3F200036778 /* UIButtonBar.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F951574B3F200036778 /* UIButtonBar.h */; };
+		BF924FCA1574B3F200036778 /* UIHardware.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F961574B3F200036778 /* UIHardware.h */; };
+		BF924FCB1574B3F200036778 /* UIImageAndTextTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F971574B3F200036778 /* UIImageAndTextTableCell.h */; };
+		BF924FCC1574B3F200036778 /* UIKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F981574B3F200036778 /* UIKeyboard.h */; };
+		BF924FCD1574B3F200036778 /* UIPreferencesTable.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F991574B3F200036778 /* UIPreferencesTable.h */; };
+		BF924FCE1574B3F200036778 /* UIPreferencesTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F9A1574B3F200036778 /* UIPreferencesTableCell.h */; };
+		BF924FCF1574B3F200036778 /* UIPreferencesTextTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F9B1574B3F200036778 /* UIPreferencesTextTableCell.h */; };
+		BF924FD01574B3F200036778 /* UIPushButton.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F9C1574B3F200036778 /* UIPushButton.h */; };
+		BF924FD11574B3F200036778 /* UIScroller.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F9D1574B3F200036778 /* UIScroller.h */; };
+		BF924FD21574B3F200036778 /* UISimpleTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F9E1574B3F200036778 /* UISimpleTableCell.h */; };
+		BF924FD31574B3F200036778 /* UISliderControl.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F9F1574B3F200036778 /* UISliderControl.h */; };
+		BF924FD41574B3F200036778 /* UISwitchControl.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FA01574B3F200036778 /* UISwitchControl.h */; };
+		BF924FD51574B3F200036778 /* UITable.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FA11574B3F200036778 /* UITable.h */; };
+		BF924FD61574B3F200036778 /* UITableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FA21574B3F200036778 /* UITableCell.h */; };
+		BF924FD71574B3F200036778 /* UITableColumn.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FA31574B3F200036778 /* UITableColumn.h */; };
+		BF924FD81574B3F200036778 /* UITextLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FA41574B3F200036778 /* UITextLabel.h */; };
+		BF924FD91574B3F200036778 /* UITransitionView.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FA51574B3F200036778 /* UITransitionView.h */; };
+		BF924FDA1574B3F200036778 /* UIView-Geometry.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FA61574B3F200036778 /* UIView-Geometry.h */; };
+		BF924FDB1574B3F200036778 /* gui.c in Sources */ = {isa = PBXBuildFile; fileRef = BF924FA71574B3F200036778 /* gui.c */; };
+		BF924FDC1574B3F200036778 /* gui.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FA81574B3F200036778 /* gui.h */; };
+		BF924FDD1574B3F200036778 /* input.c in Sources */ = {isa = PBXBuildFile; fileRef = BF924FA91574B3F200036778 /* input.c */; };
+		BF924FDE1574B3F200036778 /* input.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FAA1574B3F200036778 /* input.h */; };
+		BF924FDF1574B3F200036778 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = BF924FAB1574B3F200036778 /* main.c */; };
+		BF924FE01574B3F200036778 /* main.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FAC1574B3F200036778 /* main.h */; };
+		BF924FE11574B3F200036778 /* memory.c in Sources */ = {isa = PBXBuildFile; fileRef = BF924FAD1574B3F200036778 /* memory.c */; };
+		BF924FE21574B3F200036778 /* memory.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FAE1574B3F200036778 /* memory.h */; };
+		BF924FE31574B3F200036778 /* sound.c in Sources */ = {isa = PBXBuildFile; fileRef = BF924FAF1574B3F200036778 /* sound.c */; };
+		BF924FE41574B3F200036778 /* sound.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FB01574B3F200036778 /* sound.h */; };
+		BF924FE51574B3F200036778 /* video.c in Sources */ = {isa = PBXBuildFile; fileRef = BF924FB11574B3F200036778 /* video.c */; };
+		BF924FE61574B3F200036778 /* video.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FB21574B3F200036778 /* video.h */; };
+		BF924FEC1574B48F00036778 /* iGBA-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = BF924FEB1574B48F00036778 /* iGBA-Prefix.pch */; };
+		BF924FF01574B54C00036778 /* arm_stub_c.c in Sources */ = {isa = PBXBuildFile; fileRef = BF924FEE1574B54C00036778 /* arm_stub_c.c */; };
+		BF924FF11574B54C00036778 /* display.c in Sources */ = {isa = PBXBuildFile; fileRef = BF924FEF1574B54C00036778 /* display.c */; };
+		BF924FF31574B55300036778 /* display.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FF21574B55300036778 /* display.h */; };
+		BF924FF51574B55F00036778 /* font.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FF41574B55F00036778 /* font.h */; };
+		BF924FF71574B56600036778 /* font.c in Sources */ = {isa = PBXBuildFile; fileRef = BF924FF61574B56600036778 /* font.c */; };
+		BF924FFE1574B5A100036778 /* gpSPhone_iPhone.c in Sources */ = {isa = PBXBuildFile; fileRef = BF924FF91574B5A100036778 /* gpSPhone_iPhone.c */; };
+		BF924FFF1574B5A100036778 /* gpSPhone_iPhone.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FFA1574B5A100036778 /* gpSPhone_iPhone.h */; };
+		BF9250001574B5A100036778 /* iphone.c in Sources */ = {isa = PBXBuildFile; fileRef = BF924FFB1574B5A100036778 /* iphone.c */; };
+		BF9250011574B5A100036778 /* JoyPad.c in Sources */ = {isa = PBXBuildFile; fileRef = BF924FFC1574B5A100036778 /* JoyPad.c */; };
+		BF9250021574B5A100036778 /* JoyPad.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924FFD1574B5A100036778 /* JoyPad.h */; };
+		BF9250051574B5D600036778 /* x86_emit.h in Headers */ = {isa = PBXBuildFile; fileRef = BF9250041574B5D600036778 /* x86_emit.h */; };
+		BF92500B1574B68100036778 /* common.h in Headers */ = {isa = PBXBuildFile; fileRef = BF92500A1574B68100036778 /* common.h */; };
+		BF9250251574BA1500036778 /* cpu_threaded.c in Sources */ = {isa = PBXBuildFile; fileRef = BF9250241574BA1500036778 /* cpu_threaded.c */; };
+		BF9250371574C93E00036778 /* arm_asm_stub.S in Sources */ = {isa = PBXBuildFile; fileRef = BF9250361574C93E00036778 /* arm_asm_stub.S */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BF3DD1C015755F4E00F918CE /* arm_stub.S */ = {isa = PBXFileReference; explicitFileType = sourcecode.asm.llvm; fileEncoding = 4; name = arm_stub.S; path = gp2x/arm_stub.S; sourceTree = SOURCE_ROOT; };
+		BF3DD1C7157560D600F918CE /* x86_stub.S */ = {isa = PBXFileReference; explicitFileType = sourcecode.asm.llvm; fileEncoding = 4; name = x86_stub.S; path = x86/x86_stub.S; sourceTree = SOURCE_ROOT; };
+		BF3DD1C9157560F400F918CE /* video_blend.S */ = {isa = PBXFileReference; explicitFileType = sourcecode.asm.llvm; fileEncoding = 4; name = video_blend.S; path = iphone/video_blend.S; sourceTree = SOURCE_ROOT; };
+		BF3DD1CB1575611500F918CE /* bios_cache.S */ = {isa = PBXFileReference; explicitFileType = sourcecode.asm.llvm; fileEncoding = 4; name = bios_cache.S; path = gp2x/bios_cache.S; sourceTree = SOURCE_ROOT; };
+		BF3DD1CD1575615100F918CE /* mips_stub.S */ = {isa = PBXFileReference; explicitFileType = sourcecode.asm.llvm; fileEncoding = 4; name = mips_stub.S; path = psp/mips_stub.S; sourceTree = SOURCE_ROOT; };
+		BF924F611574B22F00036778 /* libiGBA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiGBA.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF924F641574B22F00036778 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BF924F7D1574B3F200036778 /* cheats.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cheats.c; sourceTree = SOURCE_ROOT; };
+		BF924F7E1574B3F200036778 /* cheats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cheats.h; sourceTree = SOURCE_ROOT; };
+		BF924F7F1574B3F200036778 /* cpu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpu.c; sourceTree = SOURCE_ROOT; };
+		BF924F801574B3F200036778 /* cpu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpu.h; sourceTree = SOURCE_ROOT; };
+		BF924F821574B3F200036778 /* AVSystemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVSystemController.h; sourceTree = "<group>"; };
+		BF924F831574B3F200036778 /* CDAnonStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDAnonStruct.h; sourceTree = "<group>"; };
+		BF924F841574B3F200036778 /* CGDirectDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGDirectDisplay.h; sourceTree = "<group>"; };
+		BF924F851574B3F200036778 /* CoreSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreSurface.h; sourceTree = "<group>"; };
+		BF924F861574B3F200036778 /* GraphicsServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsServices.h; sourceTree = "<group>"; };
+		BF924F881574B3F200036778 /* IOBSD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOBSD.h; sourceTree = "<group>"; };
+		BF924F891574B3F200036778 /* IOKitKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOKitKeys.h; sourceTree = "<group>"; };
+		BF924F8A1574B3F200036778 /* IOKitLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOKitLib.h; sourceTree = "<group>"; };
+		BF924F8B1574B3F200036778 /* IOReturn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOReturn.h; sourceTree = "<group>"; };
+		BF924F8C1574B3F200036778 /* IOSerialKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSerialKeys.h; sourceTree = "<group>"; };
+		BF924F8D1574B3F200036778 /* ioss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioss.h; sourceTree = "<group>"; };
+		BF924F8E1574B3F200036778 /* IOTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOTypes.h; sourceTree = "<group>"; };
+		BF924F8F1574B3F200036778 /* OSMessageNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSMessageNotification.h; sourceTree = "<group>"; };
+		BF924F911574B3F200036778 /* LKLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLayer.h; sourceTree = "<group>"; };
+		BF924F921574B3F200036778 /* LKTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKTransform.h; sourceTree = "<group>"; };
+		BF924F941574B3F200036778 /* UIAlertSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIAlertSheet.h; sourceTree = "<group>"; };
+		BF924F951574B3F200036778 /* UIButtonBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIButtonBar.h; sourceTree = "<group>"; };
+		BF924F961574B3F200036778 /* UIHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHardware.h; sourceTree = "<group>"; };
+		BF924F971574B3F200036778 /* UIImageAndTextTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageAndTextTableCell.h; sourceTree = "<group>"; };
+		BF924F981574B3F200036778 /* UIKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboard.h; sourceTree = "<group>"; };
+		BF924F991574B3F200036778 /* UIPreferencesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPreferencesTable.h; sourceTree = "<group>"; };
+		BF924F9A1574B3F200036778 /* UIPreferencesTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPreferencesTableCell.h; sourceTree = "<group>"; };
+		BF924F9B1574B3F200036778 /* UIPreferencesTextTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPreferencesTextTableCell.h; sourceTree = "<group>"; };
+		BF924F9C1574B3F200036778 /* UIPushButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPushButton.h; sourceTree = "<group>"; };
+		BF924F9D1574B3F200036778 /* UIScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIScroller.h; sourceTree = "<group>"; };
+		BF924F9E1574B3F200036778 /* UISimpleTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISimpleTableCell.h; sourceTree = "<group>"; };
+		BF924F9F1574B3F200036778 /* UISliderControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISliderControl.h; sourceTree = "<group>"; };
+		BF924FA01574B3F200036778 /* UISwitchControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISwitchControl.h; sourceTree = "<group>"; };
+		BF924FA11574B3F200036778 /* UITable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITable.h; sourceTree = "<group>"; };
+		BF924FA21574B3F200036778 /* UITableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITableCell.h; sourceTree = "<group>"; };
+		BF924FA31574B3F200036778 /* UITableColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITableColumn.h; sourceTree = "<group>"; };
+		BF924FA41574B3F200036778 /* UITextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITextLabel.h; sourceTree = "<group>"; };
+		BF924FA51574B3F200036778 /* UITransitionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITransitionView.h; sourceTree = "<group>"; };
+		BF924FA61574B3F200036778 /* UIView-Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView-Geometry.h"; sourceTree = "<group>"; };
+		BF924FA71574B3F200036778 /* gui.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gui.c; sourceTree = SOURCE_ROOT; };
+		BF924FA81574B3F200036778 /* gui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gui.h; sourceTree = SOURCE_ROOT; };
+		BF924FA91574B3F200036778 /* input.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = input.c; sourceTree = SOURCE_ROOT; };
+		BF924FAA1574B3F200036778 /* input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input.h; sourceTree = SOURCE_ROOT; };
+		BF924FAB1574B3F200036778 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = SOURCE_ROOT; };
+		BF924FAC1574B3F200036778 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = SOURCE_ROOT; };
+		BF924FAD1574B3F200036778 /* memory.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = memory.c; sourceTree = SOURCE_ROOT; };
+		BF924FAE1574B3F200036778 /* memory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memory.h; sourceTree = SOURCE_ROOT; };
+		BF924FAF1574B3F200036778 /* sound.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sound.c; sourceTree = SOURCE_ROOT; };
+		BF924FB01574B3F200036778 /* sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sound.h; sourceTree = SOURCE_ROOT; };
+		BF924FB11574B3F200036778 /* video.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = video.c; sourceTree = SOURCE_ROOT; };
+		BF924FB21574B3F200036778 /* video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = video.h; sourceTree = SOURCE_ROOT; };
+		BF924FEB1574B48F00036778 /* iGBA-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iGBA-Prefix.pch"; sourceTree = "<group>"; };
+		BF924FEE1574B54C00036778 /* arm_stub_c.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = arm_stub_c.c; path = iphone/arm_stub_c.c; sourceTree = SOURCE_ROOT; };
+		BF924FEF1574B54C00036778 /* display.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = display.c; path = iphone/display.c; sourceTree = SOURCE_ROOT; };
+		BF924FF21574B55300036778 /* display.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = display.h; path = gp2x/display.h; sourceTree = SOURCE_ROOT; };
+		BF924FF41574B55F00036778 /* font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = font.h; sourceTree = SOURCE_ROOT; };
+		BF924FF61574B56600036778 /* font.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = font.c; path = iphone/font.c; sourceTree = SOURCE_ROOT; };
+		BF924FF91574B5A100036778 /* gpSPhone_iPhone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gpSPhone_iPhone.c; path = iphone/gpSPhone/src/gpSPhone_iPhone.c; sourceTree = SOURCE_ROOT; };
+		BF924FFA1574B5A100036778 /* gpSPhone_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gpSPhone_iPhone.h; path = iphone/gpSPhone/src/gpSPhone_iPhone.h; sourceTree = SOURCE_ROOT; };
+		BF924FFB1574B5A100036778 /* iphone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = iphone.c; path = iphone/gpSPhone/src/iphone.c; sourceTree = SOURCE_ROOT; };
+		BF924FFC1574B5A100036778 /* JoyPad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = JoyPad.c; path = iphone/gpSPhone/src/JoyPad.c; sourceTree = SOURCE_ROOT; };
+		BF924FFD1574B5A100036778 /* JoyPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JoyPad.h; path = iphone/gpSPhone/src/JoyPad.h; sourceTree = SOURCE_ROOT; };
+		BF9250041574B5D600036778 /* x86_emit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x86_emit.h; path = x86/x86_emit.h; sourceTree = SOURCE_ROOT; };
+		BF92500A1574B68100036778 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = SOURCE_ROOT; };
+		BF9250241574BA1500036778 /* cpu_threaded.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpu_threaded.c; sourceTree = SOURCE_ROOT; };
+		BF9250361574C93E00036778 /* arm_asm_stub.S */ = {isa = PBXFileReference; explicitFileType = sourcecode.asm.llvm; fileEncoding = 4; name = arm_asm_stub.S; path = iphone/arm_asm_stub.S; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF924F5E1574B22F00036778 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF924F651574B22F00036778 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF924F561574B22E00036778 = {
+			isa = PBXGroup;
+			children = (
+				BF924F661574B22F00036778 /* iGBA */,
+				BF924F631574B22F00036778 /* Frameworks */,
+				BF924F621574B22F00036778 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BF924F621574B22F00036778 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF924F611574B22F00036778 /* libiGBA.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF924F631574B22F00036778 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF924F641574B22F00036778 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF924F661574B22F00036778 /* iGBA */ = {
+			isa = PBXGroup;
+			children = (
+				BF9250241574BA1500036778 /* cpu_threaded.c */,
+				BF3DD1CD1575615100F918CE /* mips_stub.S */,
+				BF3DD1CB1575611500F918CE /* bios_cache.S */,
+				BF3DD1C015755F4E00F918CE /* arm_stub.S */,
+				BF3DD1C9157560F400F918CE /* video_blend.S */,
+				BF3DD1C7157560D600F918CE /* x86_stub.S */,
+				BF9250031574B5CC00036778 /* x86 */,
+				BF924FF41574B55F00036778 /* font.h */,
+				BF924FF21574B55300036778 /* display.h */,
+				BF92500A1574B68100036778 /* common.h */,
+				BF924FED1574B4F200036778 /* iphone */,
+				BF924FEB1574B48F00036778 /* iGBA-Prefix.pch */,
+				BF924F7D1574B3F200036778 /* cheats.c */,
+				BF924F7E1574B3F200036778 /* cheats.h */,
+				BF924F7F1574B3F200036778 /* cpu.c */,
+				BF924F801574B3F200036778 /* cpu.h */,
+				BF924F811574B3F200036778 /* Frameworks */,
+				BF924FA71574B3F200036778 /* gui.c */,
+				BF924FA81574B3F200036778 /* gui.h */,
+				BF924FA91574B3F200036778 /* input.c */,
+				BF924FAA1574B3F200036778 /* input.h */,
+				BF924FAB1574B3F200036778 /* main.c */,
+				BF924FAC1574B3F200036778 /* main.h */,
+				BF924FAD1574B3F200036778 /* memory.c */,
+				BF924FAE1574B3F200036778 /* memory.h */,
+				BF924FAF1574B3F200036778 /* sound.c */,
+				BF924FB01574B3F200036778 /* sound.h */,
+				BF924FB11574B3F200036778 /* video.c */,
+				BF924FB21574B3F200036778 /* video.h */,
+			);
+			path = iGBA;
+			sourceTree = "<group>";
+		};
+		BF924F811574B3F200036778 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF924F821574B3F200036778 /* AVSystemController.h */,
+				BF924F831574B3F200036778 /* CDAnonStruct.h */,
+				BF924F841574B3F200036778 /* CGDirectDisplay.h */,
+				BF924F851574B3F200036778 /* CoreSurface.h */,
+				BF924F861574B3F200036778 /* GraphicsServices.h */,
+				BF924F871574B3F200036778 /* IOKit */,
+				BF924F901574B3F200036778 /* LayerKit */,
+				BF924F931574B3F200036778 /* UIKit-Private */,
+			);
+			path = Frameworks;
+			sourceTree = SOURCE_ROOT;
+		};
+		BF924F871574B3F200036778 /* IOKit */ = {
+			isa = PBXGroup;
+			children = (
+				BF924F881574B3F200036778 /* IOBSD.h */,
+				BF924F891574B3F200036778 /* IOKitKeys.h */,
+				BF924F8A1574B3F200036778 /* IOKitLib.h */,
+				BF924F8B1574B3F200036778 /* IOReturn.h */,
+				BF924F8C1574B3F200036778 /* IOSerialKeys.h */,
+				BF924F8D1574B3F200036778 /* ioss.h */,
+				BF924F8E1574B3F200036778 /* IOTypes.h */,
+				BF924F8F1574B3F200036778 /* OSMessageNotification.h */,
+			);
+			path = IOKit;
+			sourceTree = "<group>";
+		};
+		BF924F901574B3F200036778 /* LayerKit */ = {
+			isa = PBXGroup;
+			children = (
+				BF924F911574B3F200036778 /* LKLayer.h */,
+				BF924F921574B3F200036778 /* LKTransform.h */,
+			);
+			path = LayerKit;
+			sourceTree = "<group>";
+		};
+		BF924F931574B3F200036778 /* UIKit-Private */ = {
+			isa = PBXGroup;
+			children = (
+				BF924F941574B3F200036778 /* UIAlertSheet.h */,
+				BF924F951574B3F200036778 /* UIButtonBar.h */,
+				BF924F961574B3F200036778 /* UIHardware.h */,
+				BF924F971574B3F200036778 /* UIImageAndTextTableCell.h */,
+				BF924F981574B3F200036778 /* UIKeyboard.h */,
+				BF924F991574B3F200036778 /* UIPreferencesTable.h */,
+				BF924F9A1574B3F200036778 /* UIPreferencesTableCell.h */,
+				BF924F9B1574B3F200036778 /* UIPreferencesTextTableCell.h */,
+				BF924F9C1574B3F200036778 /* UIPushButton.h */,
+				BF924F9D1574B3F200036778 /* UIScroller.h */,
+				BF924F9E1574B3F200036778 /* UISimpleTableCell.h */,
+				BF924F9F1574B3F200036778 /* UISliderControl.h */,
+				BF924FA01574B3F200036778 /* UISwitchControl.h */,
+				BF924FA11574B3F200036778 /* UITable.h */,
+				BF924FA21574B3F200036778 /* UITableCell.h */,
+				BF924FA31574B3F200036778 /* UITableColumn.h */,
+				BF924FA41574B3F200036778 /* UITextLabel.h */,
+				BF924FA51574B3F200036778 /* UITransitionView.h */,
+				BF924FA61574B3F200036778 /* UIView-Geometry.h */,
+			);
+			path = "UIKit-Private";
+			sourceTree = "<group>";
+		};
+		BF924FED1574B4F200036778 /* iphone */ = {
+			isa = PBXGroup;
+			children = (
+				BF9250361574C93E00036778 /* arm_asm_stub.S */,
+				BF924FF81574B58900036778 /* src */,
+				BF924FEE1574B54C00036778 /* arm_stub_c.c */,
+				BF924FEF1574B54C00036778 /* display.c */,
+				BF924FF61574B56600036778 /* font.c */,
+			);
+			name = iphone;
+			sourceTree = "<group>";
+		};
+		BF924FF81574B58900036778 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				BF924FF91574B5A100036778 /* gpSPhone_iPhone.c */,
+				BF924FFA1574B5A100036778 /* gpSPhone_iPhone.h */,
+				BF924FFB1574B5A100036778 /* iphone.c */,
+				BF924FFC1574B5A100036778 /* JoyPad.c */,
+				BF924FFD1574B5A100036778 /* JoyPad.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		BF9250031574B5CC00036778 /* x86 */ = {
+			isa = PBXGroup;
+			children = (
+				BF9250041574B5D600036778 /* x86_emit.h */,
+			);
+			name = x86;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BF924F5F1574B22F00036778 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF924FB61574B3F200036778 /* cheats.h in Headers */,
+				BF924FB81574B3F200036778 /* cpu.h in Headers */,
+				BF924FB91574B3F200036778 /* AVSystemController.h in Headers */,
+				BF924FBA1574B3F200036778 /* CDAnonStruct.h in Headers */,
+				BF924FBB1574B3F200036778 /* CGDirectDisplay.h in Headers */,
+				BF924FBC1574B3F200036778 /* CoreSurface.h in Headers */,
+				BF924FBD1574B3F200036778 /* GraphicsServices.h in Headers */,
+				BF924FBE1574B3F200036778 /* IOBSD.h in Headers */,
+				BF924FBF1574B3F200036778 /* IOKitKeys.h in Headers */,
+				BF924FC01574B3F200036778 /* IOKitLib.h in Headers */,
+				BF924FC11574B3F200036778 /* IOReturn.h in Headers */,
+				BF924FC21574B3F200036778 /* IOSerialKeys.h in Headers */,
+				BF924FC31574B3F200036778 /* ioss.h in Headers */,
+				BF924FC41574B3F200036778 /* IOTypes.h in Headers */,
+				BF924FC51574B3F200036778 /* OSMessageNotification.h in Headers */,
+				BF924FC61574B3F200036778 /* LKLayer.h in Headers */,
+				BF924FC71574B3F200036778 /* LKTransform.h in Headers */,
+				BF924FC81574B3F200036778 /* UIAlertSheet.h in Headers */,
+				BF924FC91574B3F200036778 /* UIButtonBar.h in Headers */,
+				BF924FCA1574B3F200036778 /* UIHardware.h in Headers */,
+				BF924FCB1574B3F200036778 /* UIImageAndTextTableCell.h in Headers */,
+				BF924FCC1574B3F200036778 /* UIKeyboard.h in Headers */,
+				BF924FCD1574B3F200036778 /* UIPreferencesTable.h in Headers */,
+				BF924FCE1574B3F200036778 /* UIPreferencesTableCell.h in Headers */,
+				BF924FCF1574B3F200036778 /* UIPreferencesTextTableCell.h in Headers */,
+				BF924FD01574B3F200036778 /* UIPushButton.h in Headers */,
+				BF924FD11574B3F200036778 /* UIScroller.h in Headers */,
+				BF924FD21574B3F200036778 /* UISimpleTableCell.h in Headers */,
+				BF924FD31574B3F200036778 /* UISliderControl.h in Headers */,
+				BF924FD41574B3F200036778 /* UISwitchControl.h in Headers */,
+				BF924FD51574B3F200036778 /* UITable.h in Headers */,
+				BF924FD61574B3F200036778 /* UITableCell.h in Headers */,
+				BF924FD71574B3F200036778 /* UITableColumn.h in Headers */,
+				BF924FD81574B3F200036778 /* UITextLabel.h in Headers */,
+				BF924FD91574B3F200036778 /* UITransitionView.h in Headers */,
+				BF924FDA1574B3F200036778 /* UIView-Geometry.h in Headers */,
+				BF924FDC1574B3F200036778 /* gui.h in Headers */,
+				BF924FDE1574B3F200036778 /* input.h in Headers */,
+				BF924FE01574B3F200036778 /* main.h in Headers */,
+				BF924FE21574B3F200036778 /* memory.h in Headers */,
+				BF924FE41574B3F200036778 /* sound.h in Headers */,
+				BF924FE61574B3F200036778 /* video.h in Headers */,
+				BF924FEC1574B48F00036778 /* iGBA-Prefix.pch in Headers */,
+				BF924FF31574B55300036778 /* display.h in Headers */,
+				BF924FF51574B55F00036778 /* font.h in Headers */,
+				BF924FFF1574B5A100036778 /* gpSPhone_iPhone.h in Headers */,
+				BF9250021574B5A100036778 /* JoyPad.h in Headers */,
+				BF9250051574B5D600036778 /* x86_emit.h in Headers */,
+				BF92500B1574B68100036778 /* common.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BF924F601574B22F00036778 /* iGBA */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF924F6E1574B22F00036778 /* Build configuration list for PBXNativeTarget "iGBA" */;
+			buildPhases = (
+				BF924F5D1574B22F00036778 /* Sources */,
+				BF924F5E1574B22F00036778 /* Frameworks */,
+				BF924F5F1574B22F00036778 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iGBA;
+			productName = iGBA;
+			productReference = BF924F611574B22F00036778 /* libiGBA.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF924F581574B22E00036778 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Testut Tech";
+			};
+			buildConfigurationList = BF924F5B1574B22E00036778 /* Build configuration list for PBXProject "iGBA" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BF924F561574B22E00036778;
+			productRefGroup = BF924F621574B22F00036778 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF924F601574B22F00036778 /* iGBA */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF924F5D1574B22F00036778 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF924FB51574B3F200036778 /* cheats.c in Sources */,
+				BF924FB71574B3F200036778 /* cpu.c in Sources */,
+				BF924FDB1574B3F200036778 /* gui.c in Sources */,
+				BF924FDD1574B3F200036778 /* input.c in Sources */,
+				BF924FDF1574B3F200036778 /* main.c in Sources */,
+				BF924FE11574B3F200036778 /* memory.c in Sources */,
+				BF924FE31574B3F200036778 /* sound.c in Sources */,
+				BF924FE51574B3F200036778 /* video.c in Sources */,
+				BF924FF01574B54C00036778 /* arm_stub_c.c in Sources */,
+				BF924FF11574B54C00036778 /* display.c in Sources */,
+				BF924FF71574B56600036778 /* font.c in Sources */,
+				BF924FFE1574B5A100036778 /* gpSPhone_iPhone.c in Sources */,
+				BF9250001574B5A100036778 /* iphone.c in Sources */,
+				BF9250011574B5A100036778 /* JoyPad.c in Sources */,
+				BF9250251574BA1500036778 /* cpu_threaded.c in Sources */,
+				BF9250371574C93E00036778 /* arm_asm_stub.S in Sources */,
+				BF3DD1C215755F4E00F918CE /* arm_stub.S in Sources */,
+				BF3DD1C8157560D600F918CE /* x86_stub.S in Sources */,
+				BF3DD1CA157560F400F918CE /* video_blend.S in Sources */,
+				BF3DD1CC1575611500F918CE /* bios_cache.S in Sources */,
+				BF3DD1CE1575615100F918CE /* mips_stub.S in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BF924F6C1574B22F00036778 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = (
+					"miphoneos-version-min=5.1",
+					"-DARM_ARCH",
+					"-DGP2X_BUILD",
+					"-msoft-float",
+					"-arch",
+					armv7,
+					"-march=armv6k",
+					"-maspen-version-min=1.0",
+					"-fpeel-loops",
+					"-O3",
+					"-fnested-functions",
+					"-funsigned-char",
+					"-fno-common",
+					"-fno-builtin",
+					"-falign-functions",
+					"-fomit-frame-pointer",
+					"-fweb",
+					"-fstrict-aliasing",
+					"-fstrength-reduce",
+					"-fexpensive-optimizations",
+					"-finline",
+					"-finline-functions",
+					"-funroll-loops",
+					"-DVERSION=\"1.8.0\"",
+				);
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BF924F6D1574B22F00036778 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BF924F6F1574B22F00036778 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/iGBA.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iGBA/iGBA-Prefix.pch";
+				OTHER_CFLAGS = (
+					"-DARM_ARCH",
+					"-DGP2X_BUILD",
+					"-msoft-float",
+					"-arch",
+					armv7,
+					"-march=armv6k",
+					"-maspen-version-min=1.0",
+					"-fpeel-loops",
+					"-O3",
+					"-fnested-functions",
+					"-funsigned-char",
+					"-fno-common",
+					"-fno-builtin",
+					"-falign-functions",
+					"-fomit-frame-pointer",
+					"-fweb",
+					"-fstrict-aliasing",
+					"-fstrength-reduce",
+					"-fexpensive-optimizations",
+					"-finline",
+					"-finline-functions",
+					"-funroll-loops",
+					"-DVERSION=\"1.8.0\"",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BF924F701574B22F00036778 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/iGBA.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iGBA/iGBA-Prefix.pch";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF924F5B1574B22E00036778 /* Build configuration list for PBXProject "iGBA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF924F6C1574B22F00036778 /* Debug */,
+				BF924F6D1574B22F00036778 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF924F6E1574B22F00036778 /* Build configuration list for PBXNativeTarget "iGBA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF924F6F1574B22F00036778 /* Debug */,
+				BF924F701574B22F00036778 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BF924F581574B22E00036778 /* Project object */;
+}
