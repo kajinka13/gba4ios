@@ -9,6 +9,7 @@
 #import "GBAMasterViewController.h"
 
 #import "GBADetailViewController.h"
+#import "WebBrowserViewController.h"
 
 @interface GBAMasterViewController ()
 @property (strong, nonatomic) NSMutableDictionary *romDictionary;
@@ -37,13 +38,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(scanRomDirectory)];
+    self.navigationItem.leftBarButtonItem = refreshButton;
     
     [self scanRomDirectory];
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(getMoreROMs)];
+    self.navigationItem.rightBarButtonItem = searchButton;
     self.detailViewController = (GBADetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,7 +88,7 @@
     
     for (int i = 0; i < contents.count; i++) {
         NSString *filename = [contents objectAtIndex:i];
-        if ([filename hasSuffix:@".zip"] || [filename hasSuffix:@".ZIP"] || [filename hasSuffix:@".gba"] || [filename hasSuffix:@".GBA"]) { 
+        if ([filename hasSuffix:@".zip"] || [filename hasSuffix:@".ZIP"] || [filename hasSuffix:@".gba"] || [filename hasSuffix:@".GBA"] || [filename hasSuffix:@".ips"] || [filename hasSuffix:@".IPS"]) { 
             NSString* characterIndex = [filename substringWithRange:NSMakeRange(0,1)];
             
             BOOL matched = NO;
@@ -108,33 +111,71 @@
             [self.romDictionary setObject:sectionArray forKey:characterIndex];
         }
     }
+    
+    [self.tableView reloadData];
+    
+    [self importSaveStates];
 }
 
-- (void) checkForSav {
+- (void) importSaveStates {
     NSFileManager *fileManager = [NSFileManager defaultManager];
+    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *savDirectory = [documentsDirectory stringByAppendingPathComponent:@"sav"];
-    
-    [fileManager createDirectoryAtURL:[NSURL fileURLWithPath:savDirectory] withIntermediateDirectories:YES attributes:nil error:nil];
-    //Recommended practice to always attempt to make the folder. Will return if it already exists.
+    NSString *saveStateDirectory = [documentsDirectory stringByAppendingPathComponent:@"Save States"];
     
     NSArray* dirContents = [fileManager contentsOfDirectoryAtPath:documentsDirectory error:nil];
     [dirContents enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSString *filename = obj;
-        if ([filename hasSuffix:@"sav"]) {
+        if ([filename hasSuffix:@"svs"]) {
             NSError *error = nil;
+            NSString *romName = [filename stringByDeletingPathExtension];
+            
+            NSRange range = NSMakeRange([romName length] - 1, 1);
+            NSString *saveSlot = [romName substringWithRange:range];
+            NSInteger saveSlotNumber = [saveSlot integerValue];
+            NSString *destinationFilename = [NSString stringWithFormat:@"%@.svs", saveSlot];
+            
+            romName = [romName substringToIndex:[romName length] - 1];
+            
             NSString *originalFilePath = [documentsDirectory stringByAppendingPathComponent:filename];
-            NSString *destinaionFilePath = [savDirectory stringByAppendingPathComponent:filename];
-            if ([fileManager copyItemAtPath:originalFilePath toPath:destinaionFilePath error:&error] && !error) {
+            NSString *romSaveStateDirectory = [saveStateDirectory stringByAppendingPathComponent:romName]; 
+            NSString *saveStateInfoPath = [romSaveStateDirectory stringByAppendingPathComponent:@"info.plist"];
+            
+            [fileManager createDirectoryAtPath:romSaveStateDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+            
+            NSMutableArray *array = [[NSMutableArray alloc] initWithContentsOfFile:saveStateInfoPath];
+            
+            if ([array count] == 0) {
+                array = [[NSMutableArray alloc] initWithCapacity:5];
+                
+                for (int i = 0; i < 5; i++) {
+                    [array addObject:NSLocalizedString(@"Empty", @"")];
+                }
+            }
+            [array replaceObjectAtIndex:saveSlotNumber withObject:NSLocalizedString(@"Imported", @"")];
+            [array writeToFile:saveStateInfoPath atomically:YES];
+            
+            NSString *destinationFilePath = [romSaveStateDirectory stringByAppendingPathComponent:destinationFilename];
+            
+            if ([fileManager copyItemAtPath:originalFilePath toPath:destinationFilePath error:&error] && !error) {
                 [fileManager removeItemAtPath:originalFilePath error:nil];
-                NSLog(@"Successfully copied sav file to sav directory");
+                NSLog(@"Successfully copied svs file to svs directory");
             }
             else {
                 NSLog(@"%@. %@.", error, [error userInfo]);
             }
         }
     }];
+}
+
+#pragma mark Download ROMs
+
+- (void)getMoreROMs {
+    WebBrowserViewController *webViewController = [[WebBrowserViewController alloc] init];
+    UINavigationController *webNavController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+	webNavController.navigationBar.barStyle = UIBarStyleBlack;
+    [self presentModalViewController:webNavController animated:YES];
 }
 
 #pragma mark - Table view data source

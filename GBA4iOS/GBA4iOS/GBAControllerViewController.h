@@ -11,6 +11,9 @@
 #import <UIKit/UIKit.h>
 #import "../../iGBA/Frameworks/UIKit-Private/UIView-Geometry.h"
 #import "ScreenView.h"
+#import "GBAEmulatorViewController.h"
+
+@class GBAEmulatorViewController;
 
 @interface GBAControllerViewController : UIViewController <UIAlertViewDelegate> {
     UIImage *controllerImage;
@@ -43,16 +46,16 @@
 @property (nonatomic, strong) IBOutlet UIButton *connectionButton;
 @property (copy, nonatomic) NSString *imageName;
 @property (strong, nonatomic) NSMutableSet *sustainedButtons;
-#if APP_BUILD
+@property (nonatomic) BOOL landscape; 
 @property (weak, nonatomic) IBOutlet UIButton *sustainButton;//This errors out when compiling emulator
-#else 
-@property (retain, nonatomic) IBOutlet UIButton *sustainButton;
-#endif
 @property (nonatomic) BOOL readyToSustain;
+
+@property (weak, nonatomic) GBAEmulatorViewController *emulatorViewController;
 
 - (void) getControllerCoords;
 - (IBAction)sustain:(id)sender;
 - (UIImage *)getControllerImage;
+- (void)updateUI;
 
 
 @end

@@ -13,14 +13,18 @@
 @class ScreenView;
 @class GBAControllerViewController;
 
-@interface GBAEmulatorViewController : UIViewController {
+@interface GBAEmulatorViewController : UIViewController <UIActionSheetDelegate, UIAlertViewDelegate> {
     pthread_t emulation_tid;
 }
 
 @property (copy, nonatomic) NSString *romPath;
 @property (strong, nonatomic) ScreenView *screenView;
 @property (strong, nonatomic) GBAControllerViewController *controllerViewController;
+@property (strong, nonatomic) NSMutableArray *saveStateArray;
 
 - (void)loadROM:(NSString *)romFilePath;
+- (void)quitROM;
+- (void)pauseMenu;
+- (void)showActionSheetWithTag:(NSInteger)tag;
 
 @end

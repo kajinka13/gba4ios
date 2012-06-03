@@ -43,6 +43,8 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
 @synthesize sustainButton;
 @synthesize readyToSustain;
 @synthesize controllerImage;
+@synthesize landscape;
+@synthesize emulatorViewController;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -140,13 +142,18 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
     
 }
 
+- (void)updateUI {
+    self.imageView.image = [self getControllerImage];
+    [self getControllerCoords];
+}
+
 #pragma mark - Background Image
 
 - (UIImage *)getControllerImage {
     NSString *controllerFilename;
     UIImage *image;
     
-    if(preferences.landscape)
+    if(self.landscape)
     {
 	    controllerFilename = [ NSString stringWithFormat:@"controller_fs%d.png", preferences.selectedSkin ];
 	}
@@ -235,7 +242,11 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
 		{
 			struct CGPoint point;
 			point = [touch locationInView:self.view];
-            			
+            
+            /*if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeLeft) {
+                point = CGPointMake(480 - point.x, point.y);//Fixes offset touches due to the transformation of the controller
+            }*/
+            
 			touchstate[i] = 1;
             		
 			if (MyCGRectContainsPoint(Left, point)) 
@@ -367,10 +378,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
 			}
 			else if (MyCGRectContainsPoint(Menu, point)) 
 			{
-                //CGRect rect = CGRectMake(Menu.origin.x + Menu.size.width/2, Menu.size.height, 60, 60);
-				//[AppDelegate().emulationViewController showPauseDialogFromRect:rect];
-                sound_exit();
-                init_sound();
+                [emulatorViewController pauseMenu];
 			}
 			
 			if(oldtouches[i] != newtouches[i])
@@ -424,7 +432,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
     char cFileName[256];
     FILE *fp;
     NSString *file;
-    if(preferences.landscape)
+    if(landscape)
     {
 	    file = [ NSString stringWithFormat:@"controller_fs%d.txt", preferences.selectedSkin ];
 	}

@@ -38,5 +38,6 @@ void updateScreen();
 - (void)dealloc;
 - (void)drawRect:(CGRect)frame;
 - (void)initializeGraphics;
+- (void)rotateForDeviceOrientation:(UIDeviceOrientation)deviceOrientation;
 
 @end

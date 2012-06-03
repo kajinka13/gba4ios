@@ -15,6 +15,7 @@
 		BF9250141574B70B00036778 /* libiGBA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9250131574B70B00036778 /* libiGBA.a */; };
 		BF9250231574B8BF00036778 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9250221574B8BF00036778 /* AudioToolbox.framework */; };
 		BF92502E1574BF7C00036778 /* gba_bios.bin in Resources */ = {isa = PBXBuildFile; fileRef = BF92502D1574BF7C00036778 /* gba_bios.bin */; };
+		BFA35002157739CC0049C83B /* WebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA35001157739CC0049C83B /* WebBrowserViewController.m */; };
 		BFE1E7E01575D56D00D5CA43 /* controller_fs0.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE1E7CC1575D56D00D5CA43 /* controller_fs0.png */; };
 		BFE1E7E11575D56D00D5CA43 /* controller_fs0.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFE1E7CD1575D56D00D5CA43 /* controller_fs0.txt */; };
 		BFE1E7E21575D56D00D5CA43 /* controller_fs1.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE1E7CE1575D56D00D5CA43 /* controller_fs1.png */; };
@@ -59,6 +60,8 @@
 		BF9250131574B70B00036778 /* libiGBA.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiGBA.a; path = "../../../../../../Library/Developer/Xcode/DerivedData/GBA4iOS-aayhduesxakweacixeckqrqciynb/Build/Products/Debug-iphoneos/libiGBA.a"; sourceTree = "<group>"; };
 		BF9250221574B8BF00036778 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BF92502D1574BF7C00036778 /* gba_bios.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = gba_bios.bin; sourceTree = "<group>"; };
+		BFA35000157739CC0049C83B /* WebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebBrowserViewController.h; sourceTree = "<group>"; };
+		BFA35001157739CC0049C83B /* WebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebBrowserViewController.m; sourceTree = "<group>"; };
 		BFE1E7CC1575D56D00D5CA43 /* controller_fs0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = controller_fs0.png; sourceTree = "<group>"; };
 		BFE1E7CD1575D56D00D5CA43 /* controller_fs0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = controller_fs0.txt; sourceTree = "<group>"; };
 		BFE1E7CE1575D56D00D5CA43 /* controller_fs1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = controller_fs1.png; sourceTree = "<group>"; };
@@ -205,6 +208,8 @@
 				BFE1E7FF1575DCF400D5CA43 /* GBAControllerViewController.m */,
 				BF3DD2651575B75400F918CE /* ScreenView.h */,
 				BF3DD2661575B75400F918CE /* ScreenView.m */,
+				BFA35000157739CC0049C83B /* WebBrowserViewController.h */,
+				BFA35001157739CC0049C83B /* WebBrowserViewController.m */,
 				BFE400CD156CA70100E33279 /* Supporting Files */,
 			);
 			path = GBA4iOS;
@@ -314,6 +319,7 @@
 				BF3DD2671575B75400F918CE /* ScreenView.m in Sources */,
 				BF3DD2841575CE2000F918CE /* GBAEmulatorViewController.m in Sources */,
 				BFE1E8001575DCF400D5CA43 /* GBAControllerViewController.m in Sources */,
+				BFA35002157739CC0049C83B /* WebBrowserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

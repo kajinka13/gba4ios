@@ -24,6 +24,9 @@
 
 #import "../../iGBA/Frameworks/UIKit-Private/UIHardware.h"
 
+#define RADIANS(degrees) ((degrees * M_PI) / 180.0)
+#define DEGREES(radians) (radians * 180.0/M_PI)
+
 CoreSurfaceBufferRef screenSurface;
 static ScreenView *sharedInstance = nil;
 
@@ -106,7 +109,7 @@ void updateScreen() {
     LOGDEBUG("ScreenView.initGraphics(): Creating screen layer");
     screenLayer = [[CALayer layer] retain];
     
-    preferences.scaled = NO;
+    preferences.scaled = YES;
     
     if(preferences.landscape)
     {
@@ -118,7 +121,7 @@ void updateScreen() {
 		[self setRotationBy: 90];
 		if(preferences.scaled)
 		{
-	        [screenLayer setFrame: CGRectMake(0.0f, 0.0f, 480.0f, 320.0f)];
+	        [screenLayer setFrame: CGRectMake(0.0f, 0.0f, self.bounds.size.width, self.bounds.size.height)];
 		}
 		else
 		{
@@ -129,18 +132,19 @@ void updateScreen() {
 	{
 		if(preferences.scaled)
 		{
-	        [screenLayer setFrame: CGRectMake(0.0f, 0.0f, 320.0f, 240.0f)];
+	        [screenLayer setFrame: CGRectMake(0.0f, 0.0f, self.bounds.size.width, self.bounds.size.height)];
 		}
 		else
 		{
 	        [screenLayer setFrame: CGRectMake(40.0f, 40.0f, 240.0f, 160.0f)];		
 		}
 	}
+    
     [screenLayer setContents: screenSurface];
     [screenLayer setOpaque: YES];
 
     LOGDEBUG("ScreenView.initGraphics(): Adding layer as sublayer");
-    [ [ self _layer ] addSublayer: screenLayer ];
+    [self.layer addSublayer: screenLayer ];
 
     LOGDEBUG("ScreenView.initGraphics(): Unlocking CoreSurface buffer");
     CoreSurfaceBufferUnlock(screenSurface);
@@ -155,6 +159,46 @@ void updateScreen() {
                  repeats:YES];
 */                
     LOGDEBUG("ScreenView.initGraphics(): Done");
+}
+
+- (void)rotateForDeviceOrientation:(UIDeviceOrientation)deviceOrientation {
+    
+    [CATransaction begin]; 
+    [CATransaction setValue: (id) kCFBooleanTrue forKey: kCATransactionDisableActions];
+    
+    if (deviceOrientation == UIDeviceOrientationLandscapeLeft) {
+        self.transform = CGAffineTransformMakeRotation(RADIANS(90.0));
+        self.frame = CGRectMake(0, 0, 320, 480);
+        if (preferences.selectedSkin == 0) {
+            screenLayer.frame = CGRectMake(120, 40, 240, 160);
+        }
+        else {
+            screenLayer.frame = CGRectMake(0, 0, 480, 320);
+        }
+    }
+    else if (deviceOrientation == UIDeviceOrientationLandscapeRight) {
+        self.transform = CGAffineTransformMakeRotation(RADIANS(270.0));
+        self.frame = CGRectMake(0, 0, 320, 480);
+        if (preferences.selectedSkin == 0) {
+            screenLayer.frame = CGRectMake(120, 40, 240, 160);
+        }
+        else {
+            screenLayer.frame = CGRectMake(0, 0, 480, 320);
+        }
+    }
+    else if (deviceOrientation == UIDeviceOrientationPortrait) {
+        self.transform = CGAffineTransformMakeRotation(RADIANS(0.0));
+        self.frame = CGRectMake(0, 0, 320, 240);
+        screenLayer.frame = CGRectMake(0, 0, 320, 240);
+    }
+    else if (deviceOrientation == UIDeviceOrientationPortraitUpsideDown) {
+        self.transform = CGAffineTransformMakeRotation(RADIANS(180.0));
+        self.frame = CGRectMake(0, 0, 320, 240);
+        screenLayer.frame = CGRectMake(0, 0, 320, 240);
+    }
+    
+    [CATransaction commit];
+    
 }
 
 @end

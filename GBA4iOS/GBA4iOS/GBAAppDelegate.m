@@ -8,6 +8,12 @@
 
 #import "GBAAppDelegate.h"
 
+@class gpSPhone_iphone;
+
+char * __preferencesFilePath;
+extern int gpSPhone_LoadPreferences();
+extern int gpSPhone_SavePreferences();
+
 @implementation GBAAppDelegate
 
 @synthesize window = _window;
@@ -20,6 +26,19 @@
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
     }
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+        NSString *libraryDirectoryPath = [paths objectAtIndex:0];
+        NSString *preferencesFilePath = [libraryDirectoryPath stringByAppendingPathComponent:@"preferences.v1"];
+        
+        __preferencesFilePath = strdup((char *)[preferencesFilePath UTF8String]);
+        
+        gpSPhone_LoadPreferences();
+        
+        
+    });
+    
     return YES;
 }
 							
@@ -33,6 +52,7 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    gpSPhone_SavePreferences();
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -48,6 +68,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    gpSPhone_SavePreferences();
 }
 
 @end
