@@ -1069,6 +1069,7 @@ static  u8 *gamepad_help[] =
   {
     if(!first_load)
     {
+        
       get_savestate_filename_noshot(savestate_slot,
        current_savestate_filename);
       save_state(current_savestate_filename, original_screen);

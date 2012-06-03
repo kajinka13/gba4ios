@@ -122,7 +122,7 @@ u32 load_file_zip(char *filename)
           stream.zalloc = (alloc_func)0;
           stream.zfree = (free_func)0;
 
-          err = inflateInit2(&stream, -MAX_WBITS);
+          /*Riley Testut err = inflateInit2(&stream, -MAX_WBITS);*/
 
           file_read(fd, cbuffer, ZIP_BUFFER_SIZE);
 
@@ -130,7 +130,7 @@ u32 load_file_zip(char *filename)
           {
             while(err != Z_STREAM_END)
             {
-              err = inflate(&stream, Z_SYNC_FLUSH);
+              /*Riley Testut err = inflate(&stream, Z_SYNC_FLUSH); */
               if(err == Z_BUF_ERROR)
               {
                 stream.avail_in = ZIP_BUFFER_SIZE;
@@ -139,7 +139,7 @@ u32 load_file_zip(char *filename)
               }
             }
             err = Z_OK;
-            inflateEnd(&stream);
+            /*Riley Testut* inflateEnd(&stream);*/
           }
           free(cbuffer);
           goto outcode;

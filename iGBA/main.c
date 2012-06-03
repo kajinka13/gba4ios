@@ -391,7 +391,7 @@ int main(int argc, char *argv[])
   save_game_config_file();
   if(load_gamepak(load_filename) == -1)
   {
-      printf("*AWWW :(");
+      printf("*File failed to load :(");
 	gp2x_quit();
 	pthread_exit(NULL);
   }
@@ -607,7 +607,7 @@ u32 update_gba()
 			
 			if( !__emulation_run ) 
 			{
-				char buffer[260];
+				/*char buffer[260];
 				char filename[260];
 				time_t curtime;
 				struct tm *loctime;
@@ -619,18 +619,26 @@ u32 update_gba()
 				curtime = time (NULL);
 				loctime = localtime (&curtime);
 				strftime (buffer, 260, "%y%m%d-%I%M%p", loctime);
-				sprintf(filename, "%s-%s.svs", gamepak_filename, buffer);
+				sprintf(filename, "%s.svs", gamepak_filename,buffer);
 
 				current_screen = copy_screen();
 				save_state(filename, current_screen);
 				free(current_screen);
-				gpSPhone_SetSvsFile(filename);
+				gpSPhone_SetSvsFile(filename);*/
 
 				sound_exit();
 				memory_exit();
 				gp2x_quit();
 				pthread_exit(NULL);
 			}
+            
+            if(__emulation_paused)
+			{
+                usleep(16666);
+			}
+            while(__emulation_paused) {
+                
+            }
 
           if(update_input())
             continue;
@@ -691,6 +699,18 @@ u32 update_gba()
     }
 
   return execute_cycles;
+}
+
+void save_game_state(char *filepath) {
+    u16 *current_screen;
+    
+    current_screen = copy_screen();
+    save_state(filepath, current_screen);
+    free(current_screen);
+}
+
+void load_game_state(char *filepath) {
+    load_state(filepath);
 }
 
 u64 last_screen_timestamp = 0;
@@ -798,9 +818,11 @@ void synchronize()
     sprintf(print_buffer, "%d (%d)", fps, frames_drawn);
     print_string(print_buffer, 0xFFFF, 0x000, 0, 0);
   }
+    char print_buffer[128];
 
   if(preferences.frameSkip == 5)
   {
+      
     current_frameskip_type = auto_frameskip;
   }
   else

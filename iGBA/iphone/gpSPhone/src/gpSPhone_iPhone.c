@@ -34,6 +34,7 @@ extern char *__fileName;
 extern int   __mute;
 extern float __audioVolume;
 extern int   __emulation_run;
+extern char *__preferencesFilePath;
 extern CoreSurfaceBufferRef __screenSurface;
 
 /* gpSPhone Resources */
@@ -207,11 +208,11 @@ void gpSPhone_CloseSound(void) {
 }
 
 void setDefaultPreferences() {
-    preferences.frameSkip = 5;
+    preferences.frameSkip = 0;
     preferences.debug = 0;
     preferences.canDeleteROMs = 0;
     preferences.autoSave = 0;
-    preferences.landscape = 1;
+    preferences.landscape = 0;
     preferences.muted = 0;
     preferences.scaled = 1;
 	preferences.volume = 5;
@@ -228,26 +229,35 @@ void setDefaultPreferences() {
 }
 
 int gpSPhone_LoadPreferences() {
+    
     FILE *f;
     int r;
 
+    
     setDefaultPreferences();
 
     /* Load Preferences */
-    f = fopen_home("Library/Preferences/gpSPhone.v1", "rb");
+    
+    f = fopen(__preferencesFilePath, "rb");
     if (!f) 
         return -1;
     r = fread(&preferences, sizeof(preferences), 1, f);
     fclose(f);
     if (!r) 
         setDefaultPreferences();
+    
+        
 #ifdef DEBUG
-    IS_DEBUG = 1;//preferences.debug;
+    IS_DEBUG = preferences.debug;
 #else
     IS_DEBUG = 0;
 #endif
+    
+    preferences.frameSkip = 0;
+    
     LOGDEBUG("gpSPhone_LoadPreferences: Loading preferences");
     return (r) ? 0 : -1;
+    
 }
 
 int gpSPhone_SavePreferences() {
@@ -255,7 +265,7 @@ int gpSPhone_SavePreferences() {
     int r;
 
     /* Load Preferences */
-    f = fopen_home("Library/Preferences/gpSPhone.v1", "wb");
+    f = fopen(__preferencesFilePath, "wb");
     if (!f) return -1;
     LOGDEBUG("Saving Preferences");
     r = fwrite(&preferences, sizeof(preferences), 1, f);
@@ -266,11 +276,10 @@ int gpSPhone_SavePreferences() {
 #ifdef DEBUG
 void LOGDEBUG(const char *text, ...)
 {
-    printf("LOGDEBUG");
   char debug_text[1024];
   va_list args;
   FILE *f;
-
+    
   if (!IS_DEBUG) return;
 
   va_start (args, text);
@@ -278,7 +287,7 @@ void LOGDEBUG(const char *text, ...)
   va_end (args);
 
   f = fopen("/tmp/gpSPhone.debug", "a");
-  fprintf(f, "%s\n", debug_text);
+    fprintf(f, "%s\n", debug_text);
   fclose(f);
 }
 #endif

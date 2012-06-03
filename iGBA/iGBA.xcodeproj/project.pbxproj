@@ -78,6 +78,8 @@
 		BF92500B1574B68100036778 /* common.h in Headers */ = {isa = PBXBuildFile; fileRef = BF92500A1574B68100036778 /* common.h */; };
 		BF9250251574BA1500036778 /* cpu_threaded.c in Sources */ = {isa = PBXBuildFile; fileRef = BF9250241574BA1500036778 /* cpu_threaded.c */; };
 		BF9250371574C93E00036778 /* arm_asm_stub.S in Sources */ = {isa = PBXBuildFile; fileRef = BF9250361574C93E00036778 /* arm_asm_stub.S */; };
+		BFA3500915773EFE0049C83B /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = BFA3500715773EFD0049C83B /* zip.c */; };
+		BFA3500A15773EFE0049C83B /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = BFA3500815773EFE0049C83B /* zip.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,6 +155,8 @@
 		BF92500A1574B68100036778 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = SOURCE_ROOT; };
 		BF9250241574BA1500036778 /* cpu_threaded.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpu_threaded.c; sourceTree = SOURCE_ROOT; };
 		BF9250361574C93E00036778 /* arm_asm_stub.S */ = {isa = PBXFileReference; explicitFileType = sourcecode.asm.llvm; fileEncoding = 4; name = arm_asm_stub.S; path = iphone/arm_asm_stub.S; sourceTree = SOURCE_ROOT; };
+		BFA3500715773EFD0049C83B /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = SOURCE_ROOT; };
+		BFA3500815773EFE0049C83B /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +199,8 @@
 		BF924F661574B22F00036778 /* iGBA */ = {
 			isa = PBXGroup;
 			children = (
+				BFA3500715773EFD0049C83B /* zip.c */,
+				BFA3500815773EFE0049C83B /* zip.h */,
 				BF9250241574BA1500036778 /* cpu_threaded.c */,
 				BF3DD1CD1575615100F918CE /* mips_stub.S */,
 				BF3DD1CB1575611500F918CE /* bios_cache.S */,
@@ -381,6 +387,7 @@
 				BF9250021574B5A100036778 /* JoyPad.h in Headers */,
 				BF9250051574B5D600036778 /* x86_emit.h in Headers */,
 				BF92500B1574B68100036778 /* common.h in Headers */,
+				BFA3500A15773EFE0049C83B /* zip.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +463,7 @@
 				BF3DD1CA157560F400F918CE /* video_blend.S in Sources */,
 				BF3DD1CC1575611500F918CE /* bios_cache.S in Sources */,
 				BF3DD1CE1575615100F918CE /* mips_stub.S in Sources */,
+				BFA3500915773EFE0049C83B /* zip.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

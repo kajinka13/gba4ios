@@ -74,6 +74,8 @@ extern u32 skip_next_frame;
 extern timer_type timer[4];
 static u32 prescale_table[] = { 0, 6, 8, 10 };
 
+volatile int __emulation_paused;
+
 extern u32 cycle_memory_access;
 extern u32 cycle_pc_relative_access;
 extern u32 cycle_sp_relative_access;
@@ -99,6 +101,8 @@ void delay_us(u32 us_count);
 void get_ticks_us(u64 *tick_return);
 void game_name_ext(u8 *src, u8 *buffer, u8 *extension);
 void main_write_mem_savestate(file_tag_type savestate_file);
+void save_game_state(char *filepath);
+void load_game_state(char *filepath);
 void main_read_savestate(file_tag_type savestate_file);
 
 int iphone_main(char* load_filename);

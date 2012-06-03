@@ -2114,7 +2114,9 @@ s32 load_gamepak_raw(char *name)
 
   if(file_check_valid(gamepak_file))
   {
+      
     u32 file_size = file_length(name, gamepak_file);
+      
 
     // First, close the last one if it was open, we won't
     // be needing it anymore.
@@ -2144,6 +2146,8 @@ s32 load_gamepak_raw(char *name)
 
     return file_size;
   }
+    
+    printf("*Not valid GBA file! :(");
 
   return -1;
 }
@@ -2155,23 +2159,19 @@ u8 gamepak_filename[512];
 
 u32 load_gamepak(char *name)
 {
-    
+    char *dot_position = strrchr(name, '.');
     s32 file_size;
     u8 cheats_filename[256];
     
-    file_size = load_gamepak_raw(name);
+    if(!strcmp(dot_position, ".zip"))
+        file_size = load_file_zip(name);
+    else
+        file_size = load_gamepak_raw(name);
     
-    /*char *dot_position = strrchr(name, '.');
-  
-
-  if(!strcmp(dot_position, ".zip"))
-  /*file_size = load_file_zip(name); Riley Testut* printf("Cannot load .zip files at this time");*/
+    // A dumb April fool's joke was here once :o
     
-
-  // A dumb April fool's joke was here once :o
-
-  if(file_size != -1)
-  {
+    if(file_size != -1)
+    {
       
     gamepak_size = (file_size + 0x7FFF) & ~0x7FFF;
 
@@ -3205,12 +3205,12 @@ void load_state(char *savestate_filename)
        convert_palette(current_color);
     }
 
-    // Oops, these contain raw pointers
+      // Oops, these contain raw pointers
     for(i = 0; i < 4; i++)
     {
       gbc_sound_channel[i].sample_data = square_pattern_duty[2];
     }
-    current_debug_state = STEP;
+      //current_debug_state = STEP; Riley Testut* Causes ARM debug messages.
     instruction_count = 0;
 
     reg[CHANGED_PC_STATUS] = 1;

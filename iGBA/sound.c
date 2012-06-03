@@ -118,6 +118,7 @@ void sound_timer_queue32(u32 channel, u32 value)
 
 void sound_timer(fixed16_16 frequency_step, u32 channel)
 {
+
   direct_sound_struct *ds = direct_sound_channel + channel;
 
   fixed16_16 fifo_fractional = ds->fifo_fractional;
@@ -460,6 +461,14 @@ extern int soundInit;
 
 void update_gbc_sound(u32 cpu_ticks)
 {
+    /*static int soundi = 0;
+    if (soundi >= 10) {
+        printf("*sound");
+        soundi = 0;
+    }
+    else {
+        soundi++;
+    }*/
   fixed16_16 buffer_ticks = float_to_fp16_16(((float)(cpu_ticks -
    gbc_sound_last_cpu_ticks) * sound_frequency) / 16777216.0);
   u32 i, i2;
@@ -751,6 +760,7 @@ void sound_callback(void *userdata, u8 *stream, int length)
       sample_length = length / 2;
     }
 */
+      
     if((sound_buffer_base + sample_length) >= BUFFER_SIZE)
     {
       u32 partial_length = (BUFFER_SIZE - sound_buffer_base) * 2;
