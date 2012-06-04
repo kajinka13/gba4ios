@@ -812,7 +812,7 @@ void synchronize()
   static u32 fps = 60;
   static u32 frames_drawn = 60;
     
-    printf("Hello");
+    //printf("Hello");
 
   if(gp2x_fps_debug)
   {

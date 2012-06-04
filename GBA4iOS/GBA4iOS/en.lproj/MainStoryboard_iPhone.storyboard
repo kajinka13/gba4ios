@@ -245,9 +245,9 @@
                                 <segue destination="Zai-d1-4FI" kind="modal" id="LNE-pD-uQl"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="j0l-hX-6Ak">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="j0l-hX-6Ak">
                             <connections>
-                                <action selector="scanRomDirectory" destination="12" id="Kee-bE-Rl5"/>
+                                <action selector="getMoreROMs" destination="12" id="zgL-zB-J5d"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -299,6 +299,7 @@
         <class className="GBAMasterViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GBAMasterViewController.h"/>
             <relationships>
+                <relationship kind="action" name="getMoreROMs"/>
                 <relationship kind="action" name="scanRomDirectory"/>
             </relationships>
         </class>

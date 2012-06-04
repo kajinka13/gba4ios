@@ -3152,6 +3152,8 @@ void bios_region_read_protect()
 
 void load_state(char *savestate_filename)
 {
+    
+    printf(savestate_filename);
   file_open(savestate_file, savestate_filename, read);
   if(file_check_valid(savestate_file))
   {
@@ -3174,7 +3176,7 @@ void load_state(char *savestate_filename)
 
     oam_update = 1;
     gbc_sound_update = 1;
-    if(strcmp(current_gamepak_filename, gamepak_filename))
+    /*if(strcmp(current_gamepak_filename, gamepak_filename))
     {
       u32 dot_position = strcspn(current_gamepak_filename, ".");
 
@@ -3183,9 +3185,11 @@ void load_state(char *savestate_filename)
       //strcpy(gamepak_filename, current_gamepak_filename);
       if(strncmp(savestate_filename, current_gamepak_filename, dot_position))
       {
+          printf("WTF");
         if(load_gamepak(gamepak_filename) != -1)
         {
           reset_gba();
+            printf("OH CRAP");
           // Okay, so this takes a while, but for now it works.
           load_state(savestate_filename);
         }
@@ -3196,7 +3200,7 @@ void load_state(char *savestate_filename)
 
         return;
       }
-    }
+    }*/
 
     for(i = 0; i < 512; i++)
     {

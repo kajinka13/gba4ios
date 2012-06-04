@@ -188,17 +188,11 @@
 
 #pragma mark - Download ROMs
 
-- (void)getMoreROMs {
+- (IBAction)getMoreROMs {
     WebBrowserViewController *webViewController = [[WebBrowserViewController alloc] init];
     UINavigationController *webNavController = [[UINavigationController alloc] initWithRootViewController:webViewController];
 	webNavController.navigationBar.barStyle = UIBarStyleBlack;
     [self presentModalViewController:webNavController animated:YES];
-}
-
-#pragma mark - Settings 
-
-- (void)openSettings {
-    
 }
 
 #pragma mark - Table view data source

@@ -18,5 +18,6 @@
 @property (copy, nonatomic) NSString *currentRomPath;
 
 - (IBAction)scanRomDirectory;
+- (IBAction)getMoreROMs;
 
 @end
