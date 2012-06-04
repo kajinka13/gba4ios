@@ -43,7 +43,6 @@ extern void sound_callback(void *userdata, u8 *stream, int length);
 char __fileNameTempSave[512];
 byte IS_DEBUG = 0;
 byte IS_CHANGING_ORIENTATION;
-struct gpSPhone_Preferences preferences;
 
 AQCallbackStruct in;
 long writePtr;
@@ -225,7 +224,8 @@ void setDefaultPreferences() {
 	preferences.cheat6 = 1;
 	preferences.cheat7 = 1;
 	preferences.cheat8 = 1;
-    preferences.selectedSkin = 0;
+    preferences.selectedPortraitSkin = 0;
+    preferences.selectedLandscapeSkin = 0;
 }
 
 int gpSPhone_LoadPreferences() {

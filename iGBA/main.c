@@ -811,11 +811,13 @@ void synchronize()
   u64 time_delta;
   static u32 fps = 60;
   static u32 frames_drawn = 60;
+    
+    printf("Hello");
 
   if(gp2x_fps_debug)
   {
     char print_buffer[128];
-    sprintf(print_buffer, "%d (%d)", fps, frames_drawn);
+    sprintf(print_buffer, "fps: %lu (%lu)", fps, frames_drawn);
     print_string(print_buffer, 0xFFFF, 0x000, 0, 0);
   }
     char print_buffer[128];

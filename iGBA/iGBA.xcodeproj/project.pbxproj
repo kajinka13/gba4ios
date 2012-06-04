@@ -490,7 +490,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = (
-					"miphoneos-version-min=5.1",
 					"-DARM_ARCH",
 					"-DGP2X_BUILD",
 					"-msoft-float",
@@ -531,6 +530,31 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = (
+					"-DARM_ARCH",
+					"-DGP2X_BUILD",
+					"-msoft-float",
+					"-arch",
+					armv7,
+					"-march=armv6k",
+					"-maspen-version-min=1.0",
+					"-fpeel-loops",
+					"-O3",
+					"-fnested-functions",
+					"-funsigned-char",
+					"-fno-common",
+					"-fno-builtin",
+					"-falign-functions",
+					"-fomit-frame-pointer",
+					"-fweb",
+					"-fstrict-aliasing",
+					"-fstrength-reduce",
+					"-fexpensive-optimizations",
+					"-finline",
+					"-finline-functions",
+					"-funroll-loops",
+					"-DVERSION=\"1.8.0\"",
+				);
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -579,6 +603,31 @@
 				DSTROOT = /tmp/iGBA.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iGBA/iGBA-Prefix.pch";
+				OTHER_CFLAGS = (
+					"-DARM_ARCH",
+					"-DGP2X_BUILD",
+					"-msoft-float",
+					"-arch",
+					armv7,
+					"-march=armv6k",
+					"-maspen-version-min=1.0",
+					"-fpeel-loops",
+					"-O3",
+					"-fnested-functions",
+					"-funsigned-char",
+					"-fno-common",
+					"-fno-builtin",
+					"-falign-functions",
+					"-fomit-frame-pointer",
+					"-fweb",
+					"-fstrict-aliasing",
+					"-fstrength-reduce",
+					"-fexpensive-optimizations",
+					"-finline",
+					"-finline-functions",
+					"-funroll-loops",
+					"-DVERSION=\"1.8.0\"",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

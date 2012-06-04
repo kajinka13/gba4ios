@@ -48,17 +48,18 @@ extern void updateScreen();
 typedef unsigned char byte;
 
 struct gpSPhone_Preferences {
-    byte frameSkip;
+    int frameSkip;
     byte debug;
     byte canDeleteROMs;
     byte autoSave;
     byte landscape;
     byte allowSuspend;
-    byte scaled;
+    bool scaled;
     byte muted;
-    byte selectedSkin;
+    int selectedPortraitSkin;
+    int selectedLandscapeSkin;
 	byte volume;
-	byte cheating;
+	bool cheating;
 	byte cheat1;
 	byte cheat2;
 	byte cheat3;
@@ -99,7 +100,7 @@ extern byte IS_DEBUG;
 extern byte IS_CHANGING_ORIENTATION;
 extern unsigned short  *BaseAddress;
 extern int __screenOrientation;
-extern struct gpSPhone_Preferences preferences;
+struct gpSPhone_Preferences preferences;
 
 /* Audio Resources */
 #define AUDIO_BUFFERS 2
