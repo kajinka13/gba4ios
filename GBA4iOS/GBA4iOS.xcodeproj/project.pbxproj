@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF1AE902157BC46E001375E8 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1AE901157BC46E001375E8 /* icon.png */; };
+		BF1AE905157BC4EE001375E8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1AE904157BC4EE001375E8 /* libz.dylib */; };
+		BF1AE908157BC6E7001375E8 /* Gear.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1AE906157BC6E7001375E8 /* Gear.png */; };
+		BF1AE909157BC6E7001375E8 /* Gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1AE907157BC6E7001375E8 /* Gear@2x.png */; };
+		BF1AE90C157BC8BD001375E8 /* GearLandscape.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1AE90A157BC8BD001375E8 /* GearLandscape.png */; };
+		BF1AE90D157BC8BD001375E8 /* GearLandscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1AE90B157BC8BD001375E8 /* GearLandscape@2x.png */; };
+		BF1AE912157BC9D4001375E8 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1AE90E157BC9D4001375E8 /* arrow.png */; };
+		BF1AE913157BC9D4001375E8 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1AE90F157BC9D4001375E8 /* arrow@2x.png */; };
+		BF1AE914157BC9D4001375E8 /* PullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1AE911157BC9D4001375E8 /* PullToRefreshView.m */; };
+		BF1AE917157BF638001375E8 /* GBASettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1AE916157BF638001375E8 /* GBASettingsViewController.m */; };
 		BF3DD2671575B75400F918CE /* ScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3DD2661575B75400F918CE /* ScreenView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BF3DD2691575B82C00F918CE /* CoreSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3DD2681575B82C00F918CE /* CoreSurface.framework */; };
 		BF3DD26B1575B9CD00F918CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3DD26A1575B9CD00F918CE /* QuartzCore.framework */; };
@@ -50,6 +60,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF1AE901157BC46E001375E8 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		BF1AE904157BC4EE001375E8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		BF1AE906157BC6E7001375E8 /* Gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gear.png; sourceTree = "<group>"; };
+		BF1AE907157BC6E7001375E8 /* Gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gear@2x.png"; sourceTree = "<group>"; };
+		BF1AE90A157BC8BD001375E8 /* GearLandscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GearLandscape.png; sourceTree = "<group>"; };
+		BF1AE90B157BC8BD001375E8 /* GearLandscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GearLandscape@2x.png"; sourceTree = "<group>"; };
+		BF1AE90E157BC9D4001375E8 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		BF1AE90F157BC9D4001375E8 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		BF1AE910157BC9D4001375E8 /* PullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullToRefreshView.h; sourceTree = "<group>"; };
+		BF1AE911157BC9D4001375E8 /* PullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshView.m; sourceTree = "<group>"; };
+		BF1AE915157BF638001375E8 /* GBASettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBASettingsViewController.h; sourceTree = "<group>"; };
+		BF1AE916157BF638001375E8 /* GBASettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBASettingsViewController.m; sourceTree = "<group>"; };
 		BF3DD2651575B75400F918CE /* ScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenView.h; sourceTree = "<group>"; };
 		BF3DD2661575B75400F918CE /* ScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenView.m; sourceTree = "<group>"; };
 		BF3DD2681575B82C00F918CE /* CoreSurface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSurface.framework; path = System/Library/PrivateFrameworks/CoreSurface.framework; sourceTree = SDKROOT; };
@@ -107,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1AE905157BC4EE001375E8 /* libz.dylib in Frameworks */,
 				BF3DD27E1575CC7300F918CE /* GraphicsServices.framework in Frameworks */,
 				BF3DD26B1575B9CD00F918CE /* QuartzCore.framework in Frameworks */,
 				BF3DD2691575B82C00F918CE /* CoreSurface.framework in Frameworks */,
@@ -121,9 +144,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF1AE918157BF643001375E8 /* Imported Files */ = {
+			isa = PBXGroup;
+			children = (
+				BF1AE910157BC9D4001375E8 /* PullToRefreshView.h */,
+				BF1AE911157BC9D4001375E8 /* PullToRefreshView.m */,
+				BF3DD2651575B75400F918CE /* ScreenView.h */,
+				BF3DD2661575B75400F918CE /* ScreenView.m */,
+				BFA35000157739CC0049C83B /* WebBrowserViewController.h */,
+				BFA35001157739CC0049C83B /* WebBrowserViewController.m */,
+			);
+			name = "Imported Files";
+			sourceTree = "<group>";
+		};
+		BF1AE91C157BF8C1001375E8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BF1AE915157BF638001375E8 /* GBASettingsViewController.h */,
+				BF1AE916157BF638001375E8 /* GBASettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		BF1AE91D157BF8D0001375E8 /* Emulator View */ = {
+			isa = PBXGroup;
+			children = (
+				BF3DD2821575CE2000F918CE /* GBAEmulatorViewController.h */,
+				BF3DD2831575CE2000F918CE /* GBAEmulatorViewController.m */,
+				BFE1E7FE1575DCF400D5CA43 /* GBAControllerViewController.h */,
+				BFE1E7FF1575DCF400D5CA43 /* GBAControllerViewController.m */,
+			);
+			name = "Emulator View";
+			sourceTree = "<group>";
+		};
 		BFE1E7C91575D54C00D5CA43 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BFE400D8156CA70100E33279 /* MainStoryboard_iPhone.storyboard */,
+				BFE400DB156CA70100E33279 /* MainStoryboard_iPad.storyboard */,
+				BF1AE90E157BC9D4001375E8 /* arrow.png */,
+				BF1AE90F157BC9D4001375E8 /* arrow@2x.png */,
+				BF1AE906157BC6E7001375E8 /* Gear.png */,
+				BF1AE907157BC6E7001375E8 /* Gear@2x.png */,
+				BF1AE90A157BC8BD001375E8 /* GearLandscape.png */,
+				BF1AE90B157BC8BD001375E8 /* GearLandscape@2x.png */,
+				BF1AE901157BC46E001375E8 /* icon.png */,
 				BFE1E7CB1575D56000D5CA43 /* Controller */,
 			);
 			name = Resources;
@@ -178,6 +243,7 @@
 		BFE400C5156CA70000E33279 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF1AE904157BC4EE001375E8 /* libz.dylib */,
 				BF3DD27D1575CC7300F918CE /* GraphicsServices.framework */,
 				BF92502D1574BF7C00036778 /* gba_bios.bin */,
 				BF9250131574B70B00036778 /* libiGBA.a */,
@@ -196,20 +262,13 @@
 			children = (
 				BFE400D5156CA70100E33279 /* GBAAppDelegate.h */,
 				BFE400D6156CA70100E33279 /* GBAAppDelegate.m */,
-				BFE400D8156CA70100E33279 /* MainStoryboard_iPhone.storyboard */,
-				BFE400DB156CA70100E33279 /* MainStoryboard_iPad.storyboard */,
 				BFE400DE156CA70100E33279 /* GBAMasterViewController.h */,
 				BFE400DF156CA70100E33279 /* GBAMasterViewController.m */,
 				BFE400E1156CA70100E33279 /* GBADetailViewController.h */,
 				BFE400E2156CA70100E33279 /* GBADetailViewController.m */,
-				BF3DD2821575CE2000F918CE /* GBAEmulatorViewController.h */,
-				BF3DD2831575CE2000F918CE /* GBAEmulatorViewController.m */,
-				BFE1E7FE1575DCF400D5CA43 /* GBAControllerViewController.h */,
-				BFE1E7FF1575DCF400D5CA43 /* GBAControllerViewController.m */,
-				BF3DD2651575B75400F918CE /* ScreenView.h */,
-				BF3DD2661575B75400F918CE /* ScreenView.m */,
-				BFA35000157739CC0049C83B /* WebBrowserViewController.h */,
-				BFA35001157739CC0049C83B /* WebBrowserViewController.m */,
+				BF1AE91C157BF8C1001375E8 /* Settings */,
+				BF1AE91D157BF8D0001375E8 /* Emulator View */,
+				BF1AE918157BF643001375E8 /* Imported Files */,
 				BFE400CD156CA70100E33279 /* Supporting Files */,
 			);
 			path = GBA4iOS;
@@ -302,6 +361,13 @@
 				BFE1E7F11575D56D00D5CA43 /* controller_hs3.txt in Resources */,
 				BFE1E7F21575D56D00D5CA43 /* controller_hs4.png in Resources */,
 				BFE1E7F31575D56D00D5CA43 /* controller_hs4.txt in Resources */,
+				BF1AE902157BC46E001375E8 /* icon.png in Resources */,
+				BF1AE908157BC6E7001375E8 /* Gear.png in Resources */,
+				BF1AE909157BC6E7001375E8 /* Gear@2x.png in Resources */,
+				BF1AE90C157BC8BD001375E8 /* GearLandscape.png in Resources */,
+				BF1AE90D157BC8BD001375E8 /* GearLandscape@2x.png in Resources */,
+				BF1AE912157BC9D4001375E8 /* arrow.png in Resources */,
+				BF1AE913157BC9D4001375E8 /* arrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +386,8 @@
 				BF3DD2841575CE2000F918CE /* GBAEmulatorViewController.m in Sources */,
 				BFE1E8001575DCF400D5CA43 /* GBAControllerViewController.m in Sources */,
 				BFA35002157739CC0049C83B /* WebBrowserViewController.m in Sources */,
+				BF1AE914157BC9D4001375E8 /* PullToRefreshView.m in Sources */,
+				BF1AE917157BF638001375E8 /* GBASettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +421,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BF1AE921157C4F8B001375E8 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yvette Testut";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2AC13673-9C2C-4E2F-96DB-B3EFF7EA5D80";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Ad Hoc";
+		};
+		BF1AE922157C4F8B001375E8 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GBA4iOS/GBA4iOS-Prefix.pch";
+				INFOPLIST_FILE = "GBA4iOS/GBA4iOS-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../../../Library/Developer/Xcode/DerivedData/GBA4iOS-aayhduesxakweacixeckqrqciynb/Build/Products/Debug-iphoneos\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = "Ad Hoc";
+		};
 		BFE400E4156CA70100E33279 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -451,6 +561,7 @@
 			buildConfigurations = (
 				BFE400E4156CA70100E33279 /* Debug */,
 				BFE400E5156CA70100E33279 /* Release */,
+				BF1AE921157C4F8B001375E8 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -460,6 +571,7 @@
 			buildConfigurations = (
 				BFE400E7156CA70100E33279 /* Debug */,
 				BFE400E8156CA70100E33279 /* Release */,
+				BF1AE922157C4F8B001375E8 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

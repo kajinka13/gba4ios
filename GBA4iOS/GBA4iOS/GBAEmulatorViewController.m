@@ -90,12 +90,20 @@ float __audioVolume = 1.0;
         
         pthread_join(emulation_tid, NULL);
     });
-    [UIApplication sharedApplication].statusBarHidden = YES;
+    [UIApplication sharedApplication].statusBarHidden = NO;
     [[self presentingViewController] dismissModalViewControllerAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    if (self.presentingViewController.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+        [self rotateToDeviceOrientation:UIDeviceOrientationLandscapeLeft];
+    }
+    else if (self.presentingViewController.interfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
+        [self rotateToDeviceOrientation:UIDeviceOrientationLandscapeRight];
+    }
+        
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 }
 
@@ -111,6 +119,7 @@ float __audioVolume = 1.0;
     }
 }
 
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -125,8 +134,10 @@ float __audioVolume = 1.0;
 }
 
 - (void)didRotate:(NSNotification *)notification {
-    UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
-    
+    [self rotateToDeviceOrientation:[[UIDevice currentDevice] orientation]];
+}
+
+- (void)rotateToDeviceOrientation:(UIDeviceOrientation)deviceOrientation {    
     if (deviceOrientation == UIDeviceOrientationFaceUp || deviceOrientation == UIDeviceOrientationFaceDown || deviceOrientation == UIDeviceOrientationPortraitUpsideDown || deviceOrientation == UIDeviceOrientationUnknown) {
         return;
     }

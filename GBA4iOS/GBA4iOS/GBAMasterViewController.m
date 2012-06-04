@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSMutableDictionary *romDictionary;
 @property (strong, nonatomic) NSArray *romSections;
 @property (nonatomic) NSInteger currentSection_;
+@property (strong, nonatomic) PullToRefreshView *pullToRefreshView_;
 @end
 
 @implementation GBAMasterViewController
@@ -24,6 +25,7 @@
 @synthesize romSections;
 @synthesize currentSection_;
 @synthesize currentRomPath;
+@synthesize pullToRefreshView_;
 
 - (void)awakeFromNib
 {
@@ -37,14 +39,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.pullToRefreshView_ = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *) self.tableView];
+    [self.pullToRefreshView_ setDelegate:self];
+    [self.tableView addSubview:self.pullToRefreshView_];
+    
 	// Do any additional setup after loading the view, typically from a nib.
-    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(scanRomDirectory)];
-    self.navigationItem.leftBarButtonItem = refreshButton;
+    
+    self.navigationItem.leftBarButtonItem.landscapeImagePhone = [UIImage imageNamed:@"GearLandscape"];
     
     [self scanRomDirectory];
-
-    UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(getMoreROMs)];
-    self.navigationItem.rightBarButtonItem = searchButton;
+    
     self.detailViewController = (GBADetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
 }
@@ -72,7 +77,12 @@
 #pragma mark -
 #pragma mark ROM loading methods
 
-- (void)scanRomDirectory {
+- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view;
+{
+    [self scanRomDirectory];
+}
+
+- (IBAction)scanRomDirectory {
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectoryPath = [paths objectAtIndex:0];
@@ -115,6 +125,13 @@
     [self.tableView reloadData];
     
     [self importSaveStates];
+    
+    double delayInSeconds = 0.5;//gives the pull to refresh animation time to work, less jerky
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.pullToRefreshView_ finishedLoading];
+    });
+    
 }
 
 - (void) importSaveStates {
@@ -169,13 +186,19 @@
     }];
 }
 
-#pragma mark Download ROMs
+#pragma mark - Download ROMs
 
 - (void)getMoreROMs {
     WebBrowserViewController *webViewController = [[WebBrowserViewController alloc] init];
     UINavigationController *webNavController = [[UINavigationController alloc] initWithRootViewController:webViewController];
 	webNavController.navigationBar.barStyle = UIBarStyleBlack;
     [self presentModalViewController:webNavController animated:YES];
+}
+
+#pragma mark - Settings 
+
+- (void)openSettings {
+    
 }
 
 #pragma mark - Table view data source
@@ -267,6 +290,8 @@
     }
 }
 
+#pragma mark - UIStoryboard
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
@@ -287,8 +312,8 @@
             GBAEmulatorViewController *emulatorViewController = [segue destinationViewController];
             emulatorViewController.wantsFullScreenLayout = YES;
             emulatorViewController.romPath = self.currentRomPath;
+            
         }
-        
     }
 }
 

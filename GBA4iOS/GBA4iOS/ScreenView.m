@@ -108,9 +108,7 @@ void updateScreen() {
 
     LOGDEBUG("ScreenView.initGraphics(): Creating screen layer");
     screenLayer = [[CALayer layer] retain];
-    
-    preferences.scaled = YES;
-    
+        
     if(preferences.landscape)
     {
 		CGRect FullContentBounds;
@@ -169,32 +167,54 @@ void updateScreen() {
     if (deviceOrientation == UIDeviceOrientationLandscapeLeft) {
         self.transform = CGAffineTransformMakeRotation(RADIANS(90.0));
         self.frame = CGRectMake(0, 0, 320, 480);
-        if (preferences.selectedSkin == 0) {
-            screenLayer.frame = CGRectMake(120, 40, 240, 160);
+        if (preferences.selectedLandscapeSkin == 0) {
+            [screenLayer setFrame:CGRectMake(120.0f, 40.0f, 240.0f, 160.0f)];
         }
         else {
-            screenLayer.frame = CGRectMake(0, 0, 480, 320);
+            if (preferences.scaled) {
+                [screenLayer setFrame:CGRectMake(0.0f, 0.0f, 480.0f, 320.0f)];
+            }
+            else {
+                [screenLayer setFrame: CGRectMake(120.0f, 80.0f, 240.0f, 160.0f)];
+               
+            }
         }
     }
     else if (deviceOrientation == UIDeviceOrientationLandscapeRight) {
         self.transform = CGAffineTransformMakeRotation(RADIANS(270.0));
         self.frame = CGRectMake(0, 0, 320, 480);
-        if (preferences.selectedSkin == 0) {
-            screenLayer.frame = CGRectMake(120, 40, 240, 160);
+        if (preferences.selectedLandscapeSkin == 0) {
+            [screenLayer setFrame:CGRectMake(120.0f, 40.0f, 240.0f, 160.0f)];
         }
         else {
-            screenLayer.frame = CGRectMake(0, 0, 480, 320);
+            if (preferences.scaled) {
+                [screenLayer setFrame:CGRectMake(0.0f, 0.0f, 480.0f, 320.0f)];
+            }
+            else {
+                [screenLayer setFrame: CGRectMake(120.0f, 80.0f, 240.0f, 160.0f)];
+                
+            }
         }
     }
     else if (deviceOrientation == UIDeviceOrientationPortrait) {
         self.transform = CGAffineTransformMakeRotation(RADIANS(0.0));
         self.frame = CGRectMake(0, 0, 320, 240);
-        screenLayer.frame = CGRectMake(0, 0, 320, 240);
+        if (preferences.scaled) {
+	        [screenLayer setFrame: CGRectMake(0.0f, 0.0f, 320.0f, 240.0f)];
+		}
+		else {
+	        [screenLayer setFrame: CGRectMake(40.0f, 40.0f, 240.0f, 160.0f)];		
+		}
     }
     else if (deviceOrientation == UIDeviceOrientationPortraitUpsideDown) {
         self.transform = CGAffineTransformMakeRotation(RADIANS(180.0));
         self.frame = CGRectMake(0, 0, 320, 240);
-        screenLayer.frame = CGRectMake(0, 0, 320, 240);
+        if (preferences.scaled) {
+	        [screenLayer setFrame: CGRectMake(0.0f, 0.0f, 320.0f, 240.0f)];
+		}
+		else {
+	        [screenLayer setFrame: CGRectMake(40.0f, 40.0f, 240.0f, 160.0f)];		
+		}
     }
     
     [CATransaction commit];

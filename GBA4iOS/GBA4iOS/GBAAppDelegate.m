@@ -7,6 +7,7 @@
 //
 
 #import "GBAAppDelegate.h"
+#import "../../iGBA/iphone/gpSPhone/src/gpSPhone_iPhone.h"
 
 @class gpSPhone_iphone;
 
@@ -27,17 +28,14 @@ extern int gpSPhone_SavePreferences();
         splitViewController.delegate = (id)navigationController.topViewController;
     }
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-        NSString *libraryDirectoryPath = [paths objectAtIndex:0];
-        NSString *preferencesFilePath = [libraryDirectoryPath stringByAppendingPathComponent:@"preferences.v1"];
-        
-        __preferencesFilePath = strdup((char *)[preferencesFilePath UTF8String]);
-        
-        gpSPhone_LoadPreferences();
-        
-        
-    });
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if (![defaults objectForKey:@"firstRun"]) {
+        [defaults setBool:YES forKey:@"scaled"];
+        [defaults setObject:[NSDate date] forKey:@"firstRun"];
+    }
+    
+    [self updatePreferences];
     
     return YES;
 }
@@ -52,7 +50,6 @@ extern int gpSPhone_SavePreferences();
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    gpSPhone_SavePreferences();
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -68,7 +65,27 @@ extern int gpSPhone_SavePreferences();
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    gpSPhone_SavePreferences();
 }
+
+#pragma mark - Preferences
+
+- (void)updatePreferences {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    preferences.frameSkip = [defaults integerForKey:@"frameskip"];
+    preferences.scaled = [defaults boolForKey:@"scaled"];
+    preferences.selectedPortraitSkin = [defaults integerForKey:@"portraitSkin"];
+    preferences.selectedLandscapeSkin = [defaults integerForKey:@"landscapeSkin"];
+    preferences.cheating = [defaults boolForKey:@"cheatsEnabled"];
+    
+}
+
+
+
+
+
+
+
+
 
 @end

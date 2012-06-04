@@ -26,5 +26,6 @@
 - (void)quitROM;
 - (void)pauseMenu;
 - (void)showActionSheetWithTag:(NSInteger)tag;
+- (void)rotateToDeviceOrientation:(UIDeviceOrientation)deviceOrientation;
 
 @end

@@ -155,11 +155,18 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
     
     if(self.landscape)
     {
-	    controllerFilename = [ NSString stringWithFormat:@"controller_fs%d.png", preferences.selectedSkin ];
+	    controllerFilename = [ NSString stringWithFormat:@"controller_fs%d.png", preferences.selectedLandscapeSkin ];
+        if (preferences.selectedLandscapeSkin == 1) {
+            self.imageView.alpha = 0.50f;
+        }
+        else {
+            self.imageView.alpha = 1.0f;
+        }
 	}
 	else
 	{
-	    controllerFilename = [ NSString stringWithFormat:@"controller_hs%d.png", preferences.selectedSkin ];
+	    controllerFilename = [ NSString stringWithFormat:@"controller_hs%d.png", preferences.selectedPortraitSkin ];
+        self.imageView.alpha = 1.0f;
 	}
     
     LOGDEBUG("ControllerView.getControllerImage(): Loading controller image %s",
@@ -434,11 +441,11 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
     NSString *file;
     if(landscape)
     {
-	    file = [ NSString stringWithFormat:@"controller_fs%d.txt", preferences.selectedSkin ];
+	    file = [ NSString stringWithFormat:@"controller_fs%d.txt", preferences.selectedLandscapeSkin];
 	}
 	else
 	{
-	    file = [ NSString stringWithFormat:@"controller_hs%d.txt", preferences.selectedSkin ];	
+	    file = [ NSString stringWithFormat:@"controller_hs%d.txt", preferences.selectedPortraitSkin];	
 	}
     strlcpy(cFileName,
             [ file cStringUsingEncoding: NSASCIIStringEncoding ],
