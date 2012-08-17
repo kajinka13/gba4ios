@@ -899,7 +899,7 @@ void init_sound()
   audio_buffer_size = (audio_buffer_size_number * 1024) + 3072;
 #elif defined(TAVI_BUILD) || defined(ARM_ARCH)
 //  audio_buffer_size = ((12 * 1024) / 2) / 2; //512;
-  audio_buffer_size = BUFFER_SIZE / 32; //512;
+    audio_buffer_size = BUFFER_SIZE / 32; //512;
 //  audio_buffer_size = 1024 * (4);
 #else
   audio_buffer_size = 16384;

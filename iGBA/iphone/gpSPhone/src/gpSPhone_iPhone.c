@@ -83,6 +83,7 @@ static void AQBufferCallback(
     AudioQueueRef inQ,
     AudioQueueBufferRef outQB)
 {
+    
     AQCallbackStruct * inData;
     short *coreAudioBuffer;
     inData = (AQCallbackStruct *)in;

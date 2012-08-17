@@ -34,7 +34,6 @@
 		BF924FC71574B3F200036778 /* LKTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F921574B3F200036778 /* LKTransform.h */; };
 		BF924FC81574B3F200036778 /* UIAlertSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F941574B3F200036778 /* UIAlertSheet.h */; };
 		BF924FC91574B3F200036778 /* UIButtonBar.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F951574B3F200036778 /* UIButtonBar.h */; };
-		BF924FCA1574B3F200036778 /* UIHardware.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F961574B3F200036778 /* UIHardware.h */; };
 		BF924FCB1574B3F200036778 /* UIImageAndTextTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F971574B3F200036778 /* UIImageAndTextTableCell.h */; };
 		BF924FCC1574B3F200036778 /* UIKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F981574B3F200036778 /* UIKeyboard.h */; };
 		BF924FCD1574B3F200036778 /* UIPreferencesTable.h in Headers */ = {isa = PBXBuildFile; fileRef = BF924F991574B3F200036778 /* UIPreferencesTable.h */; };
@@ -111,7 +110,6 @@
 		BF924F921574B3F200036778 /* LKTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKTransform.h; sourceTree = "<group>"; };
 		BF924F941574B3F200036778 /* UIAlertSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIAlertSheet.h; sourceTree = "<group>"; };
 		BF924F951574B3F200036778 /* UIButtonBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIButtonBar.h; sourceTree = "<group>"; };
-		BF924F961574B3F200036778 /* UIHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHardware.h; sourceTree = "<group>"; };
 		BF924F971574B3F200036778 /* UIImageAndTextTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageAndTextTableCell.h; sourceTree = "<group>"; };
 		BF924F981574B3F200036778 /* UIKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboard.h; sourceTree = "<group>"; };
 		BF924F991574B3F200036778 /* UIPreferencesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPreferencesTable.h; sourceTree = "<group>"; };
@@ -278,7 +276,6 @@
 			children = (
 				BF924F941574B3F200036778 /* UIAlertSheet.h */,
 				BF924F951574B3F200036778 /* UIButtonBar.h */,
-				BF924F961574B3F200036778 /* UIHardware.h */,
 				BF924F971574B3F200036778 /* UIImageAndTextTableCell.h */,
 				BF924F981574B3F200036778 /* UIKeyboard.h */,
 				BF924F991574B3F200036778 /* UIPreferencesTable.h */,
@@ -357,7 +354,6 @@
 				BF924FC71574B3F200036778 /* LKTransform.h in Headers */,
 				BF924FC81574B3F200036778 /* UIAlertSheet.h in Headers */,
 				BF924FC91574B3F200036778 /* UIButtonBar.h in Headers */,
-				BF924FCA1574B3F200036778 /* UIHardware.h in Headers */,
 				BF924FCB1574B3F200036778 /* UIImageAndTextTableCell.h in Headers */,
 				BF924FCC1574B3F200036778 /* UIKeyboard.h in Headers */,
 				BF924FCD1574B3F200036778 /* UIPreferencesTable.h in Headers */,

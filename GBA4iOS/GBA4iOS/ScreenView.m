@@ -22,8 +22,6 @@
 #import "ScreenView.h"
 #import "../../iGBA/iphone/gpSPhone/src/gpSPhone_iPhone.h"
 
-#import "../../iGBA/Frameworks/UIKit-Private/UIHardware.h"
-
 #define RADIANS(degrees) ((degrees * M_PI) / 180.0)
 #define DEGREES(radians) (radians * 180.0/M_PI)
 
@@ -58,7 +56,6 @@ void updateScreen() {
 }
 
 - (void)drawRect:(CGRect)rect {
-
 }
 
 - (void)initializeGraphics {
@@ -112,7 +109,7 @@ void updateScreen() {
     if(preferences.landscape)
     {
 		CGRect FullContentBounds;
-		struct CGSize size = [UIHardware mainScreenSize];
+		struct CGSize size = [UIScreen mainScreen].bounds.size;
 		FullContentBounds.origin.x = FullContentBounds.origin.y = 0;
 		FullContentBounds.size = CGSizeMake(size.height, size.width); 
 		[self setBounds: FullContentBounds];
