@@ -22,11 +22,10 @@
 		BF3DD26B1575B9CD00F918CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3DD26A1575B9CD00F918CE /* QuartzCore.framework */; };
 		BF3DD27E1575CC7300F918CE /* GraphicsServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3DD27D1575CC7300F918CE /* GraphicsServices.framework */; };
 		BF3DD2841575CE2000F918CE /* GBAEmulatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3DD2831575CE2000F918CE /* GBAEmulatorViewController.m */; };
-		BF9250141574B70B00036778 /* libiGBA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9250131574B70B00036778 /* libiGBA.a */; };
 		BF9250231574B8BF00036778 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9250221574B8BF00036778 /* AudioToolbox.framework */; };
 		BF92502E1574BF7C00036778 /* gba_bios.bin in Resources */ = {isa = PBXBuildFile; fileRef = BF92502D1574BF7C00036778 /* gba_bios.bin */; };
 		BFA35002157739CC0049C83B /* WebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA35001157739CC0049C83B /* WebBrowserViewController.m */; };
-		BFD48764158FAB4300F4A638 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = BFD48763158FAB4300F4A638 /* icon2.png */; };
+		BFD9EB89160D1F4800D41FFA /* libiGBA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD9EB88160D1F4800D41FFA /* libiGBA.a */; };
 		BFE1E7E01575D56D00D5CA43 /* controller_fs0.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE1E7CC1575D56D00D5CA43 /* controller_fs0.png */; };
 		BFE1E7E11575D56D00D5CA43 /* controller_fs0.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFE1E7CD1575D56D00D5CA43 /* controller_fs0.txt */; };
 		BFE1E7E21575D56D00D5CA43 /* controller_fs1.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE1E7CE1575D56D00D5CA43 /* controller_fs1.png */; };
@@ -85,7 +84,7 @@
 		BF92502D1574BF7C00036778 /* gba_bios.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = gba_bios.bin; sourceTree = "<group>"; };
 		BFA35000157739CC0049C83B /* WebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebBrowserViewController.h; sourceTree = "<group>"; };
 		BFA35001157739CC0049C83B /* WebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebBrowserViewController.m; sourceTree = "<group>"; };
-		BFD48763158FAB4300F4A638 /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
+		BFD9EB88160D1F4800D41FFA /* libiGBA.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiGBA.a; path = "../../../../../Library/Developer/Xcode/DerivedData/GBA4iOS-blekzivnzczuwnevnlojessgjfbr/Build/Products/Debug-iphoneos/libiGBA.a"; sourceTree = "<group>"; };
 		BFE1E7CC1575D56D00D5CA43 /* controller_fs0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = controller_fs0.png; sourceTree = "<group>"; };
 		BFE1E7CD1575D56D00D5CA43 /* controller_fs0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = controller_fs0.txt; sourceTree = "<group>"; };
 		BFE1E7CE1575D56D00D5CA43 /* controller_fs1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = controller_fs1.png; sourceTree = "<group>"; };
@@ -135,8 +134,8 @@
 				BF3DD27E1575CC7300F918CE /* GraphicsServices.framework in Frameworks */,
 				BF3DD26B1575B9CD00F918CE /* QuartzCore.framework in Frameworks */,
 				BF3DD2691575B82C00F918CE /* CoreSurface.framework in Frameworks */,
+				BFD9EB89160D1F4800D41FFA /* libiGBA.a in Frameworks */,
 				BF9250231574B8BF00036778 /* AudioToolbox.framework in Frameworks */,
-				BF9250141574B70B00036778 /* libiGBA.a in Frameworks */,
 				BFE400C7156CA70000E33279 /* UIKit.framework in Frameworks */,
 				BFE400C9156CA70000E33279 /* Foundation.framework in Frameworks */,
 				BFE400CB156CA70000E33279 /* CoreGraphics.framework in Frameworks */,
@@ -190,7 +189,6 @@
 				BF1AE907157BC6E7001375E8 /* Gear@2x.png */,
 				BF1AE90A157BC8BD001375E8 /* GearLandscape.png */,
 				BF1AE90B157BC8BD001375E8 /* GearLandscape@2x.png */,
-				BFD48763158FAB4300F4A638 /* icon2.png */,
 				BF1AE901157BC46E001375E8 /* icon.png */,
 				BFE1E7CB1575D56000D5CA43 /* Controller */,
 			);
@@ -228,6 +226,7 @@
 		BFE400B7156CA70000E33279 = {
 			isa = PBXGroup;
 			children = (
+				BFD9EB88160D1F4800D41FFA /* libiGBA.a */,
 				BFE400CC156CA70000E33279 /* GBA4iOS */,
 				BFE1E7C91575D54C00D5CA43 /* Resources */,
 				BFE400C5156CA70000E33279 /* Frameworks */,
@@ -371,7 +370,6 @@
 				BF1AE90D157BC8BD001375E8 /* GearLandscape@2x.png in Resources */,
 				BF1AE912157BC9D4001375E8 /* arrow.png in Resources */,
 				BF1AE913157BC9D4001375E8 /* arrow@2x.png in Resources */,
-				BFD48764158FAB4300F4A638 /* icon2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,7 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = armv7;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yvette Testut (B5VNWGK3MY)";
@@ -457,6 +455,7 @@
 		BF1AE922157C4F8B001375E8 /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
@@ -467,6 +466,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../../../Library/Developer/Xcode/DerivedData/GBA4iOS-aayhduesxakweacixeckqrqciynb/Build/Products/Debug-iphoneos\"",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/GBA4iOS-blekzivnzczuwnevnlojessgjfbr/Build/Products/Debug-iphoneos\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -478,7 +478,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = armv7;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -505,6 +505,7 @@
 		BFD48761158FA93200F4A638 /* App Store */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
@@ -515,6 +516,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../../../Library/Developer/Xcode/DerivedData/GBA4iOS-aayhduesxakweacixeckqrqciynb/Build/Products/Debug-iphoneos\"",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/GBA4iOS-blekzivnzczuwnevnlojessgjfbr/Build/Products/Debug-iphoneos\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -526,10 +528,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = armv7;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yvette Testut (B5VNWGK3MY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -551,7 +553,7 @@
 					"-force_flat_namespace",
 				);
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "49F9B819-4021-4F34-98FE-2FA7E04B1E9D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -561,7 +563,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = armv7;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -588,6 +590,7 @@
 		BFE400E7156CA70100E33279 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = armv7;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yvette Testut (B5VNWGK3MY)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -599,6 +602,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../../../Library/Developer/Xcode/DerivedData/GBA4iOS-aayhduesxakweacixeckqrqciynb/Build/Products/Debug-iphoneos\"",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/GBA4iOS-blekzivnzczuwnevnlojessgjfbr/Build/Products/Debug-iphoneos\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -610,6 +614,7 @@
 		BFE400E8156CA70100E33279 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
@@ -620,6 +625,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../../../Library/Developer/Xcode/DerivedData/GBA4iOS-aayhduesxakweacixeckqrqciynb/Build/Products/Debug-iphoneos\"",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/GBA4iOS-blekzivnzczuwnevnlojessgjfbr/Build/Products/Debug-iphoneos\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;

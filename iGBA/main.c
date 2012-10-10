@@ -196,8 +196,9 @@ void init_main()
   video_count = 960;
 
   flush_translation_cache_rom();
-  flush_translation_cache_ram();
-  flush_translation_cache_bios();
+  //flush_translation_cache_ram();
+  //flush_translation_cache_bios();
+    
 }
 
 void step_debug_arm(u32 pc);
@@ -213,6 +214,7 @@ int iphone_main(char* load_filename)
 int main(int argc, char *argv[])
 #endif
 {
+    
   u32 i;
   u32 vcount = 0;
   u32 ticks;
@@ -291,6 +293,7 @@ int main(int argc, char *argv[])
   gp2x_overclock();
 #endif
 */
+    
   if(load_bios("gba_bios.bin") == -1)
   {
     gui_action_type gui_action = CURSOR_NONE;
@@ -320,6 +323,7 @@ int main(int argc, char *argv[])
 
     quit();
   }
+    
 
   if(bios_rom[0] != 0x18)
   {
@@ -345,7 +349,7 @@ int main(int argc, char *argv[])
     debug_screen_end();
     quit();
   }
-    
+        
     
 
 #ifndef GP2X_BUILD
@@ -387,6 +391,7 @@ int main(int argc, char *argv[])
 			sprintf(load_filename, "%s.gba", load_filename);
 		}
 	}
+      
 
   save_game_config_file();
   if(load_gamepak(load_filename) == -1)
