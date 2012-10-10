@@ -133,6 +133,10 @@ float __audioVolume = 1.0;
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (BOOL)shouldAutorotate {
+    return NO;
+}
+
 - (void)didRotate:(NSNotification *)notification {
     [self rotateToDeviceOrientation:[[UIDevice currentDevice] orientation]];
 }
