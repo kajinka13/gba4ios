@@ -11,11 +11,12 @@
 #import "GBADetailViewController.h"
 #import "WebBrowserViewController.h"
 
-@interface GBAMasterViewController ()
+@interface GBAMasterViewController () <UIAlertViewDelegate>
 @property (strong, nonatomic) NSMutableDictionary *romDictionary;
 @property (strong, nonatomic) NSArray *romSections;
 @property (nonatomic) NSInteger currentSection_;
 @property (strong, nonatomic) PullToRefreshView *pullToRefreshView_;
+@property (copy, nonatomic) NSString *deletingRomPath;
 @end
 
 @implementation GBAMasterViewController
@@ -26,6 +27,7 @@
 @synthesize currentSection_;
 @synthesize currentRomPath;
 @synthesize pullToRefreshView_;
+@synthesize deletingRomPath;
 
 - (void)awakeFromNib
 {
@@ -282,6 +284,73 @@
         self.currentRomPath = [documentsDirectoryPath stringByAppendingPathComponent:[self romPathAtIndexPath:indexPath]];
         self.detailViewController.detailItem = self.currentRomPath;
     }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+	return YES;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return @"Delete";
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if(editingStyle == UITableViewCellEditingStyleDelete)
+	{
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectoryPath = [paths objectAtIndex:0];
+		
+		self.deletingRomPath = [documentsDirectoryPath stringByAppendingPathComponent:[self romPathAtIndexPath:indexPath]];
+		
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Delete ROM"
+															message:@"Also delete saved states?"
+														   delegate:self
+												  cancelButtonTitle:@"Cancel"
+												  otherButtonTitles:@"Delete ROM only", @"Delete ROM & states", nil];
+		[alertView show];
+	}
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if(buttonIndex > 0)
+	{
+		NSFileManager *fileManager = [NSFileManager defaultManager];
+		
+		// need to delete rom.
+		NSError *error = nil;
+		if ([fileManager removeItemAtPath:self.deletingRomPath error:&error] && !error) {
+			NSLog(@"Successfully delete rom.");
+		}
+		else {
+			NSLog(@"%@. %@.", error, [error userInfo]);
+		}
+		
+		if(buttonIndex == 2)
+		{
+			// need to delete states.
+			NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+			NSString *documentsDirectoryPath = [paths objectAtIndex:0];
+            NSString *saveStateDirectory = [documentsDirectoryPath stringByAppendingPathComponent:@"Save States"];
+            NSString *romName = [[self.deletingRomPath lastPathComponent] stringByDeletingPathExtension];
+            NSString *romSaveStateDirectory = [saveStateDirectory stringByAppendingPathComponent:romName];
+			
+			NSError *error = nil;
+            if ([fileManager removeItemAtPath:romSaveStateDirectory error:&error] && !error) {
+                NSLog(@"Successfully delete states.");
+            }
+            else {
+                NSLog(@"%@. %@.", error, [error userInfo]);
+            }
+		}
+		
+		[self scanRomDirectory];
+	}
 }
 
 #pragma mark - UIStoryboard
