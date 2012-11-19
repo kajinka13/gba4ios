@@ -306,10 +306,10 @@
 		self.deletingRomPath = [documentsDirectoryPath stringByAppendingPathComponent:[self romPathAtIndexPath:indexPath]];
 		
 		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Delete ROM"
-															message:@"Also delete saved states?"
+															message:@"Also delete save states and save files?"
 														   delegate:self
 												  cancelButtonTitle:@"Cancel"
-												  otherButtonTitles:@"Delete ROM only", @"Delete ROM & states", nil];
+												  otherButtonTitles:@"Delete ROM only", @"Delete ROM & saved data", nil];
 		[alertView show];
 	}
 }
@@ -343,6 +343,15 @@
 			NSError *error = nil;
             if ([fileManager removeItemAtPath:romSaveStateDirectory error:&error] && !error) {
                 NSLog(@"Successfully delete states.");
+            }
+            else {
+                NSLog(@"%@. %@.", error, [error userInfo]);
+            }
+            
+            NSString *saveFilePath = [[self.deletingRomPath stringByDeletingPathExtension] stringByAppendingString:@".sav"];
+            
+            if ([fileManager removeItemAtPath:saveFilePath error:&error] && !error) {
+                NSLog(@"Successfully deleted save file.");
             }
             else {
                 NSLog(@"%@. %@.", error, [error userInfo]);
