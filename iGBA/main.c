@@ -26,6 +26,7 @@
 u8 save_filename[512];
 int __emulation_run;
 int __cheatmenu_run = 0;
+volatile int __emulation_paused;
 
 #ifdef PC_BUILD
 u8 *memory_map_read[8 * 1024];

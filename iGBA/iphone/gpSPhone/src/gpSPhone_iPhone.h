@@ -74,7 +74,7 @@ void setDefaultPreferences();
 int gpSPhone_SavePreferences();
 int gpSPhone_LoadPreferences();
 
-unsigned long cPad1;
+extern unsigned long cPad1;
 
 /* STUBs to emulator core */
 
@@ -100,7 +100,7 @@ extern byte IS_DEBUG;
 extern byte IS_CHANGING_ORIENTATION;
 extern unsigned short  *BaseAddress;
 extern int __screenOrientation;
-struct gpSPhone_Preferences preferences;
+extern struct gpSPhone_Preferences preferences;
 
 /* Audio Resources */
 #define AUDIO_BUFFERS 2

@@ -28,6 +28,9 @@
 
 unsigned short *BaseAddress;
 
+struct gpSPhone_Preferences preferences;
+unsigned long cPad1;
+
 /* Globals (from obj land) */
 extern unsigned long __isLoadState;
 extern char *__fileName;
