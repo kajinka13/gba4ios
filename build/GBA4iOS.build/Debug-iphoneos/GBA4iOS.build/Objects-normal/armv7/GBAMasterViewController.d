@@ -8,5 +8,6 @@ dependencies: \
   /Users/Riley/Developer/Open\ Source/My\ Projects/GBA4iOS/GBA4iOS/../iGBA/Frameworks/GraphicsServices.h \
   /Users/Riley/Developer/Open\ Source/My\ Projects/GBA4iOS/GBA4iOS/../iGBA/Frameworks/UIKit-Private/UIView-Geometry.h \
   /Users/Riley/Developer/Open\ Source/My\ Projects/GBA4iOS/GBA4iOS/PullToRefreshView.h \
+  /Users/Riley/Developer/Open\ Source/My\ Projects/GBA4iOS/GBA4iOS/GBCEmulatorViewController.h \
   /Users/Riley/Developer/Open\ Source/My\ Projects/GBA4iOS/GBA4iOS/GBADetailViewController.h \
   /Users/Riley/Developer/Open\ Source/My\ Projects/GBA4iOS/GBA4iOS/WebBrowserViewController.h

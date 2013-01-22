@@ -7,6 +7,7 @@
 //
 
 #import "GBAMasterViewController.h"
+#import "GBCEmulatorViewController.h"
 
 #import "GBADetailViewController.h"
 #import "WebBrowserViewController.h"
@@ -100,7 +101,7 @@
     
     for (int i = 0; i < contents.count; i++) {
         NSString *filename = [contents objectAtIndex:i];
-        if ([filename hasSuffix:@".zip"] || [filename hasSuffix:@".ZIP"] || [filename hasSuffix:@".gba"] || [filename hasSuffix:@".GBA"] || [filename hasSuffix:@".ips"] || [filename hasSuffix:@".IPS"]) { 
+        if ([filename hasSuffix:@".zip"] || [filename hasSuffix:@".ZIP"] || [filename hasSuffix:@".gba"] || [filename hasSuffix:@".GBA"] || [filename hasSuffix:@".ips"] || [filename hasSuffix:@".IPS"] || [filename hasSuffix:@".gb"] || [filename hasSuffix:@".GB"]) {
             NSString* characterIndex = [filename substringWithRange:NSMakeRange(0,1)];
             
             BOOL matched = NO;
@@ -284,6 +285,30 @@
         self.currentRomPath = [documentsDirectoryPath stringByAppendingPathComponent:[self romPathAtIndexPath:indexPath]];
         self.detailViewController.detailItem = self.currentRomPath;
     }
+    else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectoryPath = [paths objectAtIndex:0];
+        
+        self.currentRomPath = [documentsDirectoryPath stringByAppendingPathComponent:[self romPathAtIndexPath:indexPath]];
+        
+        [UIApplication sharedApplication].statusBarHidden = YES;
+        
+        if ([[self.currentRomPath pathExtension] isEqualToString:@"GB"] || [[self.currentRomPath pathExtension] isEqualToString:@"gb"]) { // GBC ROM
+            GBCEmulatorViewController *emulatorViewController = [[GBCEmulatorViewController alloc] initWithROMFilepath:self.currentRomPath];
+            emulatorViewController.wantsFullScreenLayout = YES;
+            
+            [self presentViewController:emulatorViewController animated:YES completion:NULL];
+        }
+        else { // GBA ROM
+            GBAEmulatorViewController *emulatorViewController = [[GBAEmulatorViewController alloc] init];
+            emulatorViewController.wantsFullScreenLayout = YES;
+            emulatorViewController.romPath = self.currentRomPath;
+            
+            [self presentViewController:emulatorViewController animated:YES completion:NULL];
+        }
+        
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
@@ -370,22 +395,6 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSString *rom = [self romPathAtIndexPath:indexPath];
         [[segue destinationViewController] setDetailItem:rom];
-    }
-    else if ([[segue identifier] isEqualToString:@"loadROM"]) {
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-            
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *documentsDirectoryPath = [paths objectAtIndex:0];
-            
-            UITableViewCell *cell = (UITableViewCell *)sender;
-            self.currentRomPath = [documentsDirectoryPath stringByAppendingPathComponent:[self romPathAtIndexPath:[self.tableView indexPathForCell:cell]]];
-            
-            [UIApplication sharedApplication].statusBarHidden = YES;
-            GBAEmulatorViewController *emulatorViewController = [segue destinationViewController];
-            emulatorViewController.wantsFullScreenLayout = YES;
-            emulatorViewController.romPath = self.currentRomPath;
-            
-        }
     }
 }
 

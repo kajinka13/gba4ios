@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="11">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
                 <navigationController id="3" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="4">
                         <autoresizingMask key="autoresizingMask"/>
@@ -18,13 +16,13 @@
                         <segue destination="12" kind="relationship" relationship="rootViewController" id="19"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1" y="64"/>
         </scene>
         <!--Settings View Controller - Settings-->
         <scene sceneID="MBV-Cy-OgB">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gIP-Zj-y9m" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="74I-Jk-pJq" customClass="GBASettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fau-39-xVg">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -197,13 +195,13 @@
                         <outlet property="scaledSwitch" destination="Z2S-G9-HaB" id="fa1-FX-6df"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gIP-Zj-y9m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1253" y="-588"/>
         </scene>
         <!--Master View Controller - Master-->
         <scene sceneID="18">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="17" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="" title="Master" id="12" customClass="GBAMasterViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="13">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -228,9 +226,6 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="nQY-lu-uS2" kind="modal" identifier="loadROM" id="DPT-nF-MAi"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -252,28 +247,13 @@
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="17" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="459" y="64"/>
-        </scene>
-        <!--Emulator View Controller-->
-        <scene sceneID="d7Q-gg-199">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vRu-PI-Rue" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="nQY-lu-uS2" customClass="GBAEmulatorViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cwF-Z2-cSS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="879" y="64"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UY1-hh-Koz">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="23E-4X-Zeb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="Zai-d1-4FI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yaO-J9-udc">
@@ -285,6 +265,7 @@
                         <segue destination="74I-Jk-pJq" kind="relationship" relationship="rootViewController" id="mf5-IM-7qR"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="23E-4X-Zeb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="727" y="-588"/>
         </scene>
@@ -293,9 +274,6 @@
         <image name="Gear.png" width="20" height="20"/>
     </resources>
     <classes>
-        <class className="GBAEmulatorViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GBAEmulatorViewController.h"/>
-        </class>
         <class className="GBAMasterViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GBAMasterViewController.h"/>
             <relationships>

@@ -4389,7 +4389,7 @@ u32 execute_arm(u32 cycles)
       arm_loop:
 
       collapse_flags();
-      step_debug(pc, cycles_remaining);
+      //step_debug(pc, cycles_remaining);
       cycles_per_instruction = global_cycles_per_instruction;
 
       old_pc = pc;
@@ -4406,7 +4406,7 @@ u32 execute_arm(u32 cycles)
       thumb_loop:
 
       collapse_flags();
-      step_debug(pc, cycles_remaining);
+      //step_debug(pc, cycles_remaining);
 
       old_pc = pc;
       execute_thumb_instruction();

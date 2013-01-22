@@ -89,7 +89,6 @@ float __audioVolume = 1.0;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         gpSPhone_Halt();
-        
         pthread_join(emulation_tid, NULL);
     });
     [UIApplication sharedApplication].statusBarHidden = NO;
