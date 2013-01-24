@@ -12,7 +12,7 @@
 
 @class GBADetailViewController;
 
-@interface GBAMasterViewController : UITableViewController <PullToRefreshViewDelegate>
+@interface GBAMasterViewController : UITableViewController <PullToRefreshViewDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) GBADetailViewController *detailViewController;
 @property (copy, nonatomic) NSString *currentRomPath;

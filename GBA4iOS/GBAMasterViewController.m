@@ -77,6 +77,23 @@
     }
 }
 
+- (void)longTap:(UILongPressGestureRecognizer *)gestureRecognizer {
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan) { // This makes it get called only once.
+        return;
+    }
+    
+    NSString *filename = [gestureRecognizer.view accessibilityIdentifier];
+    if (!filename) {
+        return;
+    }
+    UIAlertView *changeFilename = [[UIAlertView alloc]initWithTitle:@"Rename File" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Done", nil];
+    changeFilename.accessibilityIdentifier = filename;
+    changeFilename.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [changeFilename textFieldAtIndex:0].text = filename;
+    
+    [changeFilename show];
+}
+
 #pragma mark -
 #pragma mark ROM loading methods
 
@@ -213,7 +230,20 @@
     cell.accessoryType = UITableViewCellAccessoryNone;
     NSString *filename = [[self.romDictionary objectForKey:[self.romSections objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     filename = [filename stringByDeletingPathExtension];//cleaner interface
+    cell.accessibilityIdentifier = filename;
     cell.textLabel.text = filename;
+    
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTap:)];
+    
+    bool flag = true;
+    for (UIGestureRecognizer *gr in cell.gestureRecognizers) {
+        if (longPressGesture.class == gr.class) {
+            flag = false;
+        }
+    }
+    if (flag) {
+        [cell addGestureRecognizer:longPressGesture];
+    }
     
     return cell;
 }
@@ -343,6 +373,82 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    if ([alertView.title isEqualToString:@"Rename File"]) {
+        if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Done"]) {
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentsDirectoryPath = [paths objectAtIndex:0];
+            NSError *error = nil;
+            
+            NSFileManager *fm = [NSFileManager defaultManager];
+            for (NSString *file in [fm contentsOfDirectoryAtPath:documentsDirectoryPath error:nil]) {
+                if ([[file stringByDeletingPathExtension] isEqualToString:alertView.accessibilityIdentifier]) {
+                    NSString *oldFile = [documentsDirectoryPath stringByAppendingPathComponent:file];
+                    NSString *newFile = [documentsDirectoryPath stringByAppendingPathComponent:[[alertView textFieldAtIndex:0].text stringByAppendingPathExtension:file.pathExtension]];
+                    [fm moveItemAtPath:oldFile toPath:newFile error:&error];
+                }
+                if (error) {
+                    NSLog(@"%@", error);
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not rename file." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+                    [alertView show];
+                    return;
+                }
+            }
+            
+            if (![fm fileExistsAtPath:[[documentsDirectoryPath stringByAppendingPathComponent:@"Save States"] stringByAppendingPathComponent:alertView.accessibilityIdentifier]]) {
+                [self scanRomDirectory];
+                return;
+            };
+            
+            for (NSString *file in [fm contentsOfDirectoryAtPath:[documentsDirectoryPath stringByAppendingPathComponent:@"Save States"] error:nil]) {
+                if ([file isEqualToString:alertView.accessibilityIdentifier]) {
+                    NSString *oldFile = [[documentsDirectoryPath stringByAppendingPathComponent:@"Save States"] stringByAppendingPathComponent:file];
+                    NSString *newFile = [[documentsDirectoryPath stringByAppendingPathComponent:@"Save States"] stringByAppendingPathComponent:[alertView textFieldAtIndex:0].text];
+                    
+                    [fm removeItemAtPath:newFile error:&error];
+                    if (error) {
+                        NSLog(@"%@", error);
+                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not rename file." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+                        [alertView show];
+                        return;
+                    }
+                    
+                    NSString *oldDirectoryPath = oldFile;
+                    
+                    NSArray *tempArrayForContentsOfDirectory =[[NSFileManager defaultManager] contentsOfDirectoryAtPath:oldDirectoryPath error:nil];
+                    
+                    NSString *newDirectoryPath = newFile;
+                    
+                    [fm createDirectoryAtPath:newDirectoryPath attributes:nil];
+                    
+                    for (int i = 0; i < [tempArrayForContentsOfDirectory count]; i++)
+                    {
+                        
+                        NSString *newFilePath = [newDirectoryPath stringByAppendingPathComponent:[tempArrayForContentsOfDirectory objectAtIndex:i]];
+                        
+                        NSString *oldFilePath = [oldDirectoryPath stringByAppendingPathComponent:[tempArrayForContentsOfDirectory objectAtIndex:i]];
+                        
+                        [[NSFileManager defaultManager] moveItemAtPath:oldFilePath toPath:newFilePath error:&error];
+                        
+                        if (error) {
+                            NSLog(@"%@", error);
+                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not rename file." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+                            [alertView show];
+                            return;
+                        }
+                    }
+                }
+            }
+            
+            
+            if (error) {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not rename file." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+                [alertView show];
+            } else {
+                [self scanRomDirectory];
+            }
+            return;
+        }
+    }
 	if(buttonIndex > 0)
 	{
 		NSFileManager *fileManager = [NSFileManager defaultManager];
