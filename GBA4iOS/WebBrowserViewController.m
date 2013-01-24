@@ -6,7 +6,7 @@ static WebBrowserViewController *sharedInstance = nil;
 
 @interface WebPolicyDecisionListener : NSObject
 {
-//    WebPolicyDecisionListenerPrivate *_private;
+    //    WebPolicyDecisionListenerPrivate *_private;
 }
 - (id)_initWithTarget:(id)fp8 action:(SEL)fp12;
 - (void)dealloc;
@@ -19,7 +19,7 @@ static WebBrowserViewController *sharedInstance = nil;
 
 @interface NSURLDownload : NSObject
 {
-  
+    
 }
 - (id)initWithRequest:(NSMutableURLRequest *)request delegate:(id)delegate;
 - (NSURLRequest *)request;
@@ -31,43 +31,43 @@ static WebBrowserViewController *sharedInstance = nil;
 #if 0
 - (id)NSURLDownload_initWithRequest:(NSMutableURLRequest *)request delegate:(id)delegate
 {
-  NSString* filename = [[[request URL] path] lastPathComponent];
-  //if([filename hasSuffix:@".zip"] || [filename hasSuffix:@".smc"] || [filename hasSuffix:@".swc"] || [filename hasSuffix:@".zip"] || [filename hasSuffix:@".bin"])
-  if(filename != nil)
-  {
-    [request setURL:[NSString stringWithFormat:@"%@/%@", AppDelegate().romDirectoryPath, filename]];
-  }
-  
+    NSString* filename = [[[request URL] path] lastPathComponent];
+    //if([filename hasSuffix:@".zip"] || [filename hasSuffix:@".smc"] || [filename hasSuffix:@".swc"] || [filename hasSuffix:@".zip"] || [filename hasSuffix:@".bin"])
+    if(filename != nil)
+    {
+        [request setURL:[NSString stringWithFormat:@"%@/%@", AppDelegate().romDirectoryPath, filename]];
+    }
+    
 }
 - (void)WebDownloadInternal_downloadDidBegin:(NSURLDownload *)download
 {
-  NSString* filename = [[[[download request] URL] path] lastPathComponent];
-  //if([filename hasSuffix:@".zip"] || [filename hasSuffix:@".smc"] || [filename hasSuffix:@".swc"] || [filename hasSuffix:@".zip"] || [filename hasSuffix:@".bin"])
-  if(filename != nil)
-  {
-    [download setDestination:[NSString stringWithFormat:@"%@/%@", AppDelegate().romDirectoryPath, filename] allowOverwrite:YES];
-  }
+    NSString* filename = [[[[download request] URL] path] lastPathComponent];
+    //if([filename hasSuffix:@".zip"] || [filename hasSuffix:@".smc"] || [filename hasSuffix:@".swc"] || [filename hasSuffix:@".zip"] || [filename hasSuffix:@".bin"])
+    if(filename != nil)
+    {
+        [download setDestination:[NSString stringWithFormat:@"%@/%@", AppDelegate().romDirectoryPath, filename] allowOverwrite:YES];
+    }
 }
 #endif
 
 -(void)UIWebView_webView:(id)sender decidePolicyForMIMEType:(NSString*)type request:(NSURLRequest*)request frame:(id)frame decisionListener:(WebPolicyDecisionListener*)listener
 {
-  //NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiUrl]  cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30];
-  //[urlRequest setValue:[Settings sharedInstance].preferredLanguage forHTTPHeaderField:@"Language"];
-  //[urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
-
-  if([type isEqualToString:@"application/zip"] || [type isEqualToString:@"application/x-zip"] || [type isEqualToString:@"application/octet-stream"] || [type isEqualToString:@"multipart/x-zip"])
-  {
-    [listener ignore];
-  	
-    [sharedInstance startingDownload:request withType:type];
-  }
-/*
-  else
-  {
-    [self UIWebView_webView:sender decidePolicyForMIMEType:type request:request frame:frame decisionListener:listener];
-  }
-*/
+    //NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiUrl]  cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30];
+    //[urlRequest setValue:[Settings sharedInstance].preferredLanguage forHTTPHeaderField:@"Language"];
+    //[urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+    
+    if([type isEqualToString:@"application/zip"] || [type isEqualToString:@"application/x-zip"] || [type isEqualToString:@"application/octet-stream"] || [type isEqualToString:@"multipart/x-zip"])
+    {
+        [listener ignore];
+        
+        [sharedInstance startingDownload:request withType:type];
+    }
+    /*
+     else
+     {
+     [self UIWebView_webView:sender decidePolicyForMIMEType:type request:request frame:frame decisionListener:listener];
+     }
+     */
 }
 
 @end
@@ -76,139 +76,139 @@ static WebBrowserViewController *sharedInstance = nil;
 #import <objc/message.h>
 
 #define SetNSError(ERROR_VAR, FORMAT,...)  \
-  if (ERROR_VAR) {  \
-    NSString *errStr = [@"error:]: " stringByAppendingFormat:FORMAT,##__VA_ARGS__];  \
-    *ERROR_VAR = [NSError errorWithDomain:@"NSCocoaErrorDomain" \
-                     code:-1  \
-                   userInfo:[NSDictionary dictionaryWithObject:errStr forKey:NSLocalizedDescriptionKey]]; \
-  }
+if (ERROR_VAR) {  \
+NSString *errStr = [@"error:]: " stringByAppendingFormat:FORMAT,##__VA_ARGS__];  \
+*ERROR_VAR = [NSError errorWithDomain:@"NSCocoaErrorDomain" \
+code:-1  \
+userInfo:[NSDictionary dictionaryWithObject:errStr forKey:NSLocalizedDescriptionKey]]; \
+}
 
 @implementation NSObject (doWork)
 
 + (BOOL)changeMethod:(SEL)origSel_ withMethod:(SEL)altSel_ error:(NSError**)error_ {
-
+    
 #if OBJC_API_VERSION >= 2
-  Method origMethod = class_getInstanceMethod(self, origSel_);
-  if (!origMethod) {
-    NSLog(@"Couldn't find orig method %@ %@", NSStringFromSelector(origSel_), [self class]);
-    SetNSError(error_, @"method %@ not found for class %@", NSStringFromSelector(origSel_), [self class]);
-    return NO;
-  }
-
-  Method altMethod = class_getInstanceMethod(self, altSel_);
-  if (!altMethod) {
-    NSLog(@"Couldn't find alt method %@ %@", NSStringFromSelector(altSel_), [self class]);
-    SetNSError(error_, @"alt method %@ not found for class %@", NSStringFromSelector(altSel_), [self class]);
-    return NO;
-  }
-
-  class_addMethod(self,
-          origSel_,
-          class_getMethodImplementation(self, origSel_),
-          method_getTypeEncoding(origMethod));
-  class_addMethod(self,
-          altSel_,
-          class_getMethodImplementation(self, altSel_),
-          method_getTypeEncoding(altMethod));
-
-  method_exchangeImplementations(class_getInstanceMethod(self, origSel_), class_getInstanceMethod(self, altSel_));
-  return YES;
+    Method origMethod = class_getInstanceMethod(self, origSel_);
+    if (!origMethod) {
+        NSLog(@"Couldn't find orig method %@ %@", NSStringFromSelector(origSel_), [self class]);
+        SetNSError(error_, @"method %@ not found for class %@", NSStringFromSelector(origSel_), [self class]);
+        return NO;
+    }
+    
+    Method altMethod = class_getInstanceMethod(self, altSel_);
+    if (!altMethod) {
+        NSLog(@"Couldn't find alt method %@ %@", NSStringFromSelector(altSel_), [self class]);
+        SetNSError(error_, @"alt method %@ not found for class %@", NSStringFromSelector(altSel_), [self class]);
+        return NO;
+    }
+    
+    class_addMethod(self,
+                    origSel_,
+                    class_getMethodImplementation(self, origSel_),
+                    method_getTypeEncoding(origMethod));
+    class_addMethod(self,
+                    altSel_,
+                    class_getMethodImplementation(self, altSel_),
+                    method_getTypeEncoding(altMethod));
+    
+    method_exchangeImplementations(class_getInstanceMethod(self, origSel_), class_getInstanceMethod(self, altSel_));
+    return YES;
 #else
-  //  Scan for non-inherited methods.
-  Method directOriginalMethod = NULL, directAlternateMethod = NULL;
-
-  void *iterator = NULL;
-  struct objc_method_list *mlist = class_copyMethodList(self, &iterator);
-  while (mlist) {
-    int method_index = 0;
-    for (; method_index < mlist->method_count; method_index++) {
-      if (mlist->method_list[method_index].method_name == origSel_) {
-        assert(!directOriginalMethod);
-        directOriginalMethod = &mlist->method_list[method_index];
-      }
-      if (mlist->method_list[method_index].method_name == altSel_) {
-        assert(!directAlternateMethod);
-        directAlternateMethod = &mlist->method_list[method_index];
-      }
+    //  Scan for non-inherited methods.
+    Method directOriginalMethod = NULL, directAlternateMethod = NULL;
+    
+    void *iterator = NULL;
+    struct objc_method_list *mlist = class_copyMethodList(self, &iterator);
+    while (mlist) {
+        int method_index = 0;
+        for (; method_index < mlist->method_count; method_index++) {
+            if (mlist->method_list[method_index].method_name == origSel_) {
+                assert(!directOriginalMethod);
+                directOriginalMethod = &mlist->method_list[method_index];
+            }
+            if (mlist->method_list[method_index].method_name == altSel_) {
+                assert(!directAlternateMethod);
+                directAlternateMethod = &mlist->method_list[method_index];
+            }
+        }
+        free(mlist);
+        mlist = class_copyMethodList(self, &iterator);
     }
-    free(mlist);
-    mlist = class_copyMethodList(self, &iterator);
-  }
-
-  //  If either method is inherited, copy it up to the target class to make it non-inherited.
-  if (!directOriginalMethod || !directAlternateMethod) {
-    Method inheritedOriginalMethod = NULL, inheritedAlternateMethod = NULL;
-    if (!directOriginalMethod) {
-      inheritedOriginalMethod = class_getInstanceMethod(self, origSel_);
-      if (!inheritedOriginalMethod) {
-        SetNSError(error_, @"method %@ not found for class %@", NSStringFromSelector(origSel_), [self className]);
-        return NO;
-      }
+    
+    //  If either method is inherited, copy it up to the target class to make it non-inherited.
+    if (!directOriginalMethod || !directAlternateMethod) {
+        Method inheritedOriginalMethod = NULL, inheritedAlternateMethod = NULL;
+        if (!directOriginalMethod) {
+            inheritedOriginalMethod = class_getInstanceMethod(self, origSel_);
+            if (!inheritedOriginalMethod) {
+                SetNSError(error_, @"method %@ not found for class %@", NSStringFromSelector(origSel_), [self className]);
+                return NO;
+            }
+        }
+        if (!directAlternateMethod) {
+            inheritedAlternateMethod = class_getInstanceMethod(self, altSel_);
+            if (!inheritedAlternateMethod) {
+                SetNSError(error_, @"alt method %@ not found for class %@", NSStringFromSelector(altSel_), [self className]);
+                return NO;
+            }
+        }
+        
+        int hoisted_method_count = !directOriginalMethod && !directAlternateMethod ? 2 : 1;
+        struct objc_method_list *hoisted_method_list = malloc(sizeof(struct objc_method_list) + (sizeof(struct objc_method)*(hoisted_method_count-1)));
+        hoisted_method_list->method_count = hoisted_method_count;
+        Method hoisted_method = hoisted_method_list->method_list;
+        
+        if (!directOriginalMethod) {
+            bcopy(inheritedOriginalMethod, hoisted_method, sizeof(struct objc_method));
+            directOriginalMethod = hoisted_method++;
+        }
+        if (!directAlternateMethod) {
+            bcopy(inheritedAlternateMethod, hoisted_method, sizeof(struct objc_method));
+            directAlternateMethod = hoisted_method;
+        }
+        class_addMethod(self, hoisted_method_list);
     }
-    if (!directAlternateMethod) {
-      inheritedAlternateMethod = class_getInstanceMethod(self, altSel_);
-      if (!inheritedAlternateMethod) {
-        SetNSError(error_, @"alt method %@ not found for class %@", NSStringFromSelector(altSel_), [self className]);
-        return NO;
-      }
-    }
-
-    int hoisted_method_count = !directOriginalMethod && !directAlternateMethod ? 2 : 1;
-    struct objc_method_list *hoisted_method_list = malloc(sizeof(struct objc_method_list) + (sizeof(struct objc_method)*(hoisted_method_count-1)));
-    hoisted_method_list->method_count = hoisted_method_count;
-    Method hoisted_method = hoisted_method_list->method_list;
-
-    if (!directOriginalMethod) {
-      bcopy(inheritedOriginalMethod, hoisted_method, sizeof(struct objc_method));
-      directOriginalMethod = hoisted_method++;
-    }
-    if (!directAlternateMethod) {
-      bcopy(inheritedAlternateMethod, hoisted_method, sizeof(struct objc_method));
-      directAlternateMethod = hoisted_method;
-    }
-    class_addMethod(self, hoisted_method_list);
-  }
-
-  //  zle.
-  IMP temp = directOriginalMethod->method_imp;
-  directOriginalMethod->method_imp = directAlternateMethod->method_imp;
-  directAlternateMethod->method_imp = temp;
-
-  return YES;
+    
+    //  zle.
+    IMP temp = directOriginalMethod->method_imp;
+    directOriginalMethod->method_imp = directAlternateMethod->method_imp;
+    directAlternateMethod->method_imp = temp;
+    
+    return YES;
 #endif
 }
 
 
 
 + (BOOL)changeMethodStatic:(SEL)origSel_ withMethod:(SEL)altSel_ error:(NSError**)error_ {
-
-
-  Method origMethod = class_getClassMethod(self, origSel_);
-  if (!origMethod) {
-  //NSLog(@"Couldn't find orig method");
-    SetNSError(error_, @"method %@ not found for class %@", NSStringFromSelector(origSel_), [self class]);
-    return NO;
-  }
-
-  Method altMethod = class_getClassMethod(self, altSel_);
-  if (!altMethod) {
-  //NSLog(@"Couldn't find alt method");
-    SetNSError(error_, @"alt method %@ not found for class %@", NSStringFromSelector(altSel_), [self class]);
-    return NO;
-  }
-
-  class_addMethod(self,
-          origSel_,
-          class_getMethodImplementation(self, origSel_),
-          method_getTypeEncoding(origMethod));
-  class_addMethod(self,
-          altSel_,
-          class_getMethodImplementation(self, altSel_),
-          method_getTypeEncoding(altMethod));
-
-  method_exchangeImplementations(class_getClassMethod(self, origSel_), class_getClassMethod(self, altSel_));
-  return YES;
-
+    
+    
+    Method origMethod = class_getClassMethod(self, origSel_);
+    if (!origMethod) {
+        //NSLog(@"Couldn't find orig method");
+        SetNSError(error_, @"method %@ not found for class %@", NSStringFromSelector(origSel_), [self class]);
+        return NO;
+    }
+    
+    Method altMethod = class_getClassMethod(self, altSel_);
+    if (!altMethod) {
+        //NSLog(@"Couldn't find alt method");
+        SetNSError(error_, @"alt method %@ not found for class %@", NSStringFromSelector(altSel_), [self class]);
+        return NO;
+    }
+    
+    class_addMethod(self,
+                    origSel_,
+                    class_getMethodImplementation(self, origSel_),
+                    method_getTypeEncoding(origMethod));
+    class_addMethod(self,
+                    altSel_,
+                    class_getMethodImplementation(self, altSel_),
+                    method_getTypeEncoding(altMethod));
+    
+    method_exchangeImplementations(class_getClassMethod(self, origSel_), class_getClassMethod(self, altSel_));
+    return YES;
+    
 }
 @end
 
@@ -221,9 +221,7 @@ static WebBrowserViewController *sharedInstance = nil;
 }
 
 - (void) viewDidLoad
-{  
-    
-    
+{
     isDownloading = 0;
 	self.navigationItem.hidesBackButton = YES;
     
@@ -249,8 +247,7 @@ static WebBrowserViewController *sharedInstance = nil;
                                                                           style:UIBarButtonItemStylePlain
                                                                          target:webView action:@selector(goForward)];
         self.navigationItem.rightBarButtonItem = forwardButton;
-    }
-    else {
+    } else {
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissWebController)];
         self.navigationItem.rightBarButtonItem = doneButton;
     }
@@ -283,22 +280,22 @@ static WebBrowserViewController *sharedInstance = nil;
 
 - (void)loadBaseURL
 {
-  NSString *urlAddress = @"http://www.google.com/search?hl=en&source=hp&q=download+ROMs+gba+gameboy+advance&aq=f&oq=&aqi=";
-
-  //[NSClassFromString(@"WebDownload") changeMethod: @selector(initWithRequest:delegate:) withMethod: @selector(NSURLDownload_initWithRequest:delegate:) error:nil];
-  
-  //Create a URL object.
-  NSURL *url = [NSURL URLWithString:urlAddress];
-
-  //URL Requst Object
-  NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-
-  //Load the request in the UIWebView.
+    NSString *urlAddress = @"http://www.google.com/search?hl=en&source=hp&q=download+ROMs+gba+gameboy+advance&aq=f&oq=&aqi=";
+    
+    //[NSClassFromString(@"WebDownload") changeMethod: @selector(initWithRequest:delegate:) withMethod: @selector(NSURLDownload_initWithRequest:delegate:) error:nil];
+    
+    //Create a URL object.
+    NSURL *url = [NSURL URLWithString:urlAddress];
+    
+    //URL Requst Object
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    
+    //Load the request in the UIWebView.
 	NSLog(@"loading URL: %@", url);
-  [webView loadRequest:requestObj];
+    [webView loadRequest:requestObj];
 }
 
-- (void)didReceiveMemoryWarning 
+- (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
     // Release anything that's not essential, such as cached data
@@ -307,94 +304,94 @@ static WebBrowserViewController *sharedInstance = nil;
 -(void)startingDownload:(NSURLRequest*)request withType:(NSString*)type
 {
 	NSLog(@"Starting Download with request: %@", request);
-  downloadRequest = [request copy];
-  downloadType = [type copy];
-  NSString* alertMessage = [NSString stringWithFormat:@"%@%@", @"Please confirm that you own and\nare downloading this file legally:\n", [[[request URL] path] lastPathComponent]];
+    downloadRequest = [request copy];
+    downloadType = [type copy];
+    NSString* alertMessage = [NSString stringWithFormat:@"%@%@", @"Please confirm that you own and\nare downloading this file legally:\n", [[[request URL] path] lastPathComponent]];
 	UIAlertView* downloadAlertView=[[UIAlertView alloc] initWithTitle:nil
-                    message:alertMessage
-										delegate:self cancelButtonTitle:nil
-                    otherButtonTitles:@"DENY",@"CONFIRM",nil];
+                                                              message:alertMessage
+                                                             delegate:self cancelButtonTitle:@"Cancel"
+                                                    otherButtonTitles:@"Download",nil];
 	[downloadAlertView show];
 }
 
 -(void)startDownload
 {
-  @autoreleasepool {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-	NSLog(@"Downloading...");
-    //[NSThread detachNewThreadSelector:@selector(updatingDownload) toTarget:SOApp.webBrowserView withObject:nil];
+    @autoreleasepool {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        
+        NSLog(@"Downloading...");
+        //[NSThread detachNewThreadSelector:@selector(updatingDownload) toTarget:SOApp.webBrowserView withObject:nil];
     	
-    __block NSURLResponse *urlResponse = [[NSURLResponse alloc] init];
-
-    __block NSError *error;
-    //NSLog(@" *********** REQUESTING CATALOG CHECK FROM: %@", apiUrl);
-      
-      UIBackgroundTaskIdentifier task = UIBackgroundTaskInvalid;
-      NSAssert(task == UIBackgroundTaskInvalid, nil);
-      task = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-          dispatch_async(dispatch_get_main_queue(), ^{
-              if (task != UIBackgroundTaskInvalid)
-              {
-                  [[UIApplication sharedApplication] endBackgroundTask:task];
-              }
-          });
-      }];
-      
-      dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-          NSData *returnData = [NSURLConnection sendSynchronousRequest:downloadRequest returningResponse:&urlResponse error:&error];
-          
-          if(returnData != nil)
-          {
-              NSString* fileName = [[[downloadRequest URL] path] lastPathComponent];
-              if(![fileName hasSuffix:@".zip"] && ![fileName hasSuffix:@".smc"] && ![fileName hasSuffix:@".swc"] && ![fileName hasSuffix:@".zip"] && ![fileName hasSuffix:@".bin"] && 
-                 ![fileName hasSuffix:@".gba"] && ![fileName hasSuffix:@".GBA"])
-              {
-                  if([downloadType isEqualToString:@"application/zip"] || [downloadType isEqualToString:@"application/x-zip"])
-                  {
-                      [fileName stringByAppendingPathExtension:@"zip"];
-                  }
-                  else
-                  {
-                      [fileName stringByAppendingPathExtension:@"bin"];
-                  }
-              }
-              
-              NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-              NSString *documentsDirectoryPath = [paths objectAtIndex:0];
-              
-              [returnData writeToFile:[NSString stringWithFormat:@"%@/%@", documentsDirectoryPath, fileName] atomically:NO];
-          }
-          
-          isDownloading = 0;
-          
-          dispatch_async(dispatch_get_main_queue(), ^{
-              [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-              [downloadWaitAlertView dismissWithClickedButtonIndex:0 animated:YES];
-              [self dismissWebController];
-          });
-          
-          [[UIApplication sharedApplication] endBackgroundTask:task];
-      });
-  }
+        __block NSURLResponse *urlResponse = [[NSURLResponse alloc] init];
+        
+        __block NSError *error;
+        //NSLog(@" *********** REQUESTING CATALOG CHECK FROM: %@", apiUrl);
+        
+        UIBackgroundTaskIdentifier task = UIBackgroundTaskInvalid;
+        NSAssert(task == UIBackgroundTaskInvalid, nil);
+        task = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (task != UIBackgroundTaskInvalid)
+                {
+                    [[UIApplication sharedApplication] endBackgroundTask:task];
+                }
+            });
+        }];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSData *returnData = [NSURLConnection sendSynchronousRequest:downloadRequest returningResponse:&urlResponse error:&error];
+            
+            if(returnData != nil)
+            {
+                NSString* fileName = [[[downloadRequest URL] path] lastPathComponent];
+                if(![fileName hasSuffix:@".zip"] && ![fileName hasSuffix:@".smc"] && ![fileName hasSuffix:@".swc"] && ![fileName hasSuffix:@".zip"] && ![fileName hasSuffix:@".bin"] &&
+                   ![fileName hasSuffix:@".gba"] && ![fileName hasSuffix:@".GBA"])
+                {
+                    if([downloadType isEqualToString:@"application/zip"] || [downloadType isEqualToString:@"application/x-zip"])
+                    {
+                        fileName = [fileName stringByAppendingPathExtension:@"zip"];
+                    }
+                    else
+                    {
+                        fileName = [fileName stringByAppendingPathExtension:@"bin"];
+                    }
+                }
+                
+                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                NSString *documentsDirectoryPath = [paths objectAtIndex:0];
+                
+                [returnData writeToFile:[NSString stringWithFormat:@"%@/%@", documentsDirectoryPath, fileName] atomically:NO];
+            }
+            
+            isDownloading = 0;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                [downloadWaitAlertView dismissWithClickedButtonIndex:0 animated:YES];
+                [self dismissWebController];
+            });
+            
+            [[UIApplication sharedApplication] endBackgroundTask:task];
+        });
+    }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-  if(buttonIndex == 1)
-  {
-    // Confirmed
-  	downloadWaitAlertView=[[UIAlertView alloc] initWithTitle:nil
-                      message:@"Downloading now.\nThis prompt will close when the download is done.\n\n"
-  										delegate:self cancelButtonTitle:nil
-                      otherButtonTitles:nil];
-  	UIActivityIndicatorView* indiView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-  	indiView.center=CGPointMake(145, 115);
-  	[downloadWaitAlertView addSubview:indiView];
-  	[indiView startAnimating];
-  	[downloadWaitAlertView show];
-    [NSThread detachNewThreadSelector:@selector(startDownload) toTarget:self withObject:nil];
-  }
+    if(buttonIndex == 1)
+    {
+        // Confirmed
+        downloadWaitAlertView=[[UIAlertView alloc] initWithTitle:nil
+                                                         message:@"Downloading now.\nThis prompt will close when the download is done.\n\n"
+                                                        delegate:self cancelButtonTitle:nil
+                                               otherButtonTitles:nil];
+        UIActivityIndicatorView* indiView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        indiView.center=CGPointMake(145, 115);
+        [downloadWaitAlertView addSubview:indiView];
+        [indiView startAnimating];
+        [downloadWaitAlertView show];
+        [NSThread detachNewThreadSelector:@selector(startDownload) toTarget:self withObject:nil];
+    }
 }
 
 
