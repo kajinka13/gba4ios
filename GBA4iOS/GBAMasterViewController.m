@@ -373,79 +373,115 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if ([alertView.title isEqualToString:@"Rename File"]) {
+    if ([alertView.title isEqualToString:@"Rename File"]) { // It works much better now.
         if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Done"]) {
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *documentsDirectoryPath = [paths objectAtIndex:0];
-            NSError *error = nil;
             
-            NSFileManager *fm = [NSFileManager defaultManager];
-            for (NSString *file in [fm contentsOfDirectoryAtPath:documentsDirectoryPath error:nil]) {
-                if ([[file stringByDeletingPathExtension] isEqualToString:alertView.accessibilityIdentifier]) {
-                    NSString *oldFile = [documentsDirectoryPath stringByAppendingPathComponent:file];
-                    NSString *newFile = [documentsDirectoryPath stringByAppendingPathComponent:[[alertView textFieldAtIndex:0].text stringByAppendingPathExtension:file.pathExtension]];
-                    [fm moveItemAtPath:oldFile toPath:newFile error:&error];
-                }
+            __block int (^checkError)(NSError *error) = ^(NSError *error){
                 if (error) {
                     NSLog(@"%@", error);
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not rename file." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:error.description delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
                     [alertView show];
-                    return;
+                    return 1;
                 }
-            }
-            
-            if (![fm fileExistsAtPath:[[documentsDirectoryPath stringByAppendingPathComponent:@"Save States"] stringByAppendingPathComponent:alertView.accessibilityIdentifier]]) {
-                [self scanRomDirectory];
-                return;
+                return 0;
             };
             
-            for (NSString *file in [fm contentsOfDirectoryAtPath:[documentsDirectoryPath stringByAppendingPathComponent:@"Save States"] error:nil]) {
-                if ([file isEqualToString:alertView.accessibilityIdentifier]) {
-                    NSString *oldFile = [[documentsDirectoryPath stringByAppendingPathComponent:@"Save States"] stringByAppendingPathComponent:file];
-                    NSString *newFile = [[documentsDirectoryPath stringByAppendingPathComponent:@"Save States"] stringByAppendingPathComponent:[alertView textFieldAtIndex:0].text];
+            __block void (^parseAndRenameInDirectory)(NSString *dir) = ^(NSString *dir) {
+                NSError *error = nil;
+                NSFileManager *fm = [NSFileManager defaultManager];
+                NSArray *dirContents = [fm contentsOfDirectoryAtPath:dir error:&error];
+                
+                if (checkError(error)) {
+                    return;
+                }
+                
+                for (NSString *file in dirContents) {
+                    NSString *fullPath = [dir stringByAppendingPathComponent:file];
                     
-                    [fm removeItemAtPath:newFile error:&error];
-                    if (error) {
-                        NSLog(@"%@", error);
-                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not rename file." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
-                        [alertView show];
-                        return;
+                    NSString *newFile = nil;
+                    if (![file.pathExtension isEqualToString:@""]) {
+                        newFile = [dir stringByAppendingPathComponent:[[alertView textFieldAtIndex:0].text stringByAppendingPathExtension:file.pathExtension]];
+                    } else {
+                        newFile = [dir stringByAppendingPathComponent:[alertView textFieldAtIndex:0].text];
                     }
                     
-                    NSString *oldDirectoryPath = oldFile;
+                    BOOL isDir = false;
+                    [fm fileExistsAtPath:fullPath isDirectory:&isDir];
                     
-                    NSArray *tempArrayForContentsOfDirectory =[[NSFileManager defaultManager] contentsOfDirectoryAtPath:oldDirectoryPath error:nil];
+                    if (isDir) {
+                        parseAndRenameInDirectory(fullPath); // Recursive part that makes sure it goes through every folder.
+                        
+                        // RENAME FOLDER
+                        if ([[file stringByDeletingPathExtension] isEqualToString:alertView.accessibilityIdentifier]) {
+                            if ([fm fileExistsAtPath:newFile]) {
+                                [fm removeItemAtPath:newFile error:&error]; // Removes an existing directory if it is in the way.
+                                
+                                if (checkError(error)) {
+                                    return;
+                                }
+                            }
+                            
+                            if (checkError(error)) {
+                                return;
+                            }
+                            
+                            NSString *oldDirectoryPath = fullPath;
+                            
+                            NSArray *tempArrayForContentsOfDirectory =[[NSFileManager defaultManager] contentsOfDirectoryAtPath:oldDirectoryPath error:&error];
+                            
+                            if (checkError(error)) {
+                                return;
+                            }
+                            
+                            NSString *newDirectoryPath = newFile;
+                            
+                            [fm createDirectoryAtPath:newDirectoryPath withIntermediateDirectories:NO attributes:nil error:&error];
+                            
+                            if (checkError(error)) {
+                                return;
+                            }
+                            
+                            for (int i = 0; i < [tempArrayForContentsOfDirectory count]; i++)
+                            {
+                                NSString *newFilePath = [newDirectoryPath stringByAppendingPathComponent:
+                                                         [tempArrayForContentsOfDirectory objectAtIndex:i]];
+                                
+                                NSString *oldFilePath = [oldDirectoryPath stringByAppendingPathComponent:
+                                                         [tempArrayForContentsOfDirectory objectAtIndex:i]];
+                                
+                                [fm moveItemAtPath:oldFilePath toPath:newFilePath error:&error];
+                                
+                                if (checkError(error)) {
+                                    return;
+                                }
+                            }
+                        }
+                    }
                     
-                    NSString *newDirectoryPath = newFile;
-                    
-                    [fm createDirectoryAtPath:newDirectoryPath attributes:nil];
-                    
-                    for (int i = 0; i < [tempArrayForContentsOfDirectory count]; i++)
-                    {
+                    // If it's not a directory, rename the file.
+                    else if ([[file stringByDeletingPathExtension] isEqualToString:alertView.accessibilityIdentifier]) {
+                        error = nil;
                         
-                        NSString *newFilePath = [newDirectoryPath stringByAppendingPathComponent:[tempArrayForContentsOfDirectory objectAtIndex:i]];
+                        if ([fm fileExistsAtPath:newFile]) {
+                            [fm removeItemAtPath:newFile error:&error]; // Removes an existing file if it is in the way.
+                            
+                            if (checkError(error)) {
+                                return;
+                            }
+                        }
                         
-                        NSString *oldFilePath = [oldDirectoryPath stringByAppendingPathComponent:[tempArrayForContentsOfDirectory objectAtIndex:i]];
+                        [fm moveItemAtPath:fullPath toPath:newFile error:&error];
                         
-                        [[NSFileManager defaultManager] moveItemAtPath:oldFilePath toPath:newFilePath error:&error];
-                        
-                        if (error) {
-                            NSLog(@"%@", error);
-                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not rename file." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
-                            [alertView show];
+                        if (checkError(error)) {
                             return;
                         }
                     }
                 }
-            }
-            
-            
-            if (error) {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not rename file." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
-                [alertView show];
-            } else {
-                [self scanRomDirectory];
-            }
+            };
+            parseAndRenameInDirectory(documentsDirectoryPath);
+            [self scanRomDirectory];
             return;
         }
     }
