@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UISwitch *scaledSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *cheatsSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *autoSaveSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *checkForUpdatesSwitch;
 
 - (IBAction)closeSettings:(id)sender;
 - (IBAction)changeFrameskip:(id)sender;
@@ -24,5 +25,6 @@
 - (IBAction)toggleScaled:(id)sender;
 - (IBAction)toggleCheats:(id)sender;
 - (IBAction)toggleAutoSave:(id)sender;
+- (IBAction)toggleCheckForUpdates:(id)sender;
 
 @end

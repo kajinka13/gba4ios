@@ -146,8 +146,33 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="MBW-mu-uFJ">
+                                        <rect key="frame" x="0.0" y="313" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Zjr-9s-NfG">
+                                                    <rect key="frame" x="214" y="8" width="79" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="toggleCheckForUpdates:" destination="74I-Jk-pJq" eventType="valueChanged" id="dbr-Ec-x9R"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Check For Updates" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9IB-eN-pOK">
+                                                    <rect key="frame" x="20" y="11" width="147" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zi8-KJ-ZgW">
-                                        <rect key="frame" x="0.0" y="313" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="357" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -176,7 +201,7 @@
                             <tableViewSection headerTitle="" id="Zlr-e0-GDb">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="kOX-fC-ss2">
-                                        <rect key="frame" x="0.0" y="447" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="491" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -218,6 +243,7 @@
                     <connections>
                         <outlet property="autoSaveSwitch" destination="Sze-ve-5XG" id="gYV-wB-s0w"/>
                         <outlet property="cheatsSwitch" destination="NVz-aB-vjA" id="FsH-CX-kYs"/>
+                        <outlet property="checkForUpdatesSwitch" destination="Zjr-9s-NfG" id="ebo-M8-X3B"/>
                         <outlet property="frameskipSegmentedControl" destination="Cts-oX-wF9" id="yuq-U0-v8x"/>
                         <outlet property="landscapeSkinSegmentedControl" destination="3wP-mU-hIz" id="jkU-Cd-UHg"/>
                         <outlet property="portraitSkinSegmentedControl" destination="FPH-FZ-MdS" id="nNS-Ho-lTx"/>
@@ -319,9 +345,11 @@
                 <relationship kind="action" name="closeSettings:"/>
                 <relationship kind="action" name="toggleAutoSave:"/>
                 <relationship kind="action" name="toggleCheats:"/>
+                <relationship kind="action" name="toggleCheckForUpdates:"/>
                 <relationship kind="action" name="toggleScaled:"/>
                 <relationship kind="outlet" name="autoSaveSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="cheatsSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="checkForUpdatesSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="frameskipSegmentedControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="landscapeSkinSegmentedControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="portraitSkinSegmentedControl" candidateClass="UISegmentedControl"/>

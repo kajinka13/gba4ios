@@ -41,6 +41,7 @@
     self.landscapeSkinSegmentedControl.selectedSegmentIndex = [GBASettingsManager sharedManager].landscapeSkin;
     self.cheatsSwitch.on = [GBASettingsManager sharedManager].cheatsEnabled;
     self.autoSaveSwitch.on = [GBASettingsManager sharedManager].autoSave;
+    self.checkForUpdatesSwitch.on = [GBASettingsManager sharedManager].checkForUpdates;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -57,6 +58,7 @@
     [self setScaledSwitch:nil];
     [self setCheatsSwitch:nil];
     [self setAutoSaveSwitch:nil];
+    [self setCheckForUpdatesSwitch:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -91,6 +93,10 @@
 
 - (IBAction)toggleAutoSave:(id)sender {
     [[GBASettingsManager sharedManager] setAutoSave:self.autoSaveSwitch.on];
+}
+
+- (IBAction)toggleCheckForUpdates:(id)sender {
+    [[GBASettingsManager sharedManager] setCheckForUpdates:self.checkForUpdatesSwitch.on];
 }
 
 
