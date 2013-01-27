@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *landscapeSkinSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISwitch *scaledSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *cheatsSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *autoSaveSwitch;
 
 - (IBAction)closeSettings:(id)sender;
 - (IBAction)changeFrameskip:(id)sender;
@@ -22,6 +23,6 @@
 - (IBAction)changeLandscapeSkin:(id)sender;
 - (IBAction)toggleScaled:(id)sender;
 - (IBAction)toggleCheats:(id)sender;
-
+- (IBAction)toggleAutoSave:(id)sender;
 
 @end

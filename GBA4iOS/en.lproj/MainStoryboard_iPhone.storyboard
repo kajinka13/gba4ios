@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
@@ -29,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Emulator" id="OJw-pM-0Qk">
+                            <tableViewSection headerTitle="Emulator" footerTitle="If enabled, a save state will be created whenever another save state is loaded, you quit the ROM, or the app crashes." id="OJw-pM-0Qk">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="74" id="6bT-kD-R61">
                                         <rect key="frame" x="0.0" y="46" width="320" height="75"/>
@@ -147,11 +146,40 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="kOX-fC-ss2">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zi8-KJ-ZgW">
                                         <rect key="frame" x="0.0" y="313" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Sze-ve-5XG">
+                                                    <rect key="frame" x="214" y="8" width="79" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="toggleAutoSave:" destination="74I-Jk-pJq" eventType="valueChanged" id="lqy-G4-IAk"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Auto Save" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="oTQ-6N-GtM">
+                                                    <rect key="frame" x="20" y="11" width="79" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="" id="Zlr-e0-GDb">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="kOX-fC-ss2">
+                                        <rect key="frame" x="0.0" y="447" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cheats Enabled" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Fku-f7-G9E">
@@ -188,6 +216,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="autoSaveSwitch" destination="Sze-ve-5XG" id="gYV-wB-s0w"/>
                         <outlet property="cheatsSwitch" destination="NVz-aB-vjA" id="FsH-CX-kYs"/>
                         <outlet property="frameskipSegmentedControl" destination="Cts-oX-wF9" id="yuq-U0-v8x"/>
                         <outlet property="landscapeSkinSegmentedControl" destination="3wP-mU-hIz" id="jkU-Cd-UHg"/>
@@ -288,8 +317,10 @@
                 <relationship kind="action" name="changeLandscapeSkin:"/>
                 <relationship kind="action" name="changePortraitSkin:"/>
                 <relationship kind="action" name="closeSettings:"/>
+                <relationship kind="action" name="toggleAutoSave:"/>
                 <relationship kind="action" name="toggleCheats:"/>
                 <relationship kind="action" name="toggleScaled:"/>
+                <relationship kind="outlet" name="autoSaveSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="cheatsSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="frameskipSegmentedControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="landscapeSkinSegmentedControl" candidateClass="UISegmentedControl"/>

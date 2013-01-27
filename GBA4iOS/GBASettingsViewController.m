@@ -8,7 +8,7 @@
 
 #import "GBASettingsViewController.h"
 #import "GBAAppDelegate.h"
-#import "../iGBA/iphone/gpSPhone/src/gpSPhone_iPhone.h"
+#import "GBASettingsManager.h"
 
 @interface GBASettingsViewController ()
 
@@ -35,12 +35,12 @@
     [super viewDidLoad];
 
     
-    self.frameskipSegmentedControl.selectedSegmentIndex = preferences.frameSkip;
-    self.scaledSwitch.on = preferences.scaled;
-    self.portraitSkinSegmentedControl.selectedSegmentIndex = preferences.selectedPortraitSkin;
-    self.landscapeSkinSegmentedControl.selectedSegmentIndex = preferences.selectedLandscapeSkin;
-    self.cheatsSwitch.on = preferences.cheating;
-    
+    self.frameskipSegmentedControl.selectedSegmentIndex = [GBASettingsManager sharedManager].frameSkip;
+    self.scaledSwitch.on = [GBASettingsManager sharedManager].scaled;
+    self.portraitSkinSegmentedControl.selectedSegmentIndex = [GBASettingsManager sharedManager].portraitSkin;
+    self.landscapeSkinSegmentedControl.selectedSegmentIndex = [GBASettingsManager sharedManager].landscapeSkin;
+    self.cheatsSwitch.on = [GBASettingsManager sharedManager].cheatsEnabled;
+    self.autoSaveSwitch.on = [GBASettingsManager sharedManager].autoSave;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -56,6 +56,7 @@
     [self setLandscapeSkinSegmentedControl:nil];
     [self setScaledSwitch:nil];
     [self setCheatsSwitch:nil];
+    [self setAutoSaveSwitch:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -69,23 +70,27 @@
 #pragma mark - Change Settings
 
 - (IBAction)changeFrameskip:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setInteger:self.frameskipSegmentedControl.selectedSegmentIndex forKey:@"frameskip"];
+    [[GBASettingsManager sharedManager] setFrameSkip:self.frameskipSegmentedControl.selectedSegmentIndex];
 }
 
 - (IBAction)changePortraitSkin:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setInteger:self.portraitSkinSegmentedControl.selectedSegmentIndex forKey:@"portraitSkin"];
+    [[GBASettingsManager sharedManager] setPortraitSkin:self.portraitSkinSegmentedControl.selectedSegmentIndex];
 }
 
 - (IBAction)changeLandscapeSkin:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setInteger:self.landscapeSkinSegmentedControl.selectedSegmentIndex forKey:@"landscapeSkin"];
+    [[GBASettingsManager sharedManager] setLandscapeSkin:self.landscapeSkinSegmentedControl.selectedSegmentIndex];
 }
 
 - (IBAction)toggleScaled:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setBool:self.scaledSwitch.on forKey:@"scaled"];
+    [[GBASettingsManager sharedManager] setScaled:self.scaledSwitch.on];
 }
 
 - (IBAction)toggleCheats:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setBool:self.cheatsSwitch.on forKey:@"cheatsEnabled"];
+    [[GBASettingsManager sharedManager] setCheatsEnabled:self.cheatsSwitch.on];
+}
+
+- (IBAction)toggleAutoSave:(id)sender {
+    [[GBASettingsManager sharedManager] setAutoSave:self.autoSaveSwitch.on];
 }
 
 
@@ -144,10 +149,6 @@
 #pragma mark - Dismiss
 
 - (IBAction)closeSettings:(id)sender {
-    GBAAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    
-    [appDelegate updatePreferences];
-    
     [self.presentingViewController dismissModalViewControllerAnimated:YES];
 }
 @end

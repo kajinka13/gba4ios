@@ -8,9 +8,15 @@
 
 #import "GBAMasterViewController.h"
 #import "GBCEmulatorViewController.h"
+#import "GBASettingsManager.h"
 
 #import "GBADetailViewController.h"
 #import "WebBrowserViewController.h"
+#import "GBASettingsViewController.h"
+
+#import <Parse/Parse.h>
+
+#define UPDATE_AVAILABLE_TAG 13
 
 @interface GBAMasterViewController () <UIAlertViewDelegate>
 @property (strong, nonatomic) NSMutableDictionary *romDictionary;
@@ -62,6 +68,13 @@
     [self scanRomDirectory];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if ([[GBASettingsManager sharedManager] checkForUpdates]) {
+        [self checkForUpdates];
+    }
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -86,7 +99,7 @@
     if (!filename) {
         return;
     }
-    UIAlertView *changeFilename = [[UIAlertView alloc]initWithTitle:@"Rename File" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Done", nil];
+    UIAlertView *changeFilename = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Rename File", @"") message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"") otherButtonTitles:NSLocalizedString(@"Done", @""), nil];
     changeFilename.accessibilityIdentifier = filename;
     changeFilename.alertViewStyle = UIAlertViewStylePlainTextInput;
     [changeFilename textFieldAtIndex:0].text = filename;
@@ -373,8 +386,8 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if ([alertView.title isEqualToString:@"Rename File"]) { // It works much better now.
-        if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Done"]) {
+    if ([alertView.title isEqualToString:NSLocalizedString(@"Rename File", @"")]) { // It works much better now.
+        if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:NSLocalizedString(@"Done", @"")]) {
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *documentsDirectoryPath = [paths objectAtIndex:0];
             
@@ -457,6 +470,14 @@
                                     return;
                                 }
                             }
+                            
+                            if ([[fm contentsOfDirectoryAtPath:oldDirectoryPath error:nil] count] == 0 && [[fm contentsOfDirectoryAtPath:newDirectoryPath error:nil] count] > 0) {
+                                [fm removeItemAtPath:oldDirectoryPath error:&error];
+                                
+                                if (checkError(error)) {
+                                    return;
+                                }
+                            }
                         }
                     }
                     
@@ -485,7 +506,12 @@
             return;
         }
     }
-	if(buttonIndex > 0)
+    else if (alertView.tag == UPDATE_AVAILABLE_TAG) {
+        if (buttonIndex == 1) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://github.com/iSkythe/GBA4iOS"]];
+        }
+    }
+    else if(buttonIndex > 0)
 	{
 		NSFileManager *fileManager = [NSFileManager defaultManager];
 		
@@ -527,6 +553,57 @@
 		
 		[self scanRomDirectory];
 	}
+}
+
+#pragma mark - Checking For Updates
+
+- (void)checkForUpdates {
+    NSDate *lastCheckForUpdates= [[NSUserDefaults standardUserDefaults] objectForKey:@"lastCheckForUpdates"];
+    NSInteger daysSinceLastCheckForUpdate = 0;
+    
+    if (lastCheckForUpdates) {
+        daysSinceLastCheckForUpdate = [self numberOfDaysBetween:lastCheckForUpdates and:[NSDate date]];
+    }
+    
+    if (lastCheckForUpdates && daysSinceLastCheckForUpdate < 3) {
+        return;
+    }
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Updates"];
+    [query orderByDescending:@"createdAt"];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        
+        NSString *lastUpdateID = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastUpdateID"];
+        NSString *updateID = [object objectId];
+        
+        if ([lastUpdateID isEqualToString:updateID]) {
+            return;
+        }
+        
+        if (self.presentedViewController != nil && ![self.presentedViewController isKindOfClass:[GBASettingsViewController class]]) {
+            // Only show alert if not playing a game
+            return;
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *title = [NSString stringWithFormat:@"GBA4iOS Version %@ Available", [object objectForKey:@"version"]];
+            NSString *message = [NSString stringWithFormat:@"New in this version:\n\n%@", [object objectForKey:@"releaseNotes"]];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Github", nil];
+            alert.tag = UPDATE_AVAILABLE_TAG;
+            [alert show];
+        });
+        
+        [[NSUserDefaults standardUserDefaults] setObject:updateID forKey:@"lastUpdateID"];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastCheckForUpdates"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }];
+}
+
+- (NSInteger)numberOfDaysBetween:(NSDate *)date1 and:(NSDate *)date2 {
+    NSUInteger unitFlags = NSDayCalendarUnit;
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:unitFlags fromDate:date1 toDate:date2 options:0];
+    return [components day];
 }
 
 #pragma mark - UIStoryboard

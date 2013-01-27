@@ -7,6 +7,7 @@
 //
 
 #import "GBAEmulatorViewController.h"
+#import "GBASettingsManager.h"
 
 char __savefileName[512];
 char __lastfileName[512];
@@ -25,6 +26,8 @@ extern char *savestate_directory;
 
 float __audioVolume = 1.0;
 
+static GBAEmulatorViewController *emulatorViewController;
+
 @interface GBAEmulatorViewController () {
     UIDeviceOrientation currentDeviceOrientation_;
 }
@@ -41,13 +44,14 @@ float __audioVolume = 1.0;
 @synthesize screenView;
 @synthesize controllerViewController;
 @synthesize saveStateArray;
-@synthesize romSaveStateDirectory;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        emulatorViewController = self;
+        NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     }
     return self;
 }
@@ -86,6 +90,10 @@ float __audioVolume = 1.0;
 }
 
 - (void)quitROM {
+    
+    if ([GBASettingsManager sharedManager].autoSave) {
+        [self autosaveSaveState];
+    }
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         gpSPhone_Halt();
@@ -182,6 +190,23 @@ float __audioVolume = 1.0;
 
 #pragma mark Pause Menu
 
+- (NSString *)romSaveStateDirectory {
+    if (_romSaveStateDirectory) {
+        return _romSaveStateDirectory;
+    }
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectoryPath = [paths objectAtIndex:0];
+    NSString *saveStateDirectory = [documentsDirectoryPath stringByAppendingPathComponent:@"Save States"];
+    NSString *romName = [[self.romPath lastPathComponent] stringByDeletingPathExtension];
+    _romSaveStateDirectory = [[saveStateDirectory stringByAppendingPathComponent:romName] copy];
+    
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    [fileManager createDirectoryAtPath:self.romSaveStateDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    return _romSaveStateDirectory;
+}
+
 - (void)pauseMenu {
     __emulation_paused = 1;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Paused", @"") message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Quit Game", @"") 
@@ -216,17 +241,6 @@ float __audioVolume = 1.0;
 - (void)showActionSheetWithTag:(NSInteger)tag {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        if (!self.romSaveStateDirectory) {
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *documentsDirectoryPath = [paths objectAtIndex:0];
-            NSString *saveStateDirectory = [documentsDirectoryPath stringByAppendingPathComponent:@"Save States"];
-            NSString *romName = [[self.romPath lastPathComponent] stringByDeletingPathExtension];
-            self.romSaveStateDirectory = [saveStateDirectory stringByAppendingPathComponent:romName]; 
-            
-            NSFileManager *fileManager = [[NSFileManager alloc] init];
-            [fileManager createDirectoryAtPath:self.romSaveStateDirectory withIntermediateDirectories:YES attributes:nil error:nil];
-        }
-        
         NSString *saveStateInfoPath = [self.romSaveStateDirectory stringByAppendingPathComponent:@"info.plist"];
         
         if (!self.saveStateArray) {
@@ -240,9 +254,20 @@ float __audioVolume = 1.0;
             }
             [self.saveStateArray writeToFile:saveStateInfoPath atomically:YES];
         }
-                
+        
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Select Save State", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil otherButtonTitles:[self.saveStateArray objectAtIndex:0], [self.saveStateArray objectAtIndex:1], [self.saveStateArray objectAtIndex:2], [self.saveStateArray objectAtIndex:3], [self.saveStateArray objectAtIndex:4], nil];
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Select Save State", @"") delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+            
+            if (tag == 2 && [GBASettingsManager sharedManager].autoSave) {
+                [actionSheet addButtonWithTitle:NSLocalizedString(@"Last Autosave", @"")];
+            }
+            [actionSheet addButtonWithTitle:[self.saveStateArray objectAtIndex:0]];
+            [actionSheet addButtonWithTitle:[self.saveStateArray objectAtIndex:1]];
+            [actionSheet addButtonWithTitle:[self.saveStateArray objectAtIndex:2]];
+            [actionSheet addButtonWithTitle:[self.saveStateArray objectAtIndex:3]];
+            [actionSheet addButtonWithTitle:[self.saveStateArray objectAtIndex:4]];
+            [actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", @"")];
+            [actionSheet setCancelButtonIndex:actionSheet.numberOfButtons - 1];
             actionSheet.tag = tag;
             [actionSheet showInView:self.view];
         });
@@ -251,7 +276,17 @@ float __audioVolume = 1.0;
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSString *saveStateInfoPath = [self.romSaveStateDirectory stringByAppendingPathComponent:@"info.plist"];
+    
+    if (actionSheet.tag == 2 && [GBASettingsManager sharedManager].autoSave) {
+        buttonIndex--;
+    }
+    
     NSString *filepath = [self.romSaveStateDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.svs", buttonIndex]];
+    
+    if (buttonIndex == -1) {
+        filepath = [self.romSaveStateDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"autosave.svs"]];
+    }
+    
     char *saveStateFilepath = strdup((char *)[filepath UTF8String]);
     
     if (actionSheet.tag == 1 && buttonIndex != 5) {
@@ -273,10 +308,35 @@ float __audioVolume = 1.0;
         [self.saveStateArray writeToFile:saveStateInfoPath atomically:YES];
     }
     else if (actionSheet.tag == 2 && buttonIndex != 5) {
+        
+        if (buttonIndex >= 0) {
+            if ([GBASettingsManager sharedManager].autoSave) {
+                [self autosaveSaveState];
+            }
+        }
+        
         load_game_state(saveStateFilepath);
+    }
+    else {
+        NSArray *array = [NSArray array];
+        
+        id object = [array objectAtIndex:3];
     }
     
      __emulation_paused = 0;
+}
+
+void uncaughtExceptionHandler(NSException *exception) {
+    if ([GBASettingsManager sharedManager].autoSave) {
+        [emulatorViewController autosaveSaveState];
+    }
+}
+
+- (void)autosaveSaveState {
+    NSString *filepath = [self.romSaveStateDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"autosave.svs"]];
+    char *saveStateFilepath = strdup((char *)[filepath UTF8String]);
+    
+    save_game_state(saveStateFilepath);
 }
 
 @end

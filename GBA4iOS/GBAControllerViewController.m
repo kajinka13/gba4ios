@@ -7,6 +7,8 @@
 //
 
 #import "GBAControllerViewController.h"
+#import "GBASettingsManager.h"
+
 #import "../iGBA/iphone/gpSPhone/src/gpSPhone_iPhone.h"
 
 #define	DefaultControllerImage @"landscape_controller"
@@ -76,12 +78,12 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
     if(self.landscape)
     {
         if ([UIScreen mainScreen].bounds.size.height == 568) {
-            controllerFilename = [ NSString stringWithFormat:@"controller_fs%d-568h.png", preferences.selectedLandscapeSkin ];
+            controllerFilename = [ NSString stringWithFormat:@"controller_fs%d-568h.png", [GBASettingsManager sharedManager].landscapeSkin];
         }
 	    else {
-           controllerFilename = [ NSString stringWithFormat:@"controller_fs%d.png", preferences.selectedLandscapeSkin ]; 
+           controllerFilename = [ NSString stringWithFormat:@"controller_fs%d.png", [GBASettingsManager sharedManager].landscapeSkin ];
         }
-        if (preferences.selectedLandscapeSkin == 1) {
+        if ([GBASettingsManager sharedManager].landscapeSkin == 1) {
             self.imageView.alpha = 0.50f;
         }
         else {
@@ -90,7 +92,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
 	}
 	else
 	{
-	    controllerFilename = [ NSString stringWithFormat:@"controller_hs%d.png", preferences.selectedPortraitSkin ];
+	    controllerFilename = [ NSString stringWithFormat:@"controller_hs%d.png", [GBASettingsManager sharedManager].portraitSkin ];
         self.imageView.alpha = 1.0f;
 	}
     
@@ -368,15 +370,15 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
     if(landscape)
     {
         if ([UIScreen mainScreen].bounds.size.height == 568) {
-            file = [ NSString stringWithFormat:@"controller_fs%d-568h.txt", preferences.selectedLandscapeSkin];
+            file = [ NSString stringWithFormat:@"controller_fs%d-568h.txt", [GBASettingsManager sharedManager].landscapeSkin];
         }
         else {
-            file = [ NSString stringWithFormat:@"controller_fs%d.txt", preferences.selectedLandscapeSkin];
+            file = [ NSString stringWithFormat:@"controller_fs%d.txt", [GBASettingsManager sharedManager].landscapeSkin];
         }
 	}
 	else
 	{
-	    file = [ NSString stringWithFormat:@"controller_hs%d.txt", preferences.selectedPortraitSkin];
+	    file = [ NSString stringWithFormat:@"controller_hs%d.txt", [GBASettingsManager sharedManager].portraitSkin];
 	}
     strlcpy(cFileName,
             [ file cStringUsingEncoding: NSASCIIStringEncoding ],

@@ -7,7 +7,8 @@
 //
 
 #import "GBAAppDelegate.h"
-#import "../iGBA/iphone/gpSPhone/src/gpSPhone_iPhone.h"
+
+#import <Parse/Parse.h>
 
 @class gpSPhone_iphone;
 
@@ -28,15 +29,9 @@ extern int gpSPhone_SavePreferences();
         splitViewController.delegate = (id)navigationController.topViewController;
     }*/
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    if (![defaults objectForKey:@"firstRun"]) {
-        [defaults setBool:YES forKey:@"scaled"];
-        [defaults setObject:[NSDate date] forKey:@"firstRun"];
-    }
-    
-    [self updatePreferences];
-    
+    [Parse setApplicationId:@"W59PgmwY6EfelNBMGcoLb8sDKRXAitOG8moUeW4E"
+                  clientKey:@"rX4EXeMytBXMJKD6Ndq2PkbhPSZXYP3wP0OkLGLL"];
+        
     return YES;
 }
 							
@@ -66,26 +61,6 @@ extern int gpSPhone_SavePreferences();
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
-#pragma mark - Preferences
-
-- (void)updatePreferences {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    preferences.frameSkip = [defaults integerForKey:@"frameskip"];
-    preferences.scaled = [defaults boolForKey:@"scaled"];
-    preferences.selectedPortraitSkin = [defaults integerForKey:@"portraitSkin"];
-    preferences.selectedLandscapeSkin = [defaults integerForKey:@"landscapeSkin"];
-    preferences.cheating = [defaults boolForKey:@"cheatsEnabled"];
-    
-}
-
-
-
-
-
-
-
 
 
 @end

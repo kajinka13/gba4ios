@@ -212,9 +212,9 @@ void gpSPhone_CloseSound(void) {
 
 void setDefaultPreferences() {
     preferences.frameSkip = 0;
-    preferences.debug = 0;
+    preferences.debug = 1;
     preferences.canDeleteROMs = 0;
-    preferences.autoSave = 0;
+    preferences.autoSave = 1;
     preferences.landscape = 0;
     preferences.muted = 0;
     preferences.scaled = 1;

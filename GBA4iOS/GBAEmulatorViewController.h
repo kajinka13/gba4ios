@@ -28,4 +28,6 @@
 - (void)showActionSheetWithTag:(NSInteger)tag;
 - (void)rotateToDeviceOrientation:(UIDeviceOrientation)deviceOrientation;
 
+- (void)autosaveSaveState;
+
 @end

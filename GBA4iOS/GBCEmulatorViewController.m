@@ -47,13 +47,13 @@ extern void *app_Thread_Start(void *args);
     self.screenViewController.view.frame = CGRectMake(0, 0 + yOffset, 320, 240);
     [self addChildViewController:self.screenViewController];
     [self.view addSubview:self.screenViewController.view];
-    
+        
     self.controllerViewController = [[GBCControllerViewController alloc] init];
     self.controllerViewController.delegate = self;
     self.controllerViewController.view.frame = CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height);
     [self addChildViewController:self.controllerViewController];
     [self.view addSubview:self.controllerViewController.view];
-    
+        
     [self startROM];
 }
 
@@ -61,6 +61,10 @@ extern void *app_Thread_Start(void *args);
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
