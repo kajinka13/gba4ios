@@ -317,11 +317,6 @@ static GBAEmulatorViewController *emulatorViewController;
         
         load_game_state(saveStateFilepath);
     }
-    else {
-        NSArray *array = [NSArray array];
-        
-        id object = [array objectAtIndex:3];
-    }
     
      __emulation_paused = 0;
 }
