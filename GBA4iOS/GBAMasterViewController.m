@@ -569,7 +569,7 @@
         return;
     }
     
-    PFQuery *query = [PFQuery queryWithClassName:@"TestUpdates"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Updates"];
     [query orderByDescending:@"createdAt"];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         
