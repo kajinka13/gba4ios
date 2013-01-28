@@ -565,13 +565,19 @@
         daysSinceLastCheckForUpdate = [self numberOfDaysBetween:lastCheckForUpdates and:[NSDate date]];
     }
     
-    if (lastCheckForUpdates && daysSinceLastCheckForUpdate < 3) {
+    if (lastCheckForUpdates && daysSinceLastCheckForUpdate > 3) {
         return;
     }
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Updates"];
+    PFQuery *query = [PFQuery queryWithClassName:@"TestUpdates"];
     [query orderByDescending:@"createdAt"];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        
+        NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
+        NSString *updateVersion = [object objectForKey:@"version"];
+        if ([appVersion isEqualToString:updateVersion]) {
+            return;
+        }
         
         NSString *lastUpdateID = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastUpdateID"];
         NSString *updateID = [object objectId];
@@ -586,7 +592,7 @@
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSString *title = [NSString stringWithFormat:@"GBA4iOS Version %@ Available", [object objectForKey:@"version"]];
+            NSString *title = [NSString stringWithFormat:@"GBA4iOS Version %@ Available", updateVersion];
             NSString *message = [NSString stringWithFormat:@"New in this version:\n\n%@", [object objectForKey:@"releaseNotes"]];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Github", nil];
             alert.tag = UPDATE_AVAILABLE_TAG;

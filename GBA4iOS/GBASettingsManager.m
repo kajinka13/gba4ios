@@ -56,6 +56,7 @@
     self.portraitSkin = [defaults integerForKey:@"portraitSkin"];
     self.landscapeSkin = [defaults integerForKey:@"landscapeSkin"];
     self.cheatsEnabled = [defaults boolForKey:@"cheatsEnabled"];
+    self.autoSave = [defaults boolForKey:@"autoSave"];
     self.checkForUpdates = [defaults boolForKey:@"checkForUpdates"];
 }
 
