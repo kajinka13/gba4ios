@@ -17,6 +17,8 @@ __Other Features__
 * Customizable Frameskip
 * Gameboy Color ROMs (BETA)
 * iPhone 5 Support
+* iTunes File Sharing support
+* Works on non-jailbroken phones
 * FAST
 
 __Version History__
@@ -47,21 +49,6 @@ _1.1_
 
 * Can now quit ROMs without quitting the app.
 
-
-
-Differences in this version from gpSPhone available in the Cydia Store are:
-
-* iTunes File Sharing support
-
-* Works on non-jailbroken phones
-
-However, some bugs do exist in the current version, such as:
-
-* Audio sometimes will disappear for a second, and sometimes it'll completely disappear.
-
-* Compatibility issues with some GBA games.
-
-If you would like to contribute, I'd appreciate it! I'm trying to fix the current bugs, but any additional help is greatly appreciated. So send those pull requests :)
 
 For all the latest news on GBA4iOS, SNES4iOS, or any of my other projects I'm working on, I'm @iSkythe on Twitter (http://twitter.com/iSkythe)
 
