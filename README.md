@@ -9,6 +9,16 @@ __NEW IN VERSION 1.5 OF GBA4iOS__
 * Auto Save. Did you ever accidentally lose your progress in a ROM due to something stupid like quitting the ROM by mistake or the app crashing? No need to worry! Now, whenever you load a save state, quit a ROM, or the app crashes, GBA4iOS will create an auto save state you can reload just like any other save state. You never have to worry about losing your progress again! (It can be turned off, but why would you want that?)
 * Check For Updates. Tired of having to check Github or my Twitter feed (@iSkythe if you're wondering) to see if there are updates to GBA4iOS? A new option (enabled by default) checks to see if there are any updates on Github, and if so will show an alert detailing all the changes. Don't worry about it constantly checking though, it'll only check every 3 days.
 
+__Other Features__
+
+* Save State Support
+* Can import save states from other emulators (Name them the exact name of the ROM you want it to be a save state for, and append the number slot you want for the save. For example, if you wanted to import a save state in the first slot for “Pokemon Emerald.GBA”, you would rename your .svs file “Pokemon Emerald0.svs”, and drag it into the Documents directory via iTunes File Sharing.)
+* Portrait and Landscape Layouts
+* Customizable Frameskip
+* Gameboy Color ROMs (BETA)
+* iPhone 5 Support
+* FAST
+
 __Version History__
 
 _1.4_
