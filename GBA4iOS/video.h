@@ -85,10 +85,10 @@ typedef enum
   filter_bilinear
 } video_filter_type;
 
-extern /*video_scale_type Riley Testut**/ unsigned long screen_scale;
-extern /*video_scale_type Riley Testut**/ unsigned long current_scale;
-extern /*video_filter_type Riley Testut**/ unsigned long screen_filter;
+extern video_scale_type screen_scale;
+extern video_scale_type current_scale;
+extern video_filter_type screen_filter;
 
-void set_gba_resolution( /*video_scale_type Riley Testut**/ unsigned long scale);
+void set_gba_resolution(video_scale_type scale);
 
 #endif

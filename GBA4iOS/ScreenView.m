@@ -32,19 +32,30 @@ void updateScreen() {
 	[ sharedInstance performSelectorOnMainThread:@selector(updateScreen) withObject:nil waitUntilDone: NO ];
 }
 
-@implementation ScreenView 
+@implementation ScreenView
 - (id)initWithFrame:(CGRect)frame {
     LOGDEBUG("ScreenView.initWithFrame()");
 
     rect = frame;
     if (self == [ super initWithFrame:frame ]) {
         sharedInstance = self;
-        [ self initializeGraphics ]; 
+        [ self initializeGraphics ];
+        
+        /*self.frameCounterLabel = [[UILabel alloc] initWithFrame:CGRectMake(270, 248, 50, 40)];
+        self.frameCounterLabel.backgroundColor = [UIColor clearColor];
+        self.frameCounterLabel.textColor = [UIColor redColor];
+        [self addSubview:self.frameCounterLabel];*/
     }
     return self;
 }
 
 - (void)updateScreen {
+    /*static int frameCounter = 1;
+    
+    self.frameCounterLabel.text = [NSString stringWithFormat:@"%d", frameCounter];
+    
+    frameCounter++;*/
+    
     [ self setNeedsDisplay ];
 }
 

@@ -1263,8 +1263,8 @@ void render_scanline_affine_##combine_op##_##alpha_op(u32 layer,              \
   render_scanline_dest_##alpha_op *dest_ptr =                                 \
    ((render_scanline_dest_##alpha_op *)scanline) + start;                     \
                                                                               \
-  dx = (u16)io_registers[REG_BG2PA + layer_offset];                           \
-  dy = (u16)io_registers[REG_BG2PC + layer_offset];                           \
+  dx = (s16)io_registers[REG_BG2PA + layer_offset];                           \
+  dy = (s16)io_registers[REG_BG2PC + layer_offset];                           \
   source_x = affine_reference_x[layer - 2] + (start * dx);                    \
   source_y = affine_reference_y[layer - 2] + (start * dy);                    \
                                                                               \
@@ -1454,8 +1454,8 @@ void render_scanline_bitmap_##type##_##alpha_op(u32 start, u32 end,           \
   u32 vcount = io_registers[REG_VCOUNT];                                      \
   s32 pixel_x, pixel_y;                                                       \
                                                                               \
-  s32 dx = (u16)io_registers[REG_BG2PA];                                      \
-  s32 dy = (u16)io_registers[REG_BG2PC];                                      \
+  s32 dx = (s16)io_registers[REG_BG2PA];                                      \
+  s32 dy = (s16)io_registers[REG_BG2PC];                                      \
                                                                               \
   u32 i;                                                                      \
                                                                               \
@@ -1814,7 +1814,7 @@ bitmap_layer_render_struct bitmap_mode_renderers[3] =
 
 #define obj_render_affine(combine_op, color_depth, alpha_op, map_space)       \
 {                                                                             \
-  u16 *params = oam_ram + (((obj_attribute_1 >> 9) & 0x1F) * 16);             \
+  s16 *params = oam_ram + (((obj_attribute_1 >> 9) & 0x1F) * 16);             \
   s32 dx = params[3];                                                         \
   s32 dmx = params[7];                                                        \
   s32 dy = params[11];                                                        \
@@ -3282,10 +3282,10 @@ void update_scanline()
     }
   }
 
-  affine_reference_x[0] += (u16)io_registers[REG_BG2PB];
-  affine_reference_y[0] += (u16)io_registers[REG_BG2PD];
-  affine_reference_x[1] += (u16)io_registers[REG_BG3PB];
-  affine_reference_y[1] += (u16)io_registers[REG_BG3PD];
+  affine_reference_x[0] += (s16)io_registers[REG_BG2PB];
+  affine_reference_y[0] += (s16)io_registers[REG_BG2PD];
+  affine_reference_x[1] += (s16)io_registers[REG_BG3PB];
+  affine_reference_y[1] += (s16)io_registers[REG_BG3PD];
 }
 
 #ifdef PSP_BUILD
@@ -3405,9 +3405,8 @@ u32 frame_to_render;
 
 void update_screen()
 {
-    if(!skip_next_frame) {
+  if(!skip_next_frame)
     flip_screen();
-    }
 }
 
 #ifdef PSP_BUILD
@@ -3512,9 +3511,9 @@ void init_video()
 
 #endif
 
-/*video_scale_type Riley Testut**/ unsigned long screen_scale = scaled_aspect;
-/*video_scale_type Riley Testut**/ unsigned long current_scale = scaled_aspect;
-/*video_filter_type Riley Testut**/ unsigned long screen_filter = filter_bilinear;
+video_scale_type screen_scale = scaled_aspect;
+video_scale_type current_scale = scaled_aspect;
+video_filter_type screen_filter = filter_bilinear;
 
 
 #ifdef PSP_BUILD
@@ -3644,7 +3643,7 @@ void video_resolution_small()
   resolution_height = small_resolution_height;
 }
 
-void set_gba_resolution(/*video_scale_type Riley Testut**/ unsigned long scale)
+void set_gba_resolution(video_scale_type scale)
 {
   if(screen_scale != scale)
   {
@@ -3681,7 +3680,7 @@ void clear_screen(u16 color)
 
 u16 *copy_screen()
 {
-  u16 *copy = (u16 *) malloc(240 * 160 * 2);
+  u16 *copy = malloc(240 * 160 * 2);
   memcpy(copy, get_screen_pixels(), 240 * 160 * 2);
   return copy;
 }

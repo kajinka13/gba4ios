@@ -652,8 +652,16 @@ u32 update_gba()
           update_gbc_sound(cpu_ticks);
           synchronize();
             
-
+            /*static int frameCounter = 1;
             
+            printf("\n%d", frameCounter);
+            
+            if (frameCounter >= 4385 && frameCounter <= 4392) {
+                sleep(1);
+            }
+            
+            frameCounter++;*/
+                        
           update_screen();
             
             
@@ -818,8 +826,6 @@ void synchronize()
   static u32 fps = 60;
   static u32 frames_drawn = 60;
     
-    //printf("Hello");
-
   if(gp2x_fps_debug)
   {
     char print_buffer[128];

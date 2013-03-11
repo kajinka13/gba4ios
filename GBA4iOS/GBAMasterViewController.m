@@ -565,13 +565,17 @@
         daysSinceLastCheckForUpdate = [self numberOfDaysBetween:lastCheckForUpdates and:[NSDate date]];
     }
     
-    if (lastCheckForUpdates && daysSinceLastCheckForUpdate > 3) {
+    if (lastCheckForUpdates && daysSinceLastCheckForUpdate < 3) { // Remember to always make it less than three stupid. Like a heart <3.
         return;
     }
     
     PFQuery *query = [PFQuery queryWithClassName:@"Updates"];
     [query orderByDescending:@"createdAt"];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        
+        if (error) {
+            return;
+        }
         
         NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
         NSString *updateVersion = [object objectForKey:@"version"];

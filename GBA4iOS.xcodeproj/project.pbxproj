@@ -34,7 +34,6 @@
 		BF4F3FC71695599800D004F2 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4F3FB01695599800D004F2 /* main.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		BF4F3FC81695599800D004F2 /* memory.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4F3FB21695599800D004F2 /* memory.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		BF4F3FC91695599800D004F2 /* sound.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4F3FB41695599800D004F2 /* sound.c */; settings = {COMPILER_FLAGS = "-w"; }; };
-		BF4F3FCA1695599800D004F2 /* video.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4F3FB61695599800D004F2 /* video.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		BF4F3FD3169559D600D004F2 /* gpSPhone_iPhone.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4F3FCE169559D600D004F2 /* gpSPhone_iPhone.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		BF4F3FD4169559D600D004F2 /* iphone.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4F3FD0169559D600D004F2 /* iphone.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		BF4F3FD5169559D600D004F2 /* JoyPad.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4F3FD1169559D600D004F2 /* JoyPad.c */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -43,6 +42,7 @@
 		BF9250231574B8BF00036778 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9250221574B8BF00036778 /* AudioToolbox.framework */; };
 		BF92502E1574BF7C00036778 /* gba_bios.bin in Resources */ = {isa = PBXBuildFile; fileRef = BF92502D1574BF7C00036778 /* gba_bios.bin */; };
 		BFA35002157739CC0049C83B /* WebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA35001157739CC0049C83B /* WebBrowserViewController.m */; };
+		BFB0792B16DFCD6D000C3311 /* video.c in Sources */ = {isa = PBXBuildFile; fileRef = BFB0792916DFCD6D000C3311 /* video.c */; };
 		BFB33E6C169623760032A2A0 /* controller_fs1-568h.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB33E6B169623760032A2A0 /* controller_fs1-568h.txt */; };
 		BFB33E6F1696237E0032A2A0 /* controller_fs0-568h.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB33E6E1696237E0032A2A0 /* controller_fs0-568h.txt */; };
 		BFB33F9116964DDF0032A2A0 /* app_iPhone.c in Sources */ = {isa = PBXBuildFile; fileRef = BFB33F3016964DDE0032A2A0 /* app_iPhone.c */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -187,8 +187,6 @@
 		BF4F3FB31695599800D004F2 /* memory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = memory.h; path = iGBA/memory.h; sourceTree = SOURCE_ROOT; };
 		BF4F3FB41695599800D004F2 /* sound.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sound.c; path = iGBA/sound.c; sourceTree = SOURCE_ROOT; };
 		BF4F3FB51695599800D004F2 /* sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sound.h; path = iGBA/sound.h; sourceTree = SOURCE_ROOT; };
-		BF4F3FB61695599800D004F2 /* video.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = video.c; path = iGBA/video.c; sourceTree = SOURCE_ROOT; };
-		BF4F3FB71695599800D004F2 /* video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = video.h; path = iGBA/video.h; sourceTree = SOURCE_ROOT; };
 		BF4F3FCE169559D600D004F2 /* gpSPhone_iPhone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gpSPhone_iPhone.c; path = iGBA/iphone/gpSPhone/src/gpSPhone_iPhone.c; sourceTree = SOURCE_ROOT; };
 		BF4F3FCF169559D600D004F2 /* gpSPhone_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gpSPhone_iPhone.h; path = iGBA/iphone/gpSPhone/src/gpSPhone_iPhone.h; sourceTree = SOURCE_ROOT; };
 		BF4F3FD0169559D600D004F2 /* iphone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = iphone.c; path = iGBA/iphone/gpSPhone/src/iphone.c; sourceTree = SOURCE_ROOT; };
@@ -220,6 +218,8 @@
 		BF92502D1574BF7C00036778 /* gba_bios.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = gba_bios.bin; sourceTree = "<group>"; };
 		BFA35000157739CC0049C83B /* WebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebBrowserViewController.h; sourceTree = "<group>"; };
 		BFA35001157739CC0049C83B /* WebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebBrowserViewController.m; sourceTree = "<group>"; };
+		BFB0792916DFCD6D000C3311 /* video.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = video.c; sourceTree = "<group>"; };
+		BFB0792A16DFCD6D000C3311 /* video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = video.h; sourceTree = "<group>"; };
 		BFB33E6B169623760032A2A0 /* controller_fs1-568h.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "controller_fs1-568h.txt"; sourceTree = "<group>"; };
 		BFB33E6E1696237E0032A2A0 /* controller_fs0-568h.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "controller_fs0-568h.txt"; sourceTree = "<group>"; };
 		BFB33F3016964DDE0032A2A0 /* app_iPhone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = app_iPhone.c; path = iGBC/app_iPhone.c; sourceTree = SOURCE_ROOT; };
@@ -470,8 +470,9 @@
 				BF4F3FB31695599800D004F2 /* memory.h */,
 				BF4F3FB41695599800D004F2 /* sound.c */,
 				BF4F3FB51695599800D004F2 /* sound.h */,
-				BF4F3FB61695599800D004F2 /* video.c */,
-				BF4F3FB71695599800D004F2 /* video.h */,
+				BFB0792916DFCD6D000C3311 /* video.c */,
+				BFB0792A16DFCD6D000C3311 /* video.h */,
+				BF93F55616ED8A4C00C7E636 /* GBA Link */,
 			);
 			name = "Emulator Code";
 			sourceTree = "<group>";
@@ -570,6 +571,13 @@
 				BF4F3FEC16955A0F00D004F2 /* UIView-Geometry.h */,
 			);
 			name = "UIKit-Private";
+			sourceTree = "<group>";
+		};
+		BF93F55616ED8A4C00C7E636 /* GBA Link */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "GBA Link";
 			sourceTree = "<group>";
 		};
 		BFB33E7716964C480032A2A0 /* GBA Emulator */ = {
@@ -962,7 +970,6 @@
 				BF4F3FC71695599800D004F2 /* main.c in Sources */,
 				BF4F3FC81695599800D004F2 /* memory.c in Sources */,
 				BF4F3FC91695599800D004F2 /* sound.c in Sources */,
-				BF4F3FCA1695599800D004F2 /* video.c in Sources */,
 				BF4F3FD3169559D600D004F2 /* gpSPhone_iPhone.c in Sources */,
 				BF4F3FD4169559D600D004F2 /* iphone.c in Sources */,
 				BF4F3FD5169559D600D004F2 /* JoyPad.c in Sources */,
@@ -998,6 +1005,7 @@
 				BFB33FC2169688870032A2A0 /* ScreenViewGameBoyColor.m in Sources */,
 				BFB33FCA16968AE30032A2A0 /* GBCControllerViewController.m in Sources */,
 				BFD416F216B4D5990077C317 /* GBASettingsManager.m in Sources */,
+				BFB0792B16DFCD6D000C3311 /* video.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1037,8 +1045,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = armv7;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yvette Testut (B5VNWGK3MY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1076,7 +1084,7 @@
 					suppress,
 					"-force_flat_namespace",
 				);
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "329BF231-AB18-4BD7-84FA-E0598AF13EC1";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1113,7 +1121,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = armv7;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yvette Testut (B5VNWGK3MY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1152,7 +1160,7 @@
 					suppress,
 					"-force_flat_namespace",
 				);
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "329BF231-AB18-4BD7-84FA-E0598AF13EC1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1188,8 +1196,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = armv7;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yvette Testut (B5VNWGK3MY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yvette Testut (B5VNWGK3MY)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1234,8 +1242,8 @@
 					suppress,
 					"-force_flat_namespace",
 				);
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "329BF231-AB18-4BD7-84FA-E0598AF13EC1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "329BF231-AB18-4BD7-84FA-E0598AF13EC1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1247,7 +1255,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = armv7;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yvette Testut (B5VNWGK3MY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1286,7 +1294,7 @@
 					suppress,
 					"-force_flat_namespace",
 				);
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "329BF231-AB18-4BD7-84FA-E0598AF13EC1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

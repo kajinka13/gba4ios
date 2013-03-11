@@ -32,6 +32,8 @@ extern CoreSurfaceBufferRef screenSurface;
     CALayer *screenLayer;
 }
 
+@property (nonatomic, strong) UILabel *frameCounterLabel;
+
 void updateScreen();
 
 - (id)initWithFrame:(CGRect)frame;

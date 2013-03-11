@@ -90,6 +90,7 @@ void add_cheats(u8 *cheats_filename)
        !strcasecmp(current_line, "PAR_v1") ||
        !strcasecmp(current_line, "PAR_v2"))
       {
+          printf("Loading Gameshark v1 Code...");
         current_cheat_variant = CHEAT_TYPE_GAMESHARK_V1;
       }
       else
@@ -97,10 +98,12 @@ void add_cheats(u8 *cheats_filename)
       if(!strcasecmp(current_line, "gameshark_v3") ||
        !strcasecmp(current_line, "PAR_v3"))
       {
+          printf("Loading Gameshark v3 Code...");
         current_cheat_variant = CHEAT_TYPE_GAMESHARK_V3;
       }
       else
       {
+          printf("Loading invalid Code...");
         current_cheat_variant = CHEAT_TYPE_INVALID;
       }
 

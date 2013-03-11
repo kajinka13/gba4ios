@@ -30,6 +30,9 @@ static GBAEmulatorViewController *emulatorViewController;
 
 @interface GBAEmulatorViewController () {
     UIDeviceOrientation currentDeviceOrientation_;
+    
+    CFAbsoluteTime _romStartTime;
+    CFAbsoluteTime _romPauseTime;
 }
 
 @property (copy, nonatomic) NSString *romSaveStateDirectory;
@@ -74,7 +77,13 @@ static GBAEmulatorViewController *emulatorViewController;
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];	//Keep in this method
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    
 	// Do any additional setup after loading the view.
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)loadROM:(NSString *)romFilePath {
@@ -85,6 +94,8 @@ static GBAEmulatorViewController *emulatorViewController;
     strlcpy(cFileName, [ romFilePath cStringUsingEncoding: NSASCIIStringEncoding], sizeof(cFileName));
         
     __fileName = strdup((char *)[romFilePath UTF8String]);
+    
+    _romStartTime = CFAbsoluteTimeGetCurrent();
         
     pthread_create(&emulation_tid, NULL, gpSPhone_Thread_Start, NULL);
 }
@@ -208,6 +219,7 @@ static GBAEmulatorViewController *emulatorViewController;
 }
 
 - (void)pauseMenu {
+    _romPauseTime = CFAbsoluteTimeGetCurrent();
     __emulation_paused = 1;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Paused", @"") message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Quit Game", @"") 
                                           otherButtonTitles:NSLocalizedString(@"Resume", @""), NSLocalizedString(@"Save State", @""), NSLocalizedString(@"Load State", @""), nil];
@@ -327,11 +339,21 @@ void uncaughtExceptionHandler(NSException *exception) {
     }
 }
 
+- (void)didEnterBackground:(NSNotification *)notification {
+    if ([GBASettingsManager sharedManager].autoSave) {
+        [emulatorViewController autosaveSaveState];
+    }
+}
+
 - (void)autosaveSaveState {
-    NSString *filepath = [self.romSaveStateDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"autosave.svs"]];
-    char *saveStateFilepath = strdup((char *)[filepath UTF8String]);
     
-    save_game_state(saveStateFilepath);
+    if (_romPauseTime - _romStartTime >= 3.0f) {
+        // If the user loads a save state in the first 3 seconds, the autosave would probably be useless to them as it would take them back to the title screen of their game
+        NSString *filepath = [self.romSaveStateDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"autosave.svs"]];
+        char *saveStateFilepath = strdup((char *)[filepath UTF8String]);
+        
+        save_game_state(saveStateFilepath);
+    }
 }
 
 @end
