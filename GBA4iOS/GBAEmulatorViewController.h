@@ -13,7 +13,7 @@
 @class ScreenView;
 @class GBAControllerViewController;
 
-@interface GBAEmulatorViewController : UIViewController <UIActionSheetDelegate, UIAlertViewDelegate> {
+@interface GBAEmulatorViewController : UIViewController <UIActionSheetDelegate> {
     pthread_t emulation_tid;
 }
 

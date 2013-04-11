@@ -52,7 +52,7 @@ debug_state current_debug_state = RUN;
 
 //u32 breakpoint_value = 0;
 
-/*frameskip_type Riley Testut*/ unsigned long current_frameskip_type = auto_frameskip;
+frameskip_type current_frameskip_type = auto_frameskip;
 u32 random_skip = 0;
 
 #ifdef GP2X_BUILD
@@ -107,6 +107,8 @@ u32 synchronize_flag = 1;
 
 u32 update_backup_flag = 1;
 u32 clock_speed = 333;
+
+u32 use_fastest_speed = 0;
 
 
 #define check_count(count_var)                                                \
@@ -728,7 +730,7 @@ void load_game_state(char *filepath) {
 }
 
 u64 last_screen_timestamp = 0;
-u32 frame_speed = 15000;
+u32 frame_speed = 15000;//(1.0f/60.0f * 1000000.0f);
 
 
 #ifdef PSP_BUILD
@@ -876,6 +878,7 @@ void synchronize()
     if((synchronize_flag) &&
      ((time_delta < frame_speed) && synchronize_flag))
     {
+        //printf("Hello %llu", time_delta);
       delay_us(frame_speed - time_delta);
     }
   }
@@ -1058,7 +1061,7 @@ void get_ticks_us(u64 *ticks_return)
 
 void delay_us(u32 us_count)
 {
-  usleep(us_count);
+  usleep(us_count * (use_fastest_speed == 0));
 }
 
 void get_ticks_us(u64 *ticks_return)

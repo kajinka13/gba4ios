@@ -13,6 +13,7 @@
 #import "GBADetailViewController.h"
 #import "WebBrowserViewController.h"
 #import "GBASettingsViewController.h"
+#import "DocWatchHelper.h"
 
 #import <Parse/Parse.h>
 
@@ -24,6 +25,7 @@
 @property (nonatomic) NSInteger currentSection_;
 @property (strong, nonatomic) PullToRefreshView *pullToRefreshView_;
 @property (copy, nonatomic) NSString *deletingRomPath;
+@property (strong, nonatomic) DocWatchHelper *docWatchHelper;
 @end
 
 @implementation GBAMasterViewController
@@ -49,10 +51,6 @@
 {
     [super viewDidLoad];
     
-    self.pullToRefreshView_ = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *) self.tableView];
-    [self.pullToRefreshView_ setDelegate:self];
-    [self.tableView addSubview:self.pullToRefreshView_];
-    
 	// Do any additional setup after loading the view, typically from a nib.
     
     self.navigationItem.leftBarButtonItem.landscapeImagePhone = [UIImage imageNamed:@"GearLandscape"];
@@ -60,6 +58,12 @@
     [self scanRomDirectory];
     
     self.detailViewController = (GBADetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    
+    self.docWatchHelper = [DocWatchHelper watcherForPath:documentsDirectory];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scanRomDirectory) name:kDocumentChanged object:self.docWatchHelper];
     
 }
 
@@ -565,7 +569,7 @@
         daysSinceLastCheckForUpdate = [self numberOfDaysBetween:lastCheckForUpdates and:[NSDate date]];
     }
     
-    if (lastCheckForUpdates && daysSinceLastCheckForUpdate < 3) { // Remember to always make it less than three stupid. Like a heart <3.
+    if (lastCheckForUpdates && daysSinceLastCheckForUpdate < 1) { // Remember to always make it less than one stupid.
         return;
     }
     

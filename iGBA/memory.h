@@ -68,13 +68,13 @@ typedef struct
   u32 source_address;
   u32 dest_address;
   u32 length;
-  /*dma_repeat_type Riley Testut**/ unsigned long repeat_type;
+  dma_repeat_type repeat_type;
   dma_ds_type direct_sound_channel;
-  /*dma_increment_type Riley Testut**/ unsigned long source_direction;
-  /*dma_increment_type Riley Testut**/ unsigned long dest_direction;
-  /*dma_length_type Riley Testut**/ unsigned long length_type;
-  /*dma_start_type Riley Testut**/ u32 start_type;
-  /*dma_irq_type Riley Testut**/ unsigned long irq;
+  dma_increment_type source_direction;
+  dma_increment_type dest_direction;
+  dma_length_type length_type;
+  dma_start_type start_type;
+  dma_irq_type irq;
 } dma_transfer_type;
 
 typedef enum

@@ -90,6 +90,8 @@
 		BFB33FCE16968C990032A2A0 /* gbc_controller_fs2.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB33FCC16968C980032A2A0 /* gbc_controller_fs2.txt */; };
 		BFB33FD116968CA60032A2A0 /* gbc_controller_hs0.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB33FCF16968CA60032A2A0 /* gbc_controller_hs0.png */; };
 		BFB33FD216968CA60032A2A0 /* gbc_controller_hs0.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB33FD016968CA60032A2A0 /* gbc_controller_hs0.txt */; };
+		BFC837EF170CFC8900063DA3 /* game_config.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFC837EE170CFC8900063DA3 /* game_config.txt */; };
+		BFC837F2170D3DE800063DA3 /* DocWatchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC837F1170D3DE800063DA3 /* DocWatchHelper.m */; };
 		BFD416F216B4D5990077C317 /* GBASettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD416F116B4D5990077C317 /* GBASettingsManager.m */; };
 		BFD416F516B4DA590077C317 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD416F416B4DA590077C317 /* Parse.framework */; };
 		BFD416F716B4DA780077C317 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD416F616B4DA780077C317 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -332,6 +334,9 @@
 		BFB33FCC16968C980032A2A0 /* gbc_controller_fs2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gbc_controller_fs2.txt; sourceTree = "<group>"; };
 		BFB33FCF16968CA60032A2A0 /* gbc_controller_hs0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gbc_controller_hs0.png; sourceTree = "<group>"; };
 		BFB33FD016968CA60032A2A0 /* gbc_controller_hs0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gbc_controller_hs0.txt; sourceTree = "<group>"; };
+		BFC837EE170CFC8900063DA3 /* game_config.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = game_config.txt; sourceTree = "<group>"; };
+		BFC837F0170D3DE800063DA3 /* DocWatchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocWatchHelper.h; sourceTree = "<group>"; };
+		BFC837F1170D3DE800063DA3 /* DocWatchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocWatchHelper.m; sourceTree = "<group>"; };
 		BFD416F016B4D5990077C317 /* GBASettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBASettingsManager.h; sourceTree = "<group>"; };
 		BFD416F116B4D5990077C317 /* GBASettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBASettingsManager.m; sourceTree = "<group>"; };
 		BFD416F416B4DA590077C317 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -472,7 +477,6 @@
 				BF4F3FB51695599800D004F2 /* sound.h */,
 				BFB0792916DFCD6D000C3311 /* video.c */,
 				BFB0792A16DFCD6D000C3311 /* video.h */,
-				BF93F55616ED8A4C00C7E636 /* GBA Link */,
 			);
 			name = "Emulator Code";
 			sourceTree = "<group>";
@@ -571,13 +575,6 @@
 				BF4F3FEC16955A0F00D004F2 /* UIView-Geometry.h */,
 			);
 			name = "UIKit-Private";
-			sourceTree = "<group>";
-		};
-		BF93F55616ED8A4C00C7E636 /* GBA Link */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "GBA Link";
 			sourceTree = "<group>";
 		};
 		BFB33E7716964C480032A2A0 /* GBA Emulator */ = {
@@ -736,6 +733,7 @@
 		BFE1E7C91575D54C00D5CA43 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BFC837EE170CFC8900063DA3 /* game_config.txt */,
 				BFE400D8156CA70100E33279 /* MainStoryboard_iPhone.storyboard */,
 				BFE400DB156CA70100E33279 /* MainStoryboard_iPad.storyboard */,
 				BF1AE90E157BC9D4001375E8 /* arrow.png */,
@@ -827,6 +825,8 @@
 				BFE400D6156CA70100E33279 /* GBAAppDelegate.m */,
 				BFE400DE156CA70100E33279 /* GBAMasterViewController.h */,
 				BFE400DF156CA70100E33279 /* GBAMasterViewController.m */,
+				BFC837F0170D3DE800063DA3 /* DocWatchHelper.h */,
+				BFC837F1170D3DE800063DA3 /* DocWatchHelper.m */,
 				BFE400E1156CA70100E33279 /* GBADetailViewController.h */,
 				BFE400E2156CA70100E33279 /* GBADetailViewController.m */,
 				BFB33E7716964C480032A2A0 /* GBA Emulator */,
@@ -938,6 +938,7 @@
 				BFB33FCE16968C990032A2A0 /* gbc_controller_fs2.txt in Resources */,
 				BFB33FD116968CA60032A2A0 /* gbc_controller_hs0.png in Resources */,
 				BFB33FD216968CA60032A2A0 /* gbc_controller_hs0.txt in Resources */,
+				BFC837EF170CFC8900063DA3 /* game_config.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1006,6 +1007,7 @@
 				BFB33FCA16968AE30032A2A0 /* GBCControllerViewController.m in Sources */,
 				BFD416F216B4D5990077C317 /* GBASettingsManager.m in Sources */,
 				BFB0792B16DFCD6D000C3311 /* video.c in Sources */,
+				BFC837F2170D3DE800063DA3 /* DocWatchHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

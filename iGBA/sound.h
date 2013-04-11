@@ -58,8 +58,8 @@ typedef struct
   // The + 1 is to give some extra room for linear interpolation
   // when wrapping around.
   u32 buffer_index;
-  unsigned long /*direct_sound_status_type Riley Testut**/ status;
-  unsigned long /*direct_sound_volume_type Riley Testut **/ volume;
+  direct_sound_status_type status;
+  direct_sound_volume_type volume;
   u32 last_cpu_ticks;
 } direct_sound_struct;
 
@@ -97,7 +97,7 @@ typedef struct
   u32 wave_type;
   u32 wave_bank;
   u32 wave_volume;
-  unsigned long /*gbc_sound_status_type Riley Testut**/ status;
+  gbc_sound_status_type status;
   u32 active_flag;
   u32 master_enable;
   s8 *sample_data;

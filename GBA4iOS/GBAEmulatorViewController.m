@@ -9,6 +9,8 @@
 #import "GBAEmulatorViewController.h"
 #import "GBASettingsManager.h"
 
+#include <sys/sysctl.h>
+
 char __savefileName[512];
 char __lastfileName[512];
 char *__fileName;
@@ -23,6 +25,8 @@ extern void save_game_state(char *filepath);
 extern void load_game_state(char *filepath);
 extern volatile int __emulation_paused;
 extern char *savestate_directory;
+
+extern int use_fastest_speed;
 
 float __audioVolume = 1.0;
 
@@ -62,6 +66,8 @@ static GBAEmulatorViewController *emulatorViewController;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    use_fastest_speed = 0;
     
     self.view.backgroundColor = [UIColor blackColor];
     
@@ -218,36 +224,38 @@ static GBAEmulatorViewController *emulatorViewController;
     return _romSaveStateDirectory;
 }
 
+unsigned int numberOfCPUCores()
+{
+    size_t len;
+    unsigned int ncpu;
+    
+    len = sizeof(ncpu);
+    sysctlbyname ("hw.ncpu",&ncpu,&len,NULL,0);
+    
+    return ncpu;
+}
+
+- (BOOL)deviceSupportsMaximumSpeed {
+    return (numberOfCPUCores() > 1);
+}
+
 - (void)pauseMenu {
     _romPauseTime = CFAbsoluteTimeGetCurrent();
     __emulation_paused = 1;
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Paused", @"") message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Quit Game", @"") 
-                                          otherButtonTitles:NSLocalizedString(@"Resume", @""), NSLocalizedString(@"Save State", @""), NSLocalizedString(@"Load State", @""), nil];
-    [alert show];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    switch (buttonIndex) {
-        case 2:
-            [self showActionSheetWithTag:1];
-            //save_game_state();
-            break;
-            
-        case 3:
-            [self showActionSheetWithTag:2];
-            //load_game_state();
-            break;
-            
-        case 0:
-            __emulation_paused = 0;
-            [self quitROM];
-            break;
-            
-        default:
-            __emulation_paused = 0;
-            break;
-    }
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Paused", @"") delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     
+    if ([self deviceSupportsMaximumSpeed]) {
+        [actionSheet addButtonWithTitle:NSLocalizedString(@"Toggle Speed", @"")];
+    }
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"Save State", @"")];
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"Load State", @"")];
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"Quit Game", @"")];
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", @"")];
+    
+    [actionSheet setCancelButtonIndex:actionSheet.numberOfButtons - 1];
+    [actionSheet setDestructiveButtonIndex:actionSheet.numberOfButtons - 2];
+    actionSheet.tag = 3;
+    [actionSheet showInView:self.controllerViewController.view];
 }
 
 - (void)showActionSheetWithTag:(NSInteger)tag {
@@ -287,6 +295,10 @@ static GBAEmulatorViewController *emulatorViewController;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (actionSheet.tag == 3) {
+        return [self pauseMenuClickedButtonAtIndex:buttonIndex];
+    }
+    
     NSString *saveStateInfoPath = [self.romSaveStateDirectory stringByAppendingPathComponent:@"info.plist"];
     
     if (actionSheet.tag == 2 && [GBASettingsManager sharedManager].autoSave) {
@@ -321,16 +333,74 @@ static GBAEmulatorViewController *emulatorViewController;
     }
     else if (actionSheet.tag == 2 && buttonIndex != 5) {
         
-        if (buttonIndex >= 0) {
-            if ([GBASettingsManager sharedManager].autoSave) {
+        if ([GBASettingsManager sharedManager].autoSave) {
+            if (buttonIndex >= 0) {
                 [self autosaveSaveState];
+            }
+            else {
+                NSString *backupFilepath = [self.romSaveStateDirectory stringByAppendingPathComponent:@"backup.svs"];
+                if (_romPauseTime - _romStartTime >= 3.0f) {
+                    [self saveStateToPath:backupFilepath];
+                }
             }
         }
         
         load_game_state(saveStateFilepath);
+        
+        if ([GBASettingsManager sharedManager].autoSave) {
+            if (buttonIndex < 0) {
+                NSString *backupFilepath = [self.romSaveStateDirectory stringByAppendingPathComponent:@"backup.svs"];
+                
+                NSFileManager *fileManager = [[NSFileManager alloc] init];
+                [fileManager removeItemAtPath:filepath error:NULL];
+                [fileManager moveItemAtPath:backupFilepath toPath:filepath error:NULL];
+            }
+        }
+        
+        
+    }
+     __emulation_paused = 0;
+}
+
+- (void)pauseMenuClickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (![self deviceSupportsMaximumSpeed]) {
+        buttonIndex++;
     }
     
-     __emulation_paused = 0;
+    switch (buttonIndex) {
+        case 0:
+            
+            if (use_fastest_speed == 0) {
+                use_fastest_speed = 1;
+            }
+            else {
+                use_fastest_speed = 0;
+            }
+            
+            __emulation_paused = 0;
+            
+            break;
+            
+            
+        case 1:
+            [self showActionSheetWithTag:1];
+            //save_game_state();
+            break;
+            
+        case 2:
+            [self showActionSheetWithTag:2];
+            //load_game_state();
+            break;
+            
+        case 3:
+            __emulation_paused = 0;
+            [self quitROM];
+            break;
+            
+        default:
+            __emulation_paused = 0;
+            break;
+    }
 }
 
 void uncaughtExceptionHandler(NSException *exception) {
@@ -350,10 +420,14 @@ void uncaughtExceptionHandler(NSException *exception) {
     if (_romPauseTime - _romStartTime >= 3.0f) {
         // If the user loads a save state in the first 3 seconds, the autosave would probably be useless to them as it would take them back to the title screen of their game
         NSString *filepath = [self.romSaveStateDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"autosave.svs"]];
-        char *saveStateFilepath = strdup((char *)[filepath UTF8String]);
-        
-        save_game_state(saveStateFilepath);
+        [self saveStateToPath:filepath];
     }
+}
+
+- (void)saveStateToPath:(NSString *)filepath {
+    char *saveStateFilepath = strdup((char *)[filepath UTF8String]);
+    
+    save_game_state(saveStateFilepath);
 }
 
 @end

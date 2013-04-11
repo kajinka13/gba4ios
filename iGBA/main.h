@@ -49,8 +49,8 @@ typedef struct
   u32 prescale;
   u32 stop_cpu_ticks;
   fixed16_16 frequency_step;
-  int /*timer_ds_channel_type Riley Testut**/ direct_sound_channels;
-  /*timer_irq_type Riley Testut**/ unsigned long irq;
+  timer_ds_channel_type direct_sound_channels;
+  timer_irq_type irq;
   timer_status_type status;
 } timer_type;
 
@@ -64,7 +64,7 @@ typedef enum
 extern u32 cpu_ticks;
 extern u32 frame_ticks;
 extern u32 execute_cycles;
-extern /*frameskip_type Riley Testut**/ unsigned long current_frameskip_type;
+extern frameskip_type current_frameskip_type;
 extern u32 frameskip_value;
 extern u32 random_skip;
 extern u32 global_cycles_per_instruction;
@@ -92,6 +92,8 @@ extern u8 main_path[512];
 
 extern u32 update_backup_flag;
 extern u32 clock_speed;
+
+extern u32 use_fastest_speed;
 
 u32 update_gba();
 void reset_gba();
@@ -134,7 +136,7 @@ u32 file_length(u8 *dummy, FILE *fp);
 
 #ifdef PC_BUILD
 
-/*u32 file_length(u8 *dummy, FILE *fp); Riley Testut**/
+u32 file_length(u8 *dummy, FILE *fp);
 
 #endif
 

@@ -3411,8 +3411,8 @@ s32 translate_block_##type(u32 pc, translation_region_type                    \
   return 0;                                                                   \
 }                                                                             \
 
-//translate_block_builder(arm); Riley Testut*
-//translate_block_builder(thumb); Riley Testut*
+//translate_block_builder(arm); **Riley Testut**
+//translate_block_builder(thumb); **Riley Testut**
 
 void flush_translation_cache_ram()
 {

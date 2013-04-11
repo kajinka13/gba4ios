@@ -490,7 +490,7 @@ struct _menu_option_type
   u32 num_options;
   char *help_string;
   u32 line_number;
-  /*menu_option_type_enum Riley Testut**/ int option_type;
+  menu_option_type_enum option_type;
 };
 
 typedef struct _menu_option_type menu_option_type;

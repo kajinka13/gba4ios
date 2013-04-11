@@ -34,7 +34,23 @@ extern int gpSPhone_SavePreferences();
         
     return YES;
 }
-							
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    if (url != nil && [url isFileURL]) {\
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+        
+        NSString *importedPath = [url path];
+        NSString *filename = [importedPath lastPathComponent];
+        NSString *destination = [documentsDirectory stringByAppendingPathComponent:filename];
+        
+        NSFileManager *fileManager = [[NSFileManager alloc] init];
+        [fileManager moveItemAtPath:importedPath toPath:destination error:NULL];
+        [fileManager removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:@"Inbox"] error:NULL];
+    }
+    return YES;
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

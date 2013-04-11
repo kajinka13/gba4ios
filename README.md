@@ -1,13 +1,14 @@
 GBA4iOS
 =======
 
-A fast GBA emulator for the iPhone/iPod Touch based on version 1.8.0 of gpSPhone by zodttd (https://github.com/zodttd/gpSphone). This version can be compiled directly in Xcode and deployed just like any other app. No jailbreak required.
+A fast GBA emulator for the iPhone/iPod Touch based on version 1.8.0 of [gpSPhone by zodttd](https://github.com/zodttd/gpSphone). This version can be compiled directly in Xcode and deployed just like any other app. No jailbreak required.
 
-__NEW IN VERSION 1.5 OF GBA4iOS__
+__NEW IN VERSION 1.6 OF GBA4iOS__
 
-* Can now rename ROMs! Tap and hold a ROM in the table view, and an alert will pop up to let you rename it to anything you want. Don't worry about it messing up your saves or save states, they'll all work just fine after the renaming. (Thanks Wrsford!)
-* Auto Save. Did you ever accidentally lose your progress in a ROM due to something stupid like quitting the ROM by mistake or the app crashing? No need to worry! Now, whenever you load a save state, quit a ROM, or the app crashes, GBA4iOS will create an auto save state you can reload just like any other save state. You never have to worry about losing your progress again! (It can be turned off, but why would you want that?)
-* Check For Updates. Tired of having to check Github or my Twitter feed (@iSkythe if you're wondering) to see if there are updates to GBA4iOS? A new option (enabled by default) checks to see if there are any updates on Github, and if so will show an alert detailing all the changes. Don't worry about it constantly checking though, it'll only check every 3 days.
+* Toggle Speed! From the pause menu, you can now toggle between real game speed and extremely-fast-like-OMG speed, similar to the speed function in VisualBoyAdvance. (Only supported on iPhone 4S+, iPad 2+, and iPod Touch 5th Gen+)
+* 128KB Saves. Upset that you can't save your progress in Pokemon Fire Red, or are you maybe tired of having just a white screen appear for certain games? Worry no longer, these ROMs are now 100% supported!
+* "Open In…" Support. Now if you're out and about and download a ROM in Safari, you can simply tap "Open In…", select GBA4iOS, and it'll import into the app for you!
+* No More Pull-To-Refresh. Now, the ROM selection screen will update automatically when you add a ROM through iTunes File Sharing, no need to manually refresh.
 
 __Other Features__
 
@@ -20,8 +21,16 @@ __Other Features__
 * iTunes File Sharing support
 * Works on non-jailbroken phones
 * FAST
+* Renaming ROMs. Tap and hold on a ROM, and you can rename it.
+* Auto save.
 
 __Version History__
+
+_1.5_
+
+* Can now rename ROMs! Tap and hold a ROM in the table view, and an alert will pop up to let you rename it to anything you want. Don't worry about it messing up your saves or save states, they'll all work just fine after the renaming. (Thanks Wrsford!)
+* Auto Save. Did you ever accidentally lose your progress in a ROM due to something stupid like quitting the ROM by mistake or the app crashing? No need to worry! Now, whenever you load a save state, quit a ROM, or the app crashes, GBA4iOS will create an auto save state you can reload just like any other save state. You never have to worry about losing your progress again! (It can be turned off, but why would you want that?)
+* Check For Updates. Tired of having to check Github or my Twitter feed (@iSkythe if you're wondering) to see if there are updates to GBA4iOS? A new option (enabled by default) checks to see if there are any updates on Github, and if so will show an alert detailing all the changes. Don't worry about it constantly checking though, it'll only check once a day.
 
 _1.4_
 
@@ -50,6 +59,6 @@ _1.1_
 * Can now quit ROMs without quitting the app.
 
 
-For all the latest news on GBA4iOS, SNES4iOS, or any of my other projects I'm working on, I'm @iSkythe on Twitter (http://twitter.com/iSkythe)
+For all the latest news on GBA4iOS, SNES4iOS, or any of my other projects I'm working on, I'm [@iSkythe on Twitter](http://twitter.com/iSkythe)
 
 All that's left to say is enjoy playing your Pokémons and your Marios on your phone!

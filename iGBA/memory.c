@@ -1977,22 +1977,25 @@ s32 parse_config_line(u8 *current_line, u8 *current_variable, u8 *current_value)
   *line_ptr_new = 0;
   strcpy(current_variable, line_ptr);
   line_ptr_new = skip_spaces(line_ptr_new + 1);
-
+    
   if(*line_ptr_new != '=')
     return -1;
 
   line_ptr_new = skip_spaces(line_ptr_new + 1);
+        
   strcpy(current_value, line_ptr_new);
   line_ptr_new = current_value + strlen(current_value) - 1;
+        
   if(*line_ptr_new == '\n')
   {
-    line_ptr_new--;
+    //line_ptr_new--; Riley Testut. This shortens the line by one character, but that messes things up. I don't know why this is here, but it works by commenting it out. AKA don't uncomment it stupid.
     *line_ptr_new = 0;
   }
+    
 
   if(*line_ptr_new == '\r')
     *line_ptr_new = 0;
-
+    
   return 0;
 }
 
@@ -2012,6 +2015,10 @@ s32 load_game_config(u8 *gamepak_title, u8 *gamepak_code, u8 *gamepak_maker)
   bios_rom[0x2C] = 0x00;
   translation_gate_targets = 0;
   flash_device_id = FLASH_DEVICE_MACRONIX_64KB;
+    
+    /*printf("\nTitle: %s", gamepak_title);
+    printf("\nCode: %s", gamepak_code);
+    printf("\nMaker: %s\n", gamepak_maker);*/
 
 #if (defined(PSP_BUILD) || defined(ARM_ARCH)) && !defined(_WIN32_WCE)
   sprintf(config_path, "%s/%s", main_path, CONFIG_FILENAME);
@@ -2830,7 +2837,7 @@ cpu_alert_type dma_transfer(dma_transfer_type *dma)
 
   if(dma->irq)
   {
-    /*irq_type Riley Testut**/ int irq_raised = IRQ_DMA0 << dma->dma_channel;
+    irq_type irq_raised = IRQ_DMA0 << dma->dma_channel;
     raise_interrupt(irq_raised);
     return_value = CPU_ALERT_IRQ;
   }
@@ -3153,7 +3160,6 @@ void bios_region_read_protect()
 void load_state(char *savestate_filename)
 {
     
-    printf(savestate_filename);
   file_open(savestate_file, savestate_filename, read);
   if(file_check_valid(savestate_file))
   {

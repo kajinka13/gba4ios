@@ -4330,7 +4330,7 @@ void set_cpu_mode(cpu_mode_type new_mode)
   }
 }
 
-void raise_interrupt(/*irq_type Riley Testut**/ int irq_raised)
+void raise_interrupt(irq_type irq_raised)
 {
   // The specific IRQ must be enabled in IE, master IRQ enable must be on,
   // and it must be on in the flags.

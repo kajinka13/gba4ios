@@ -61,7 +61,6 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
     [self.view addSubview:self.imageView];
     self.imageView.image = [self getControllerImage];
     [self getControllerCoords];
-    
 }
 
 - (void)updateUI {
@@ -138,13 +137,6 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
     }
 }
 
-#define MyCGRectContainsPoint(rect, point)						  \
-(((point.x >= rect.origin.x) &&								        \
-(point.y >= rect.origin.y) &&							          \
-(point.x <= rect.origin.x + rect.size.width) &&			\
-(point.y <= rect.origin.y + rect.size.height)) ? 1 : 0)
-
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {	    
 	int touchstate[10];
@@ -183,7 +175,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
             
 			touchstate[i] = 1;
             		
-			if (MyCGRectContainsPoint(Left, point)) 
+			if (CGRectContainsPoint(Left, point)) 
 			{
 				pressedButtons |= BIT_L;
 				newtouches[i] = BIT_L;
@@ -191,7 +183,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
                     [self.sustainedButtons addObject:[NSNumber numberWithUnsignedInt:BIT_L]];
                 }
 			}
-			else if (MyCGRectContainsPoint(Right, point)) 
+			else if (CGRectContainsPoint(Right, point)) 
 			{
 				pressedButtons |= BIT_R;
 				newtouches[i] = BIT_R;
@@ -199,7 +191,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
                     [self.sustainedButtons addObject:[NSNumber numberWithUnsignedInt:BIT_R]];
                 }
 			}
-			else if (MyCGRectContainsPoint(Up, point)) 
+			else if (CGRectContainsPoint(Up, point)) 
 			{
 				pressedButtons |= BIT_U;
 				newtouches[i] = BIT_U;
@@ -207,7 +199,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
                     [self.sustainedButtons addObject:[NSNumber numberWithUnsignedInt:BIT_U]];
                 }
 			}
-			else if (MyCGRectContainsPoint(Down, point))
+			else if (CGRectContainsPoint(Down, point))
 			{
 				pressedButtons |= BIT_D;
 				newtouches[i] = BIT_D;
@@ -215,7 +207,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
                     [self.sustainedButtons addObject:[NSNumber numberWithUnsignedInt:BIT_D]];
                 }
 			}
-			else if (MyCGRectContainsPoint(UpLeft, point)) 
+			else if (CGRectContainsPoint(UpLeft, point)) 
 			{
 				pressedButtons |= BIT_U | BIT_L;
 				newtouches[i] = BIT_U | BIT_L;
@@ -224,7 +216,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
                     [self.sustainedButtons addObject:[NSNumber numberWithUnsignedInt:BIT_L]];
                 }
 			} 
-			else if (MyCGRectContainsPoint(DownLeft, point)) 
+			else if (CGRectContainsPoint(DownLeft, point)) 
 			{
 				pressedButtons |= BIT_D | BIT_L;
 				newtouches[i] = BIT_D | BIT_L;
@@ -233,7 +225,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
                     [self.sustainedButtons addObject:[NSNumber numberWithUnsignedInt:BIT_L]];
                 }
 			}
-			else if (MyCGRectContainsPoint(UpRight, point)) 
+			else if (CGRectContainsPoint(UpRight, point)) 
 			{
 				pressedButtons |= BIT_U | BIT_R;
 				newtouches[i] = BIT_U | BIT_R;
@@ -242,7 +234,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
                     [self.sustainedButtons addObject:[NSNumber numberWithUnsignedInt:BIT_R]];
                 }
 			}
-			else if (MyCGRectContainsPoint(DownRight, point)) 
+			else if (CGRectContainsPoint(DownRight, point)) 
 			{
 				pressedButtons |= BIT_D | BIT_R;
 				newtouches[i] = BIT_D | BIT_R;
@@ -251,7 +243,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
                     [self.sustainedButtons addObject:[NSNumber numberWithUnsignedInt:BIT_R]];
                 }
 			}	
-            else if (MyCGRectContainsPoint(A, point)) 
+            else if (CGRectContainsPoint(A, point)) 
 			{
 				pressedButtons |= BIT_A;
 				newtouches[i] = BIT_A;
@@ -259,7 +251,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
                     [self.sustainedButtons addObject:[NSNumber numberWithUnsignedInt:BIT_A]];
                 }
 			}
-            else if (MyCGRectContainsPoint(B, point)) 
+            else if (CGRectContainsPoint(B, point)) 
 			{
 				pressedButtons |= BIT_B;
 				newtouches[i] = BIT_B;
@@ -267,7 +259,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
                     [self.sustainedButtons addObject:[NSNumber numberWithUnsignedInt:BIT_B]];
                 }
 			}
-            else if (MyCGRectContainsPoint(AB, point)) 
+            else if (CGRectContainsPoint(AB, point)) 
 			{
 				pressedButtons |= BIT_A | BIT_B;
 				newtouches[i] = BIT_A | BIT_B;
@@ -276,7 +268,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
                     [self.sustainedButtons addObject:[NSNumber numberWithUnsignedInt:BIT_B]];
                 }
 			}
-			else if (MyCGRectContainsPoint(LPad, point)) 
+			else if (CGRectContainsPoint(LPad, point)) 
 			{
 				pressedButtons |= BIT_LPAD;
 				newtouches[i] = BIT_LPAD;
@@ -285,7 +277,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
                     [self.sustainedButtons addObject:[NSNumber numberWithUnsignedInt:BIT_LPAD]];
                 }
 			}
-			else if (MyCGRectContainsPoint(RPad, point)) 
+			else if (CGRectContainsPoint(RPad, point)) 
 			{
 				pressedButtons |= BIT_RPAD;
 				newtouches[i] = BIT_RPAD;
@@ -294,7 +286,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
                     [self.sustainedButtons addObject:[NSNumber numberWithUnsignedInt:BIT_RPAD]];
                 }
 			}			
-			else if (MyCGRectContainsPoint(Select, point)) 
+			else if (CGRectContainsPoint(Select, point)) 
 			{
 				pressedButtons |= BIT_SEL;
 				newtouches[i] = BIT_SEL;
@@ -302,7 +294,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
                     [self.sustainedButtons addObject:[NSNumber numberWithUnsignedInt:BIT_SEL]];
                 }
 			}
-			else if (MyCGRectContainsPoint(Start, point)) 
+			else if (CGRectContainsPoint(Start, point)) 
 			{
 				pressedButtons |= BIT_ST;
 				newtouches[i] = BIT_ST;
@@ -310,7 +302,7 @@ void rt_dispatch_sync_on_main_thread(dispatch_block_t block) {
                     [self.sustainedButtons addObject:[NSNumber numberWithUnsignedInt:BIT_ST]];
                 }
 			}
-			else if (MyCGRectContainsPoint(Menu, point)) 
+			else if (CGRectContainsPoint(Menu, point)) 
 			{
                 [emulatorViewController pauseMenu];
 			}
