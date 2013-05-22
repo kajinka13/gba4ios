@@ -23,7 +23,6 @@
 @property (strong, nonatomic) NSMutableDictionary *romDictionary;
 @property (strong, nonatomic) NSArray *romSections;
 @property (nonatomic) NSInteger currentSection_;
-@property (strong, nonatomic) PullToRefreshView *pullToRefreshView_;
 @property (copy, nonatomic) NSString *deletingRomPath;
 @property (strong, nonatomic) DocWatchHelper *docWatchHelper;
 @end
@@ -35,7 +34,6 @@
 @synthesize romSections;
 @synthesize currentSection_;
 @synthesize currentRomPath;
-@synthesize pullToRefreshView_;
 @synthesize deletingRomPath;
 
 - (void)awakeFromNib
@@ -114,11 +112,6 @@
 #pragma mark -
 #pragma mark ROM loading methods
 
-- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view;
-{
-    [self scanRomDirectory];
-}
-
 - (IBAction)scanRomDirectory {
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -162,12 +155,6 @@
     [self.tableView reloadData];
     
     [self importSaveStates];
-    
-    double delayInSeconds = 0.5;//gives the pull to refresh animation time to work, less jerky
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self.pullToRefreshView_ finishedLoading];
-    });
     
 }
 
@@ -512,7 +499,7 @@
     }
     else if (alertView.tag == UPDATE_AVAILABLE_TAG) {
         if (buttonIndex == 1) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://github.com/iSkythe/GBA4iOS"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://github.com/rileytestut/GBA4iOS"]];
         }
     }
     else if(buttonIndex > 0)

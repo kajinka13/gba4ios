@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -175,7 +175,7 @@
                                         <rect key="frame" x="0.0" y="357" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Sze-ve-5XG">
@@ -227,6 +227,16 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection footerTitle="Follow @rileytestut on Twitter for all the latest GBA4iOS updates." id="HLY-w8-HZS">
+                                <cells/>
+                            </tableViewSection>
+                            <tableViewSection id="1Qz-j0-5sm">
+                                <string key="footerTitle">Big thanks to Zodttd for writing the original code for gpSPhone. If you are jailbroken, you should definitely check him and his apps out. Without him, this app would not exist!</string>
+                                <cells/>
+                            </tableViewSection>
+                            <tableViewSection footerTitle="Retina controllers designed by Winfis, an excellent iOS Designer!" id="bSF-ne-UI8">
+                                <cells/>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="74I-Jk-pJq" id="HVx-as-THR"/>
@@ -252,7 +262,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIP-Zj-y9m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1253" y="-588"/>
+            <point key="canvasLocation" x="1103" y="-679"/>
         </scene>
         <!--Master View Controller - Master-->
         <scene sceneID="18">
@@ -322,41 +332,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23E-4X-Zeb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="727" y="-588"/>
+            <point key="canvasLocation" x="589" y="-599"/>
         </scene>
     </scenes>
     <resources>
         <image name="Gear.png" width="20" height="20"/>
     </resources>
-    <classes>
-        <class className="GBAMasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GBAMasterViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="getMoreROMs"/>
-                <relationship kind="action" name="scanRomDirectory"/>
-            </relationships>
-        </class>
-        <class className="GBASettingsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GBASettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="changeFrameskip:"/>
-                <relationship kind="action" name="changeLandscapeSkin:"/>
-                <relationship kind="action" name="changePortraitSkin:"/>
-                <relationship kind="action" name="closeSettings:"/>
-                <relationship kind="action" name="toggleAutoSave:"/>
-                <relationship kind="action" name="toggleCheats:"/>
-                <relationship kind="action" name="toggleCheckForUpdates:"/>
-                <relationship kind="action" name="toggleScaled:"/>
-                <relationship kind="outlet" name="autoSaveSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="cheatsSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="checkForUpdatesSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="frameskipSegmentedControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="landscapeSkinSegmentedControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="portraitSkinSegmentedControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="scaledSwitch" candidateClass="UISwitch"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

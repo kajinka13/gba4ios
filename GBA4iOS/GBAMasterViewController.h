@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "GBAEmulatorViewController.h"
-#import "PullToRefreshView.h"
 
 @class GBADetailViewController;
 
-@interface GBAMasterViewController : UITableViewController <PullToRefreshViewDelegate, UIAlertViewDelegate>
+@interface GBAMasterViewController : UITableViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) GBADetailViewController *detailViewController;
 @property (copy, nonatomic) NSString *currentRomPath;

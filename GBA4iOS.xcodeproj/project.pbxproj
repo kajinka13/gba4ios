@@ -13,9 +13,6 @@
 		BF1AE909157BC6E7001375E8 /* Gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1AE907157BC6E7001375E8 /* Gear@2x.png */; };
 		BF1AE90C157BC8BD001375E8 /* GearLandscape.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1AE90A157BC8BD001375E8 /* GearLandscape.png */; };
 		BF1AE90D157BC8BD001375E8 /* GearLandscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1AE90B157BC8BD001375E8 /* GearLandscape@2x.png */; };
-		BF1AE912157BC9D4001375E8 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1AE90E157BC9D4001375E8 /* arrow.png */; };
-		BF1AE913157BC9D4001375E8 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1AE90F157BC9D4001375E8 /* arrow@2x.png */; };
-		BF1AE914157BC9D4001375E8 /* PullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1AE911157BC9D4001375E8 /* PullToRefreshView.m */; };
 		BF1AE917157BF638001375E8 /* GBASettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1AE916157BF638001375E8 /* GBASettingsViewController.m */; };
 		BF3DD2671575B75400F918CE /* ScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3DD2661575B75400F918CE /* ScreenView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BF3DD2691575B82C00F918CE /* CoreSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3DD2681575B82C00F918CE /* CoreSurface.framework */; };
@@ -42,6 +39,10 @@
 		BF9250231574B8BF00036778 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9250221574B8BF00036778 /* AudioToolbox.framework */; };
 		BF92502E1574BF7C00036778 /* gba_bios.bin in Resources */ = {isa = PBXBuildFile; fileRef = BF92502D1574BF7C00036778 /* gba_bios.bin */; };
 		BFA35002157739CC0049C83B /* WebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA35001157739CC0049C83B /* WebBrowserViewController.m */; };
+		BFA6C1DB174D1BA5001B4BA7 /* controller_fs0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFA6C1DA174D1BA5001B4BA7 /* controller_fs0@2x.png */; };
+		BFA6C1DD174D1BAD001B4BA7 /* controller_fs1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFA6C1DC174D1BAD001B4BA7 /* controller_fs1@2x.png */; };
+		BFA6C1DF174D1BB9001B4BA7 /* controller_hs0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFA6C1DE174D1BB9001B4BA7 /* controller_hs0@2x.png */; };
+		BFA6C1E1174D1CD7001B4BA7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFA6C1E0174D1CD7001B4BA7 /* Default-568h@2x.png */; };
 		BFB0792B16DFCD6D000C3311 /* video.c in Sources */ = {isa = PBXBuildFile; fileRef = BFB0792916DFCD6D000C3311 /* video.c */; };
 		BFB33E6C169623760032A2A0 /* controller_fs1-568h.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB33E6B169623760032A2A0 /* controller_fs1-568h.txt */; };
 		BFB33E6F1696237E0032A2A0 /* controller_fs0-568h.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFB33E6E1696237E0032A2A0 /* controller_fs0-568h.txt */; };
@@ -81,7 +82,6 @@
 		BFB33FB216964DDF0032A2A0 /* sound.h.bak in Resources */ = {isa = PBXBuildFile; fileRef = BFB33F8716964DDF0032A2A0 /* sound.h.bak */; };
 		BFB33FB316964DDF0032A2A0 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = BFB33F8816964DDF0032A2A0 /* split.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		BFB33FB416964DDF0032A2A0 /* Version in Resources */ = {isa = PBXBuildFile; fileRef = BFB33F9016964DDF0032A2A0 /* Version */; };
-		BFB33FB616964DFE0032A2A0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB33FB516964DFE0032A2A0 /* Default-568h@2x.png */; };
 		BFB33FBB16967B890032A2A0 /* GBCEmulatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB33FBA16967B890032A2A0 /* GBCEmulatorViewController.m */; };
 		BFB33FBF1696853E0032A2A0 /* GBCScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB33FBE1696853E0032A2A0 /* GBCScreenViewController.m */; };
 		BFB33FC2169688870032A2A0 /* ScreenViewGameBoyColor.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB33FC1169688870032A2A0 /* ScreenViewGameBoyColor.m */; };
@@ -104,6 +104,8 @@
 		BFD4170516B4DABC0077C317 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD4170416B4DABB0077C317 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BFD4170716B4DAC30077C317 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD4170616B4DAC30077C317 /* StoreKit.framework */; };
 		BFD4170916B4DACC0077C317 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD4170816B4DACC0077C317 /* SystemConfiguration.framework */; };
+		BFDFD347174D2B790021815D /* controller_fs1-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFDFD346174D2B790021815D /* controller_fs1-568h@2x.png */; };
+		BFDFD349174D2BC70021815D /* controller_fs0-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFDFD348174D2BC70021815D /* controller_fs0-568h@2x.png */; };
 		BFE1E7E01575D56D00D5CA43 /* controller_fs0.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE1E7CC1575D56D00D5CA43 /* controller_fs0.png */; };
 		BFE1E7E11575D56D00D5CA43 /* controller_fs0.txt in Resources */ = {isa = PBXBuildFile; fileRef = BFE1E7CD1575D56D00D5CA43 /* controller_fs0.txt */; };
 		BFE1E7E21575D56D00D5CA43 /* controller_fs1.png in Resources */ = {isa = PBXBuildFile; fileRef = BFE1E7CE1575D56D00D5CA43 /* controller_fs1.png */; };
@@ -132,10 +134,6 @@
 		BF1AE907157BC6E7001375E8 /* Gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gear@2x.png"; sourceTree = "<group>"; };
 		BF1AE90A157BC8BD001375E8 /* GearLandscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GearLandscape.png; sourceTree = "<group>"; };
 		BF1AE90B157BC8BD001375E8 /* GearLandscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GearLandscape@2x.png"; sourceTree = "<group>"; };
-		BF1AE90E157BC9D4001375E8 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
-		BF1AE90F157BC9D4001375E8 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
-		BF1AE910157BC9D4001375E8 /* PullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullToRefreshView.h; sourceTree = "<group>"; };
-		BF1AE911157BC9D4001375E8 /* PullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshView.m; sourceTree = "<group>"; };
 		BF1AE915157BF638001375E8 /* GBASettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBASettingsViewController.h; sourceTree = "<group>"; };
 		BF1AE916157BF638001375E8 /* GBASettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBASettingsViewController.m; sourceTree = "<group>"; };
 		BF3DD2651575B75400F918CE /* ScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenView.h; sourceTree = "<group>"; };
@@ -220,6 +218,10 @@
 		BF92502D1574BF7C00036778 /* gba_bios.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = gba_bios.bin; sourceTree = "<group>"; };
 		BFA35000157739CC0049C83B /* WebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebBrowserViewController.h; sourceTree = "<group>"; };
 		BFA35001157739CC0049C83B /* WebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebBrowserViewController.m; sourceTree = "<group>"; };
+		BFA6C1DA174D1BA5001B4BA7 /* controller_fs0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_fs0@2x.png"; sourceTree = "<group>"; };
+		BFA6C1DC174D1BAD001B4BA7 /* controller_fs1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_fs1@2x.png"; sourceTree = "<group>"; };
+		BFA6C1DE174D1BB9001B4BA7 /* controller_hs0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_hs0@2x.png"; sourceTree = "<group>"; };
+		BFA6C1E0174D1CD7001B4BA7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BFB0792916DFCD6D000C3311 /* video.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = video.c; sourceTree = "<group>"; };
 		BFB0792A16DFCD6D000C3311 /* video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = video.h; sourceTree = "<group>"; };
 		BFB33E6B169623760032A2A0 /* controller_fs1-568h.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "controller_fs1-568h.txt"; sourceTree = "<group>"; };
@@ -321,7 +323,6 @@
 		BFB33F8E16964DDF0032A2A0 /* UITransitionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UITransitionView.h; path = iGBC/UITransitionView.h; sourceTree = SOURCE_ROOT; };
 		BFB33F8F16964DDF0032A2A0 /* UIView-Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView-Geometry.h"; path = "iGBC/UIView-Geometry.h"; sourceTree = SOURCE_ROOT; };
 		BFB33F9016964DDF0032A2A0 /* Version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Version; path = iGBC/Version; sourceTree = SOURCE_ROOT; };
-		BFB33FB516964DFE0032A2A0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BFB33FB916967B890032A2A0 /* GBCEmulatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCEmulatorViewController.h; sourceTree = "<group>"; };
 		BFB33FBA16967B890032A2A0 /* GBCEmulatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBCEmulatorViewController.m; sourceTree = "<group>"; };
 		BFB33FBD1696853E0032A2A0 /* GBCScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBCScreenViewController.h; sourceTree = "<group>"; };
@@ -350,6 +351,8 @@
 		BFD4170416B4DABB0077C317 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		BFD4170616B4DAC30077C317 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BFD4170816B4DACC0077C317 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BFDFD346174D2B790021815D /* controller_fs1-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_fs1-568h@2x.png"; sourceTree = "<group>"; };
+		BFDFD348174D2BC70021815D /* controller_fs0-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_fs0-568h@2x.png"; sourceTree = "<group>"; };
 		BFE1E7CC1575D56D00D5CA43 /* controller_fs0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = controller_fs0.png; sourceTree = "<group>"; };
 		BFE1E7CD1575D56D00D5CA43 /* controller_fs0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = controller_fs0.txt; sourceTree = "<group>"; };
 		BFE1E7CE1575D56D00D5CA43 /* controller_fs1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = controller_fs1.png; sourceTree = "<group>"; };
@@ -411,8 +414,6 @@
 		BF1AE918157BF643001375E8 /* Imported Files */ = {
 			isa = PBXGroup;
 			children = (
-				BF1AE910157BC9D4001375E8 /* PullToRefreshView.h */,
-				BF1AE911157BC9D4001375E8 /* PullToRefreshView.m */,
 				BFA35000157739CC0049C83B /* WebBrowserViewController.h */,
 				BFA35001157739CC0049C83B /* WebBrowserViewController.m */,
 			);
@@ -736,8 +737,6 @@
 				BFC837EE170CFC8900063DA3 /* game_config.txt */,
 				BFE400D8156CA70100E33279 /* MainStoryboard_iPhone.storyboard */,
 				BFE400DB156CA70100E33279 /* MainStoryboard_iPad.storyboard */,
-				BF1AE90E157BC9D4001375E8 /* arrow.png */,
-				BF1AE90F157BC9D4001375E8 /* arrow@2x.png */,
 				BF1AE906157BC6E7001375E8 /* Gear.png */,
 				BF1AE907157BC6E7001375E8 /* Gear@2x.png */,
 				BF1AE90A157BC8BD001375E8 /* GearLandscape.png */,
@@ -757,14 +756,19 @@
 				BFB33FCF16968CA60032A2A0 /* gbc_controller_hs0.png */,
 				BFB33FD016968CA60032A2A0 /* gbc_controller_hs0.txt */,
 				BFE1E7CC1575D56D00D5CA43 /* controller_fs0.png */,
+				BFA6C1DA174D1BA5001B4BA7 /* controller_fs0@2x.png */,
 				BFE1E7CD1575D56D00D5CA43 /* controller_fs0.txt */,
 				BF4F3FFE16956B0100D004F2 /* controller_fs0-568h.png */,
+				BFDFD348174D2BC70021815D /* controller_fs0-568h@2x.png */,
 				BFB33E6E1696237E0032A2A0 /* controller_fs0-568h.txt */,
 				BFE1E7CE1575D56D00D5CA43 /* controller_fs1.png */,
+				BFA6C1DC174D1BAD001B4BA7 /* controller_fs1@2x.png */,
 				BFE1E7CF1575D56D00D5CA43 /* controller_fs1.txt */,
 				BF4F400016956DFD00D004F2 /* controller_fs1-568h.png */,
+				BFDFD346174D2B790021815D /* controller_fs1-568h@2x.png */,
 				BFB33E6B169623760032A2A0 /* controller_fs1-568h.txt */,
 				BFE1E7D61575D56D00D5CA43 /* controller_hs0.png */,
+				BFA6C1DE174D1BB9001B4BA7 /* controller_hs0@2x.png */,
 				BFE1E7D71575D56D00D5CA43 /* controller_hs0.txt */,
 				BFE1E7D81575D56D00D5CA43 /* controller_hs1.png */,
 				BFE1E7D91575D56D00D5CA43 /* controller_hs1.txt */,
@@ -775,7 +779,7 @@
 		BFE400B7156CA70000E33279 = {
 			isa = PBXGroup;
 			children = (
-				BFB33FB516964DFE0032A2A0 /* Default-568h@2x.png */,
+				BFA6C1E0174D1CD7001B4BA7 /* Default-568h@2x.png */,
 				BFE400CC156CA70000E33279 /* GBA4iOS */,
 				BFE1E7C91575D54C00D5CA43 /* Resources */,
 				BFE400C5156CA70000E33279 /* Frameworks */,
@@ -918,8 +922,6 @@
 				BF1AE909157BC6E7001375E8 /* Gear@2x.png in Resources */,
 				BF1AE90C157BC8BD001375E8 /* GearLandscape.png in Resources */,
 				BF1AE90D157BC8BD001375E8 /* GearLandscape@2x.png in Resources */,
-				BF1AE912157BC9D4001375E8 /* arrow.png in Resources */,
-				BF1AE913157BC9D4001375E8 /* arrow@2x.png in Resources */,
 				BF4F3FFF16956B0200D004F2 /* controller_fs0-568h.png in Resources */,
 				BF4F400116956DFD00D004F2 /* controller_fs1-568h.png in Resources */,
 				BFB33E6C169623760032A2A0 /* controller_fs1-568h.txt in Resources */,
@@ -933,12 +935,17 @@
 				BFB33FAF16964DDF0032A2A0 /* sample.rc in Resources */,
 				BFB33FB216964DDF0032A2A0 /* sound.h.bak in Resources */,
 				BFB33FB416964DDF0032A2A0 /* Version in Resources */,
-				BFB33FB616964DFE0032A2A0 /* Default-568h@2x.png in Resources */,
 				BFB33FCD16968C990032A2A0 /* gbc_controller_fs2.png in Resources */,
 				BFB33FCE16968C990032A2A0 /* gbc_controller_fs2.txt in Resources */,
 				BFB33FD116968CA60032A2A0 /* gbc_controller_hs0.png in Resources */,
 				BFB33FD216968CA60032A2A0 /* gbc_controller_hs0.txt in Resources */,
 				BFC837EF170CFC8900063DA3 /* game_config.txt in Resources */,
+				BFA6C1DB174D1BA5001B4BA7 /* controller_fs0@2x.png in Resources */,
+				BFA6C1DD174D1BAD001B4BA7 /* controller_fs1@2x.png in Resources */,
+				BFA6C1DF174D1BB9001B4BA7 /* controller_hs0@2x.png in Resources */,
+				BFA6C1E1174D1CD7001B4BA7 /* Default-568h@2x.png in Resources */,
+				BFDFD347174D2B790021815D /* controller_fs1-568h@2x.png in Resources */,
+				BFDFD349174D2BC70021815D /* controller_fs0-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -957,7 +964,6 @@
 				BF3DD2841575CE2000F918CE /* GBAEmulatorViewController.m in Sources */,
 				BFE1E8001575DCF400D5CA43 /* GBAControllerViewController.m in Sources */,
 				BFA35002157739CC0049C83B /* WebBrowserViewController.m in Sources */,
-				BF1AE914157BC9D4001375E8 /* PullToRefreshView.m in Sources */,
 				BF1AE917157BF638001375E8 /* GBASettingsViewController.m in Sources */,
 				BF4F3FB81695599800D004F2 /* zip.c in Sources */,
 				BF4F3FB91695599800D004F2 /* cpu_threaded.c in Sources */,

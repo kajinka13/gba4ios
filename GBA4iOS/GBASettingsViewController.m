@@ -12,6 +12,8 @@
 
 @interface GBASettingsViewController ()
 
+@property (copy, nonatomic) NSDictionary *footerDictionary;
+
 @end
 
 @implementation GBASettingsViewController
@@ -43,6 +45,8 @@
     self.autoSaveSwitch.on = [GBASettingsManager sharedManager].autoSave;
     self.checkForUpdatesSwitch.on = [GBASettingsManager sharedManager].checkForUpdates;
     
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"HeaderFooterViewIdentifier"];
+        
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -67,6 +71,38 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+#pragma mark - Headers/Footers
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    static NSString *HeaderFooterViewIdentifier = @"HeaderFooterViewIdentifier";
+    
+    UITableViewHeaderFooterView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderFooterViewIdentifier];
+    
+    if ([footerView gestureRecognizers] == 0) {
+        
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didDetectTap:)];
+        [footerView addGestureRecognizer:tapGestureRecognizer];
+    }
+    
+    footerView.tag = section;
+    
+    return footerView;
+}
+
+- (void)didDetectTap:(UITapGestureRecognizer *)tapGestureRecognizer {
+    UITableViewHeaderFooterView *footerView = (UITableViewHeaderFooterView *)[tapGestureRecognizer view];
+    if (footerView.tag == 2) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://twitter.com/rileytestut"]];
+    }
+    else if (footerView.tag == 3) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://twitter.com/zodttd"]];
+    }
+    else if (footerView.tag == 4) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://winfisdesign.blogspot.com"]];
+    }
 }
 
 #pragma mark - Change Settings

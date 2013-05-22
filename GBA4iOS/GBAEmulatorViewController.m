@@ -97,7 +97,7 @@ static GBAEmulatorViewController *emulatorViewController;
     
     char cFileName[256];
     
-    strlcpy(cFileName, [ romFilePath cStringUsingEncoding: NSASCIIStringEncoding], sizeof(cFileName));
+    strlcpy(cFileName, [ romFilePath cStringUsingEncoding: NSUTF8StringEncoding], sizeof(cFileName));
         
     __fileName = strdup((char *)[romFilePath UTF8String]);
     

@@ -2176,18 +2176,18 @@ u32 load_gamepak(char *name)
         file_size = load_gamepak_raw(name);
     
     // A dumb April fool's joke was here once :o
-    
+        
     if(file_size != -1)
     {
-      
+        
     gamepak_size = (file_size + 0x7FFF) & ~0x7FFF;
 
     strcpy(backup_filename, name);
     strncpy(gamepak_filename, name, 512);
     change_ext(gamepak_filename, backup_filename, ".sav");
-
+        
     load_backup(backup_filename);
-
+        
     memcpy(gamepak_title, gamepak_rom + 0xA0, 12);
     memcpy(gamepak_code, gamepak_rom + 0xAC, 4);
     memcpy(gamepak_maker, gamepak_rom + 0xB0, 2);
@@ -2200,7 +2200,7 @@ u32 load_gamepak(char *name)
 
     change_ext(gamepak_filename, cheats_filename, ".cht");
     add_cheats(cheats_filename);
-
+        
     return 0;
   }
 
