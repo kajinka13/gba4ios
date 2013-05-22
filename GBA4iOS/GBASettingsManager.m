@@ -47,7 +47,7 @@
 - (void)updateSettings {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSDictionary *defaultPreferences = @{@"scaled" : @YES, @"autoSave" : @YES, @"checkForUpdates" : @YES};
+    NSDictionary *defaultPreferences = @{@"scaled" : @YES, @"autoSave" : @YES, @"checkForUpdates" : @YES, @"landscapeSkin" : @1};
     
     [defaults registerDefaults:defaultPreferences];
     
