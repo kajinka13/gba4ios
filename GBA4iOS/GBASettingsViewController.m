@@ -86,7 +86,7 @@
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didDetectTap:)];
         [footerView addGestureRecognizer:tapGestureRecognizer];
     }
-    
+        
     footerView.tag = section;
     
     return footerView;
@@ -101,6 +101,9 @@
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://twitter.com/zodttd"]];
     }
     else if (footerView.tag == 4) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://rocketdock.com/user/35907/addons/popular"]];
+    }
+    else if (footerView.tag == 5) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://winfisdesign.blogspot.com"]];
     }
 }

@@ -227,14 +227,17 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection footerTitle="Follow @rileytestut on Twitter for all the latest GBA4iOS updates." id="HLY-w8-HZS">
+                            <tableViewSection headerTitle="Contributors" footerTitle="Follow @rileytestut on Twitter for all the latest GBA4iOS updates." id="HLY-w8-HZS">
                                 <cells/>
                             </tableViewSection>
                             <tableViewSection id="1Qz-j0-5sm">
                                 <string key="footerTitle">Big thanks to Zodttd for writing the original code for gpSPhone. If you are jailbroken, you should definitely check him and his apps out. Without him, this app would not exist!</string>
                                 <cells/>
                             </tableViewSection>
-                            <tableViewSection footerTitle="Retina controllers designed by Winfis, an excellent iOS Designer!" id="bSF-ne-UI8">
+                            <tableViewSection footerTitle="Icon by talented designer HypNosE777." id="bSF-ne-UI8">
+                                <cells/>
+                            </tableViewSection>
+                            <tableViewSection footerTitle="Retina controllers from the awesome gpSPhone HD Theme designed by Winfis." id="HSS-Gb-Sne">
                                 <cells/>
                             </tableViewSection>
                         </sections>
@@ -338,6 +341,35 @@
     <resources>
         <image name="Gear.png" width="20" height="20"/>
     </resources>
+    <classes>
+        <class className="GBAMasterViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GBAMasterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="getMoreROMs"/>
+                <relationship kind="action" name="scanRomDirectory"/>
+            </relationships>
+        </class>
+        <class className="GBASettingsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GBASettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="changeFrameskip:"/>
+                <relationship kind="action" name="changeLandscapeSkin:"/>
+                <relationship kind="action" name="changePortraitSkin:"/>
+                <relationship kind="action" name="closeSettings:"/>
+                <relationship kind="action" name="toggleAutoSave:"/>
+                <relationship kind="action" name="toggleCheats:"/>
+                <relationship kind="action" name="toggleCheckForUpdates:"/>
+                <relationship kind="action" name="toggleScaled:"/>
+                <relationship kind="outlet" name="autoSaveSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="cheatsSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="checkForUpdatesSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="frameskipSegmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="landscapeSkinSegmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="portraitSkinSegmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="scaledSwitch" candidateClass="UISwitch"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
