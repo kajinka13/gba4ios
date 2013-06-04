@@ -8,3 +8,6 @@
 
 # vim swap files
 .*.swp
+
+# temp files
+.DS_Store
