@@ -63,6 +63,6 @@ _1.1_
 * Can now quit ROMs without quitting the app.
 
 
-For all the latest news on GBA4iOS, SNES4iOS, or any of my other projects I'm working on, I'm [@iSkythe on Twitter](http://twitter.com/iSkythe)
+For all the latest news on GBA4iOS, SNES4iOS, or any of my other projects I'm working on, I'm [@rileytestut on Twitter](http://twitter.com/rileytestut)
 
 All that's left to say is enjoy playing your Pokémons and your Marios on your phone!

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF1AE902157BC46E001375E8 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1AE901157BC46E001375E8 /* icon.png */; };
 		BF1AE905157BC4EE001375E8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1AE904157BC4EE001375E8 /* libz.dylib */; };
 		BF1AE908157BC6E7001375E8 /* Gear.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1AE906157BC6E7001375E8 /* Gear.png */; };
 		BF1AE909157BC6E7001375E8 /* Gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1AE907157BC6E7001375E8 /* Gear@2x.png */; };
@@ -36,9 +35,10 @@
 		BF4F3FD5169559D600D004F2 /* JoyPad.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4F3FD1169559D600D004F2 /* JoyPad.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		BF4F3FFF16956B0200D004F2 /* controller_fs0-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = BF4F3FFE16956B0100D004F2 /* controller_fs0-568h.png */; };
 		BF4F400116956DFD00D004F2 /* controller_fs1-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = BF4F400016956DFD00D004F2 /* controller_fs1-568h.png */; };
+		BF8E0B57176BEE2200CB0370 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF8E0B56176BEE2200CB0370 /* icon@2x.png */; };
+		BF8E0B59176BEE2600CB0370 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BF8E0B58176BEE2600CB0370 /* icon.png */; };
 		BF9250231574B8BF00036778 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9250221574B8BF00036778 /* AudioToolbox.framework */; };
 		BF92502E1574BF7C00036778 /* gba_bios.bin in Resources */ = {isa = PBXBuildFile; fileRef = BF92502D1574BF7C00036778 /* gba_bios.bin */; };
-		BFA35002157739CC0049C83B /* WebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA35001157739CC0049C83B /* WebBrowserViewController.m */; };
 		BFA6C1DB174D1BA5001B4BA7 /* controller_fs0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFA6C1DA174D1BA5001B4BA7 /* controller_fs0@2x.png */; };
 		BFA6C1DD174D1BAD001B4BA7 /* controller_fs1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFA6C1DC174D1BAD001B4BA7 /* controller_fs1@2x.png */; };
 		BFA6C1DF174D1BB9001B4BA7 /* controller_hs0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFA6C1DE174D1BB9001B4BA7 /* controller_hs0@2x.png */; };
@@ -128,7 +128,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BF1AE901157BC46E001375E8 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		BF1AE904157BC4EE001375E8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1AE906157BC6E7001375E8 /* Gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gear.png; sourceTree = "<group>"; };
 		BF1AE907157BC6E7001375E8 /* Gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gear@2x.png"; sourceTree = "<group>"; };
@@ -214,10 +213,10 @@
 		BF4F3FEC16955A0F00D004F2 /* UIView-Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView-Geometry.h"; path = "iGBA/Frameworks/UIKit-Private/UIView-Geometry.h"; sourceTree = SOURCE_ROOT; };
 		BF4F3FFE16956B0100D004F2 /* controller_fs0-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_fs0-568h.png"; sourceTree = "<group>"; };
 		BF4F400016956DFD00D004F2 /* controller_fs1-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_fs1-568h.png"; sourceTree = "<group>"; };
+		BF8E0B56176BEE2200CB0370 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
+		BF8E0B58176BEE2600CB0370 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
 		BF9250221574B8BF00036778 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BF92502D1574BF7C00036778 /* gba_bios.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = gba_bios.bin; sourceTree = "<group>"; };
-		BFA35000157739CC0049C83B /* WebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebBrowserViewController.h; sourceTree = "<group>"; };
-		BFA35001157739CC0049C83B /* WebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebBrowserViewController.m; sourceTree = "<group>"; };
 		BFA6C1DA174D1BA5001B4BA7 /* controller_fs0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_fs0@2x.png"; sourceTree = "<group>"; };
 		BFA6C1DC174D1BAD001B4BA7 /* controller_fs1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_fs1@2x.png"; sourceTree = "<group>"; };
 		BFA6C1DE174D1BB9001B4BA7 /* controller_hs0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "controller_hs0@2x.png"; sourceTree = "<group>"; };
@@ -411,15 +410,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BF1AE918157BF643001375E8 /* Imported Files */ = {
-			isa = PBXGroup;
-			children = (
-				BFA35000157739CC0049C83B /* WebBrowserViewController.h */,
-				BFA35001157739CC0049C83B /* WebBrowserViewController.m */,
-			);
-			name = "Imported Files";
-			sourceTree = "<group>";
-		};
 		BF1AE91C157BF8C1001375E8 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,6 +724,8 @@
 		BFE1E7C91575D54C00D5CA43 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BF8E0B58176BEE2600CB0370 /* icon.png */,
+				BF8E0B56176BEE2200CB0370 /* icon@2x.png */,
 				BFC837EE170CFC8900063DA3 /* game_config.txt */,
 				BFE400D8156CA70100E33279 /* MainStoryboard_iPhone.storyboard */,
 				BFE400DB156CA70100E33279 /* MainStoryboard_iPad.storyboard */,
@@ -741,7 +733,6 @@
 				BF1AE907157BC6E7001375E8 /* Gear@2x.png */,
 				BF1AE90A157BC8BD001375E8 /* GearLandscape.png */,
 				BF1AE90B157BC8BD001375E8 /* GearLandscape@2x.png */,
-				BF1AE901157BC46E001375E8 /* icon.png */,
 				BFE1E7CB1575D56000D5CA43 /* Controller */,
 			);
 			name = Resources;
@@ -836,7 +827,6 @@
 				BFB33E7716964C480032A2A0 /* GBA Emulator */,
 				BFB33E7816964C7A0032A2A0 /* GBC Emulator */,
 				BF1AE91C157BF8C1001375E8 /* Settings */,
-				BF1AE918157BF643001375E8 /* Imported Files */,
 				BFE400CD156CA70100E33279 /* Supporting Files */,
 			);
 			path = GBA4iOS;
@@ -917,7 +907,6 @@
 				BFE1E7EB1575D56D00D5CA43 /* controller_hs0.txt in Resources */,
 				BFE1E7EC1575D56D00D5CA43 /* controller_hs1.png in Resources */,
 				BFE1E7ED1575D56D00D5CA43 /* controller_hs1.txt in Resources */,
-				BF1AE902157BC46E001375E8 /* icon.png in Resources */,
 				BF1AE908157BC6E7001375E8 /* Gear.png in Resources */,
 				BF1AE909157BC6E7001375E8 /* Gear@2x.png in Resources */,
 				BF1AE90C157BC8BD001375E8 /* GearLandscape.png in Resources */,
@@ -946,6 +935,8 @@
 				BFA6C1E1174D1CD7001B4BA7 /* Default-568h@2x.png in Resources */,
 				BFDFD347174D2B790021815D /* controller_fs1-568h@2x.png in Resources */,
 				BFDFD349174D2BC70021815D /* controller_fs0-568h@2x.png in Resources */,
+				BF8E0B57176BEE2200CB0370 /* icon@2x.png in Resources */,
+				BF8E0B59176BEE2600CB0370 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -963,7 +954,6 @@
 				BF3DD2671575B75400F918CE /* ScreenView.m in Sources */,
 				BF3DD2841575CE2000F918CE /* GBAEmulatorViewController.m in Sources */,
 				BFE1E8001575DCF400D5CA43 /* GBAControllerViewController.m in Sources */,
-				BFA35002157739CC0049C83B /* WebBrowserViewController.m in Sources */,
 				BF1AE917157BF638001375E8 /* GBASettingsViewController.m in Sources */,
 				BF4F3FB81695599800D004F2 /* zip.c in Sources */,
 				BF4F3FB91695599800D004F2 /* cpu_threaded.c in Sources */,
@@ -1103,13 +1093,13 @@
 		BF1AE922157C4F8B001375E8 /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = armv7;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
 					"\"$(SRCROOT)\"",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "GBA4iOS/GBA4iOS-Prefix.pch";
 				INFOPLIST_FILE = "GBA4iOS/GBA4iOS-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -1178,13 +1168,13 @@
 		BFD48761158FA93200F4A638 /* App Store */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = armv7;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
 					"\"$(SRCROOT)\"",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "GBA4iOS/GBA4iOS-Prefix.pch";
 				INFOPLIST_FILE = "GBA4iOS/GBA4iOS-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -1312,14 +1302,14 @@
 		BFE400E7156CA70100E33279 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = armv7;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
 					"\"$(SRCROOT)\"",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "GBA4iOS/GBA4iOS-Prefix.pch";
 				INFOPLIST_FILE = "GBA4iOS/GBA4iOS-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -1337,14 +1327,14 @@
 		BFE400E8156CA70100E33279 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = armv7;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
 					"\"$(SRCROOT)\"",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "GBA4iOS/GBA4iOS-Prefix.pch";
 				INFOPLIST_FILE = "GBA4iOS/GBA4iOS-Info.plist";
 				LIBRARY_SEARCH_PATHS = (

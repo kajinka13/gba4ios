@@ -207,8 +207,8 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cheats Enabled" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Fku-f7-G9E">
-                                                    <rect key="frame" x="20" y="11" width="121" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cheats (Coming Soon)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Fku-f7-G9E">
+                                                    <rect key="frame" x="20" y="11" width="173" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -234,7 +234,7 @@
                                 <string key="footerTitle">Big thanks to Zodttd for writing the original code for gpSPhone. If you are jailbroken, you should definitely check him and his apps out. Without him, this app would not exist!</string>
                                 <cells/>
                             </tableViewSection>
-                            <tableViewSection footerTitle="Icon by talented designer HypNosE777." id="bSF-ne-UI8">
+                            <tableViewSection footerTitle="Amazing icon designed by the very talented Juan Fernández. Thanks Juan!" id="bSF-ne-UI8">
                                 <cells/>
                             </tableViewSection>
                             <tableViewSection footerTitle="Retina controllers from the awesome gpSPhone HD Theme designed by Winfis." id="HSS-Gb-Sne">

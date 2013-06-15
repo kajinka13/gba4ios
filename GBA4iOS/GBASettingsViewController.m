@@ -101,10 +101,10 @@
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://twitter.com/zodttd"]];
     }
     else if (footerView.tag == 4) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://rocketdock.com/user/35907/addons/popular"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://twitter.com/mrjuanfernandez"]];
     }
     else if (footerView.tag == 5) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://winfisdesign.blogspot.com"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://winfisdesign.tumblr.com"]];
     }
 }
 

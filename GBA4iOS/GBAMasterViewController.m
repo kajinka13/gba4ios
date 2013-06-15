@@ -11,13 +11,13 @@
 #import "GBASettingsManager.h"
 
 #import "GBADetailViewController.h"
-#import "WebBrowserViewController.h"
 #import "GBASettingsViewController.h"
 #import "DocWatchHelper.h"
 
 #import <Parse/Parse.h>
 
 #define UPDATE_AVAILABLE_TAG 13
+#define DOWNLOAD_ROMS_TAG 15
 
 @interface GBAMasterViewController () <UIAlertViewDelegate>
 @property (strong, nonatomic) NSMutableDictionary *romDictionary;
@@ -213,10 +213,20 @@
 #pragma mark - Download ROMs
 
 - (IBAction)getMoreROMs {
-    WebBrowserViewController *webViewController = [[WebBrowserViewController alloc] init];
-    UINavigationController *webNavController = [[UINavigationController alloc] initWithRootViewController:webViewController];
-	webNavController.navigationBar.barStyle = UIBarStyleBlack;
-    [self presentModalViewController:webNavController animated:YES];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showedROMAlert"]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.google.com/search?hl=en&source=hp&q=download+ROMs+gba+gameboy+advance&aq=f&oq=&aqi="]];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Will Launch Safari", @"")
+                                                        message:NSLocalizedString(@"Download the ROM you want, and then 'Open In...' GBA4iOS", @"")
+                                                       delegate:self
+                                              cancelButtonTitle:NSLocalizedString(@"Open Safari", @"")
+                                              otherButtonTitles:nil];
+        alert.tag = DOWNLOAD_ROMS_TAG;
+        [alert show];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showedROMAlert"];
+    }
 }
 
 #pragma mark - Table view data source
@@ -501,6 +511,9 @@
         if (buttonIndex == 1) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://github.com/rileytestut/GBA4iOS"]];
         }
+    }
+    else if (alertView.tag == DOWNLOAD_ROMS_TAG) {
+        [self getMoreROMs];
     }
     else if(buttonIndex > 0)
 	{
