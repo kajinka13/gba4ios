@@ -4,8 +4,9 @@ GBA4iOS
 A fast GBA emulator for the iPhone/iPod Touch based on version 1.8.0 of [gpSPhone by zodttd](https://github.com/zodttd/gpSphone). This version can be installed simply by tapping the button below on your iOS Device, or compiled directly in Xcode and deployed just like any other app. No jailbreak OR developer account required :)
 
 <div class="macbuildserver-block">
-    <a class="macbuildserver-button" href="http://macbuildserver.com/project/github/build/?xcode_project=GBA4iOS.xcodeproj&amp;target=GBA4iOS&amp;repo_url=git%3A%2F%2Fgithub.com%2Frileytestut%2FGBA4iOS.git&amp;build_conf=Ad+Hoc" target="_blank"><img src="http://com.macbuildserver.github.s3-website-us-east-1.amazonaws.com/button_up.png"/></a><br/><sup><a href="http://macbuildserver.com/github/opensource/" target="_blank">by MacBuildServer</a></sup>
+    <a class="macbuildserver-button" href="http://macbuildserver.com/project/github/build/?xcode_project=GBA4iOS.xcodeproj&amp;target=GBA4iOS&amp;repo_url=git%3A%2F%2Fgithub.com%2Frileytestut%2FGBA4iOS.git&amp;build_conf=Release" target="_blank"><img src="http://com.macbuildserver.github.s3-website-us-east-1.amazonaws.com/button_up.png"/></a><br/><sup><a href="http://macbuildserver.com/github/opensource/" target="_blank">by MacBuildServer</a></sup>
 </div>
+__NOTE: MacBuildServer is under heavy load right now. If you're having trouble downloading the app, you'll just have to wait. I have no control over it unfortunately.__
 
 __NEW IN VERSION 1.6 OF GBA4iOS__
 
@@ -34,7 +35,7 @@ _1.5_
 
 * Can now rename ROMs! Tap and hold a ROM in the table view, and an alert will pop up to let you rename it to anything you want. Don't worry about it messing up your saves or save states, they'll all work just fine after the renaming. (Thanks Wrsford!)
 * Auto Save. Did you ever accidentally lose your progress in a ROM due to something stupid like quitting the ROM by mistake or the app crashing? No need to worry! Now, whenever you load a save state, quit a ROM, or the app crashes, GBA4iOS will create an auto save state you can reload just like any other save state. You never have to worry about losing your progress again! (It can be turned off, but why would you want that?)
-* Check For Updates. Tired of having to check Github or my Twitter feed (@iSkythe if you're wondering) to see if there are updates to GBA4iOS? A new option (enabled by default) checks to see if there are any updates on Github, and if so will show an alert detailing all the changes. Don't worry about it constantly checking though, it'll only check once a day.
+* Check For Updates. Tired of having to check Github or my Twitter feed ([@rileytestut](http://twitter.com/rileytestut) if you're wondering) to see if there are updates to GBA4iOS? A new option (enabled by default) checks to see if there are any updates on Github, and if so will show an alert detailing all the changes. Don't worry about it constantly checking though, it'll only check once a day.
 
 _1.4_
 
