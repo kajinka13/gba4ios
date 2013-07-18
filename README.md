@@ -3,7 +3,7 @@ GBA4iOS
 
 A fast GBA emulator for the iPhone/iPod Touch based on version 1.8.0 of [gpSPhone by zodttd](https://github.com/zodttd/gpSphone). This version can be installed simply by tapping the button below on your iOS Device, or compiled directly in Xcode and deployed just like any other app. No jailbreak required :)
 
-__NOTE: MacBuildServer is dead. For now, you can only install GBA4iOS if you are a developer. Follow @rileytestut to know when GBA4iOS is back up!__
+__NOTE: MacBuildServer is dead. For now, you can only install GBA4iOS if you are a developer. Follow ([@rileytestut](http://twitter.com/rileytestut) to know when GBA4iOS is back up!__
 
 __NEW IN VERSION 1.6 OF GBA4iOS__
 
@@ -32,7 +32,7 @@ _1.5_
 
 * Can now rename ROMs! Tap and hold a ROM in the table view, and an alert will pop up to let you rename it to anything you want. Don't worry about it messing up your saves or save states, they'll all work just fine after the renaming. (Thanks Wrsford!)
 * Auto Save. Did you ever accidentally lose your progress in a ROM due to something stupid like quitting the ROM by mistake or the app crashing? No need to worry! Now, whenever you load a save state, quit a ROM, or the app crashes, GBA4iOS will create an auto save state you can reload just like any other save state. You never have to worry about losing your progress again! (It can be turned off, but why would you want that?)
-* Check For Updates. Tired of having to check Github or my Twitter feed ([@rileytestut](http://twitter.com/rileytestut) if you're wondering) to see if there are updates to GBA4iOS? A new option (enabled by default) checks to see if there are any updates on Github, and if so will show an alert detailing all the changes. Don't worry about it constantly checking though, it'll only check once a day.
+* Check For Updates. Tired of having to check Github or my Twitter feed to see if there are updates to GBA4iOS? A new option (enabled by default) checks to see if there are any updates on Github, and if so will show an alert detailing all the changes. Don't worry about it constantly checking though, it'll only check once a day.
 
 _1.4_
 
