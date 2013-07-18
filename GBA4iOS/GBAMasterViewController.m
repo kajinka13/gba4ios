@@ -187,14 +187,18 @@
             
             NSMutableArray *array = [[NSMutableArray alloc] initWithContentsOfFile:saveStateInfoPath];
             
+            int maxSaveSlots = 5;
             if ([array count] == 0) {
                 array = [[NSMutableArray alloc] initWithCapacity:5];
                 
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < maxSaveSlots; i++) {
                     [array addObject:NSLocalizedString(@"Empty", @"")];
                 }
             }
-            [array replaceObjectAtIndex:saveSlotNumber withObject:NSLocalizedString(@"Imported", @"")];
+            
+            if (saveSlotNumber < maxSaveSlots) {
+                [array replaceObjectAtIndex:saveSlotNumber withObject:NSLocalizedString(@"Imported", @"")];
+            }
             [array writeToFile:saveStateInfoPath atomically:YES];
             
             NSString *destinationFilePath = [romSaveStateDirectory stringByAppendingPathComponent:destinationFilename];
