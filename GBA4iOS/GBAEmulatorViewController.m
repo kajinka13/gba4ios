@@ -152,6 +152,11 @@ static GBAEmulatorViewController *emulatorViewController;
     // Release any retained subviews of the main view.
 }
 
+- (BOOL)prefersStatusBarHidden;
+{
+    return YES;
+}
+
 #pragma mark Rotation
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
