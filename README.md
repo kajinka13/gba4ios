@@ -3,7 +3,7 @@ GBA4iOS
 
 A fast GBA emulator for the iPhone/iPod Touch based on version 1.8.0 of [gpSPhone by zodttd](https://github.com/zodttd/gpSphone). This version can be installed simply by tapping the button below on your iOS Device, or compiled directly in Xcode and deployed just like any other app. No jailbreak required :)
 
-__NOTE: MacBuildServer is dead. For now, you can only install GBA4iOS if you are a developer. Follow [@rileytestut](http://twitter.com/rileytestut) to know when GBA4iOS is back up!__
+__Want to download GBA4iOS? Follow the instructions found here: http://rileytestut.com/gba4ios/__
 
 __NEW IN VERSION 1.6 OF GBA4iOS__
 
