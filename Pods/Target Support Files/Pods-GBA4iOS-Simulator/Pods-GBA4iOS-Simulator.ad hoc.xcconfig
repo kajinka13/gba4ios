@@ -1,0 +1,10 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Dropbox-iOS-SDK/dropbox-ios-sdk-1.3.13" "${PODS_ROOT}/CrashlyticsFramework"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/CrashlyticsFramework" "${PODS_ROOT}/Headers/Public/Dropbox-iOS-SDK" "${PODS_ROOT}/Headers/Public/NJKWebViewProgress" "${PODS_ROOT}/Headers/Public/PSPDFTextView" "${PODS_ROOT}/Headers/Public/RSTWebViewController"
+LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/AFNetworking" "$PODS_CONFIGURATION_BUILD_DIR/NJKWebViewProgress" "$PODS_CONFIGURATION_BUILD_DIR/PSPDFTextView" "$PODS_CONFIGURATION_BUILD_DIR/RSTWebViewController"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/CrashlyticsFramework" -isystem "${PODS_ROOT}/Headers/Public/Dropbox-iOS-SDK" -isystem "${PODS_ROOT}/Headers/Public/NJKWebViewProgress" -isystem "${PODS_ROOT}/Headers/Public/PSPDFTextView" -isystem "${PODS_ROOT}/Headers/Public/RSTWebViewController"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"AFNetworking" -l"NJKWebViewProgress" -l"PSPDFTextView" -l"RSTWebViewController" -framework "CoreGraphics" -framework "Crashlytics" -framework "DropboxSDK" -framework "MobileCoreServices" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_ROOT = ${SRCROOT}/Pods

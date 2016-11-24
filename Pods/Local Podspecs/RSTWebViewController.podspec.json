@@ -1,0 +1,25 @@
+{
+  "name": "RSTWebViewController",
+  "version": "0.1",
+  "summary": "Powerful yet beautiful iOS 7 web browser",
+  "homepage": "http://rileytestut.com/",
+  "platforms": {
+    "ios": "7.0"
+  },
+  "license": "MIT",
+  "authors": {
+    "Riley Testut": "riley@rileytestut.com"
+  },
+  "source": {
+    "git": "https://github.com/rileytestut/RSTWebViewController.git",
+    "tag": "0.1"
+  },
+  "source_files": "RSTWebViewController/**/*.{h,m}",
+  "resources": "RSTWebViewController/**/*.png",
+  "dependencies": {
+    "NJKWebViewProgress": [
+      "~> 0.1.0"
+    ]
+  },
+  "requires_arc": true
+}

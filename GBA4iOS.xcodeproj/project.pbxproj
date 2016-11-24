@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1461E664FB42A2746230C72A /* libPods-GBA4iOS-Simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A61E330C1AB95BB25CB56E48 /* libPods-GBA4iOS-Simulator.a */; };
 		1A5BAE7F17D04B0A00BABC01 /* overlays128.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A5BAE7E17D04B0A00BABC01 /* overlays128.png */; };
 		1AD65D7B17D2DCFD00E2CF0C /* GBAControllerSkinSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD65D7917D2DCFD00E2CF0C /* GBAControllerSkinSelectionViewController.m */; };
 		1AD971E717D2B6EC007097BC /* GBAControllerSkinDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD971E617D2B6EC007097BC /* GBAControllerSkinDetailViewController.m */; };
@@ -14,6 +15,7 @@
 		2D9107CF1DE637F50014DB1A /* libPods-GBA4iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9107CE1DE637F50014DB1A /* libPods-GBA4iOS.a */; };
 		2D9107D11DE637FD0014DB1A /* libPods-GBA4iOS-Simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9107D01DE637FD0014DB1A /* libPods-GBA4iOS-Simulator.a */; };
 		4996200C1BCB0E000010FBBE /* Acknowledgements.html in Resources */ = {isa = PBXBuildFile; fileRef = BFBA77B919B715E1000E8425 /* Acknowledgements.html */; };
+		54CCFA4B5F8675A7EC9A70CA /* libPods-GBA4iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C0BA84C05D1CD938302AEB /* libPods-GBA4iOS.a */; };
 		BF02AFDB182F3E590031B8B6 /* GBASyncingOverviewViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF02AFDA182F3E590031B8B6 /* GBASyncingOverviewViewController.mm */; };
 		BF02AFDF182F6E200031B8B6 /* GBASyncingDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF02AFDE182F6E200031B8B6 /* GBASyncingDetailViewController.mm */; };
 		BF02D2C4197344950034A515 /* GBASoftwareUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF02D2C3197344950034A515 /* GBASoftwareUpdate.m */; };
@@ -982,6 +984,7 @@
 				BF2F35C0183FF6F9002ACE90 /* CoreGraphics.framework in Frameworks */,
 				BF2F35C2183FF6F9002ACE90 /* UIKit.framework in Frameworks */,
 				BF2F35C3183FF6F9002ACE90 /* Foundation.framework in Frameworks */,
+				1461E664FB42A2746230C72A /* libPods-GBA4iOS-Simulator.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1006,6 +1009,7 @@
 				BFC47BC2189DAA6D006C4D55 /* CrashReporter.framework in Frameworks */,
 				CC2D57041798F2EC00C616EB /* UIKit.framework in Frameworks */,
 				CC2D57001798F2EC00C616EB /* Foundation.framework in Frameworks */,
+				54CCFA4B5F8675A7EC9A70CA /* libPods-GBA4iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
