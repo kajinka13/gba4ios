@@ -508,21 +508,25 @@ NSString *const GBASettingsDropboxStatusChangedNotification = @"GBASettingsDropb
     }
     else if (indexPath.row == 1)
     {
-        username = @"pau1thor";
+        username = @"kajinka13";
     }
     else if (indexPath.row == 2)
     {
-        username = @"alyssasurowiec";
+        username = @"pau1thor";
     }
     else if (indexPath.row == 3)
     {
-        username = @"rakashazi";
+        username = @"alyssasurowiec";
     }
     else if (indexPath.row == 4)
     {
-        username = @"zodttd";
+        username = @"rakashazi";
     }
     else if (indexPath.row == 5)
+    {
+        username = @"zodttd";
+    }
+    else if (indexPath.row == 6)
     {
         username = @"mrjuanfernandez";
     }
