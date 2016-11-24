@@ -3,7 +3,7 @@ GBA4iOS
 
 ![GBA4iOS](http://gba4iosapp.com/images/download/gba4ios2_devices.png)
 
-The number one Game Boy Advance emulator for iOS is back, and has been rewritten from the ground up for iOS 7.
+The number one Game Boy Advance emulator for iOS is back, and has been rewritten from the ground up for iOS 8.
 
 ### New Features ###
 
@@ -16,7 +16,7 @@ The number one Game Boy Advance emulator for iOS is back, and has been rewritten
 • Sustain Button  
 • Event Distribution  
 • Wario Ware: Twisted Support  
-• iOS 7 Controller support  
+• iOS 8 Controller support  
 • URL Scheme support (gba4ios://ROM%20Name%20Here)  
 
 ### Classic Features ###
@@ -40,7 +40,7 @@ GBA4iOS can be opened in Xcode and deployed to an iOS device just like an other 
 Requirements
 =============
 
-• GBA4iOS 2.0 requires Xcode 5 or later, targeting iOS 7.0 and above.  
+• GBA4iOS 2.x requires Xcode 8 or later, targeting iOS 8.0 and above.  
 • For deployment to iOS 6 devices, use the project in the 1.x branch.
 
 Contact
