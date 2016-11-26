@@ -130,7 +130,7 @@
 		BF33ECFE19C13188006E534B /* MCPeerID+Conveniences.m in Sources */ = {isa = PBXBuildFile; fileRef = BF33ECFC19C13188006E534B /* MCPeerID+Conveniences.m */; };
 		BF356C7A18814A180005E1FC /* GBACheatTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF356C7918814A180005E1FC /* GBACheatTextView.m */; };
 		BF356C7B18814A180005E1FC /* GBACheatTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF356C7918814A180005E1FC /* GBACheatTextView.m */; };
-		BF356C8318827E160005E1FC /* GBAEmulatorCore-Simulator.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF356C8218827E160005E1FC /* GBAEmulatorCore-Simulator.mm */; };
+		BF356C8318827E160005E1FC /* GBAEmulatorCore-Simulator.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF356C8218827E160005E1FC /* GBAEmulatorCore-Simulator.mm */; settings = {COMPILER_FLAGS = "-Wno-inconsistent-missing-override"; }; };
 		BF359B94187A205400B4CA53 /* GBAEventDistributionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF359B93187A205400B4CA53 /* GBAEventDistributionTableViewCell.m */; };
 		BF359B95187A205400B4CA53 /* GBAEventDistributionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF359B93187A205400B4CA53 /* GBAEventDistributionTableViewCell.m */; };
 		BF359B98187A64C000B4CA53 /* NSDate+Comparing.m in Sources */ = {isa = PBXBuildFile; fileRef = BF359B97187A64C000B4CA53 /* NSDate+Comparing.m */; };
@@ -371,7 +371,7 @@
 		CC86CC1C17BEAFAB00A4B84E /* ButtonConfigView.cc in Sources */ = {isa = PBXBuildFile; fileRef = CCFA719A179D2FE400768D24 /* ButtonConfigView.cc */; settings = {COMPILER_FLAGS = "-w"; }; };
 		CC8BB0B31799A4D900F9864F /* GBAEmulationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC8BB0B21799A4D900F9864F /* GBAEmulationViewController.mm */; };
 		CC8D5A7A17AAE3A800E89F43 /* GBAControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8D5A7917AAE3A800E89F43 /* GBAControllerView.m */; };
-		CC96F01117C29A1E00C7DD0C /* GBAEmulatorCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC15E541179F027300449972 /* GBAEmulatorCore.mm */; };
+		CC96F01117C29A1E00C7DD0C /* GBAEmulatorCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC15E541179F027300449972 /* GBAEmulatorCore.mm */; settings = {COMPILER_FLAGS = "-Wno-inconsistent-missing-override"; }; };
 		CC96F01717C2A0AD00C7DD0C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC2D571A1798F2EC00C616EB /* Images.xcassets */; };
 		CC9EA6CD17FE7FC3005BD5E6 /* UITableViewController+Theming.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9EA6CA17FE7CE1005BD5E6 /* UITableViewController+Theming.m */; };
 		CCA1056B17F6A5F80018D364 /* GBASplitViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = CCA1056A17F6A5F80018D364 /* GBASplitViewController.mm */; };
@@ -554,7 +554,7 @@
 		BF2AC88D18543BCA008928D0 /* GBASyncMoveOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBASyncMoveOperation.m; sourceTree = "<group>"; };
 		BF2AC89018543BD9008928D0 /* GBASyncDeleteOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBASyncDeleteOperation.h; sourceTree = "<group>"; };
 		BF2AC89118543BD9008928D0 /* GBASyncDeleteOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBASyncDeleteOperation.m; sourceTree = "<group>"; };
-		BF2F35D5183FF6F9002ACE90 /* GBA4iOS copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GBA4iOS copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF2F35D5183FF6F9002ACE90 /* GBA4iOS Simulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GBA4iOS Simulator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF33ECEA19C13127006E534B /* GBALinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBALinkViewController.h; sourceTree = "<group>"; };
 		BF33ECEB19C13127006E534B /* GBALinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBALinkViewController.m; sourceTree = "<group>"; };
 		BF33ECEC19C13127006E534B /* GBALinkNearbyPeersHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBALinkNearbyPeersHeaderFooterView.h; sourceTree = "<group>"; };
@@ -1546,7 +1546,7 @@
 			isa = PBXGroup;
 			children = (
 				CC2D56FC1798F2EC00C616EB /* GBA4iOS.app */,
-				BF2F35D5183FF6F9002ACE90 /* GBA4iOS copy.app */,
+				BF2F35D5183FF6F9002ACE90 /* GBA4iOS Simulator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2024,7 +2024,7 @@
 			);
 			name = "GBA4iOS-Simulator";
 			productName = GBA4iOS;
-			productReference = BF2F35D5183FF6F9002ACE90 /* GBA4iOS copy.app */;
+			productReference = BF2F35D5183FF6F9002ACE90 /* GBA4iOS Simulator.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CC2D56FB1798F2EC00C616EB /* GBA4iOS */ = {
@@ -2776,18 +2776,14 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "GBA4iOS/GBA4iOS-Info-Simulator.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-Objc",
 					"-all_load",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_ID}";
-				PRODUCT_NAME = "GBA4iOS copy";
+				PRODUCT_NAME = "GBA4iOS Simulator";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2826,18 +2822,14 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "GBA4iOS/GBA4iOS-Info-Simulator.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-Objc",
 					"-all_load",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_ID}";
-				PRODUCT_NAME = "GBA4iOS copy";
+				PRODUCT_NAME = "GBA4iOS Simulator";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2876,18 +2868,14 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "GBA4iOS/GBA4iOS-Info-Simulator.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-Objc",
 					"-all_load",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_ID}";
-				PRODUCT_NAME = "GBA4iOS copy";
+				PRODUCT_NAME = "GBA4iOS Simulator";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3047,10 +3035,7 @@
 				);
 				INFOPLIST_FILE = "GBA4iOS/GBA4iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-Objc",
 					"-all_load",
@@ -3094,18 +3079,14 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "GBA4iOS/GBA4iOS-Info-Simulator.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-Objc",
 					"-all_load",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_ID}";
-				PRODUCT_NAME = "GBA4iOS copy";
+				PRODUCT_NAME = "GBA4iOS Simulator";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3258,10 +3239,7 @@
 				);
 				INFOPLIST_FILE = "GBA4iOS/GBA4iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-Objc",
 					"-all_load",
@@ -3304,18 +3282,14 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "GBA4iOS/GBA4iOS-Info-Simulator.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-Objc",
 					"-all_load",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_ID}";
-				PRODUCT_NAME = "GBA4iOS copy";
+				PRODUCT_NAME = "GBA4iOS Simulator";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3596,10 +3570,7 @@
 				);
 				INFOPLIST_FILE = "GBA4iOS/GBA4iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-Objc",
 					"-all_load",
@@ -3641,10 +3612,7 @@
 				);
 				INFOPLIST_FILE = "GBA4iOS/GBA4iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-Objc",
 					"-all_load",
@@ -3808,10 +3776,7 @@
 				);
 				INFOPLIST_FILE = "GBA4iOS/GBA4iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-Objc",
 					"-all_load",

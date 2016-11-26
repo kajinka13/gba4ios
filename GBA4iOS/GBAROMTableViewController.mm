@@ -111,7 +111,11 @@ dispatch_queue_t directoryContentsChangedQueue() {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRequestedToPlayROM:) name:GBAUserRequestedToPlayROMNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsDidChange:) name:GBASettingsDidChangeNotification object:nil];
+        
+    } else {
+        return [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     }
+    
     return self;
 }
 
@@ -224,7 +228,9 @@ dispatch_queue_t directoryContentsChangedQueue() {
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
         {
-            if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation))
+            UIInterfaceOrientation o = [[UIApplication sharedApplication] statusBarOrientation];
+            
+            if (UIInterfaceOrientationIsPortrait(o))
             {
                 frame.size.height = 29.0f;
             }

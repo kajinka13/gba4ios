@@ -65,7 +65,8 @@ public:
 	void onLeftNavBtn(const Input::Event &e);
 	void onRightNavBtn(const Input::Event &e);
 	Rect2<int> &viewRect() { return viewFrame; }
-	void clearSelection()
+	
+    void clearSelection()
 	{
 		tbl.clearSelection();
 	}
