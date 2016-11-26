@@ -221,6 +221,8 @@
                         <outlet property="portraitBottomLayoutConstraint" destination="DRo-HN-e9g" id="1Qo-bT-MAW"/>
                         <outlet property="screenContainerView" destination="nSu-0n-xp1" id="19d-dd-iNL"/>
                         <outlet property="screenHorizontalCenterLayoutConstraint" destination="a61-8Q-JV9" id="K6g-DJ-YRw"/>
+                        <outlet property="screenLeftLayoutConstraint" destination="AWC-he-Xx5" id="ezV-Mq-nE4"/>
+                        <outlet property="screenRightLayoutConstraint" destination="xps-86-WWl" id="55z-mZ-hoj"/>
                         <outlet property="screenVerticalCenterLayoutConstraint" destination="X71-hi-JIS" id="2uP-Hl-nvF"/>
                     </connections>
                 </viewController>

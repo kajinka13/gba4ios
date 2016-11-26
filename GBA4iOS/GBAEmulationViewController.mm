@@ -94,9 +94,14 @@ static GBAEmulationViewController *_emulationViewController;
 @property (assign, nonatomic) BOOL blurringContents;
 @property (strong, nonatomic) UIImageView *sustainButtonBlurredContentsImageView;
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *screenLeftLayoutConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *screenRightLayoutConstraint;
+
 @end
 
-@implementation GBAEmulationViewController
+@implementation GBAEmulationViewController {
+    BOOL isFullScreen;
+}
 
 #pragma mark - UIViewController subclass
 
@@ -149,6 +154,8 @@ static GBAEmulationViewController *_emulationViewController;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(controllerDidConnect:) name:GCControllerDidConnectNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(controllerDidDisconnect:) name:GCControllerDidDisconnectNotification object:nil];
+    
+    isFullScreen = YES;
     
     self.view.clipsToBounds = NO;
     
@@ -906,6 +913,10 @@ static GBAEmulationViewController *_emulationViewController;
                                           NSLocalizedString(@"Cheat Codes", @""),
                                           NSLocalizedString(@"Sustain Button", @""),
                                           NSLocalizedString(@"Event Distribution", @""), nil];
+                
+                if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+                    [self.pausedActionSheet addButtonWithTitle:NSLocalizedString(@"Change Screen", @"")];
+                }
             }
             else
             {
@@ -920,6 +931,10 @@ static GBAEmulationViewController *_emulationViewController;
                                           NSLocalizedString(@"Cheat Codes", @""),
                                           NSLocalizedString(@"Sustain Button", @""),
                                           NSLocalizedString(@"Event Distribution", @""), nil];
+                
+                if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+                    [self.pausedActionSheet addButtonWithTitle:NSLocalizedString(@"Change Screen", @"")];
+                }
             }
         }
         else if (self.usingGyroscope && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone && ![UIAlertController class])
@@ -938,6 +953,10 @@ static GBAEmulationViewController *_emulationViewController;
                                           NSLocalizedString(@"Cheat Codes", @""),
                                           NSLocalizedString(@"Sustain Button", @""),
                                           NSLocalizedString(@"Rotate To Device Orientation", @""), nil];
+                
+                if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+                    [self.pausedActionSheet addButtonWithTitle:NSLocalizedString(@"Change Screen", @"")];
+                }
             }
             else
             {
@@ -952,6 +971,10 @@ static GBAEmulationViewController *_emulationViewController;
                                           NSLocalizedString(@"Cheat Codes", @""),
                                           NSLocalizedString(@"Sustain Button", @""),
                                           NSLocalizedString(@"Rotate To Device Orientation", @""), nil];
+                
+                if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+                    [self.pausedActionSheet addButtonWithTitle:NSLocalizedString(@"Change Screen", @"")];
+                }
             }
         }
         else
@@ -967,6 +990,10 @@ static GBAEmulationViewController *_emulationViewController;
                                           NSLocalizedString(@"Load State", @""),
                                           NSLocalizedString(@"Cheat Codes", @""),
                                           NSLocalizedString(@"Sustain Button", @""), nil];
+                
+                if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+                    [self.pausedActionSheet addButtonWithTitle:NSLocalizedString(@"Change Screen", @"")];
+                }
             }
             else
             {
@@ -980,6 +1007,10 @@ static GBAEmulationViewController *_emulationViewController;
                                           NSLocalizedString(@"Load State", @""),
                                           NSLocalizedString(@"Cheat Codes", @""),
                                           NSLocalizedString(@"Sustain Button", @""), nil];
+                
+                if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+                    [self.pausedActionSheet addButtonWithTitle:NSLocalizedString(@"Change Screen", @"")];
+                }
             }
         }
         
@@ -1126,6 +1157,13 @@ static GBAEmulationViewController *_emulationViewController;
                 {
                     [self resumeEmulation];
                 }
+            }
+            else if (buttonIndex == 7)
+            {
+                isFullScreen = !isFullScreen;
+                
+                [self updateEmulatorScreenFrame];
+                [self resumeEmulation];
             }
             else
             {                
@@ -2133,6 +2171,19 @@ static GBAEmulationViewController *_emulationViewController;
     {
         return;
     }
+    
+    UIInterfaceOrientation o = [[UIApplication sharedApplication] statusBarOrientation];
+    
+    if (isFullScreen || UIInterfaceOrientationIsPortrait(o)) {
+        self.screenLeftLayoutConstraint.constant = 0.0;
+        self.screenRightLayoutConstraint.constant = 0.0;
+        
+    } else {
+        self.screenLeftLayoutConstraint.constant = (CGRectGetWidth(self.view.bounds) * 0.2); // reduce screen: 20%
+        self.screenRightLayoutConstraint.constant = (CGRectGetWidth(self.view.bounds) * 0.2); // reduce screen: 20%
+    }
+    
+    [self.screenContainerView layoutIfNeeded];
     
     if (![self isAirplaying])
     {
