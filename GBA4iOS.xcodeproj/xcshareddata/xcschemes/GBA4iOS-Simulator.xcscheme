@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BF2F34DB183FF6F9002ACE90"
-               BuildableName = "GBA4iOS copy.app"
+               BuildableName = "GBA4iOS Simulator.app"
                BlueprintName = "GBA4iOS-Simulator"
                ReferencedContainer = "container:GBA4iOS.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BF2F34DB183FF6F9002ACE90"
-            BuildableName = "GBA4iOS copy.app"
+            BuildableName = "GBA4iOS Simulator.app"
             BlueprintName = "GBA4iOS-Simulator"
             ReferencedContainer = "container:GBA4iOS.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BF2F34DB183FF6F9002ACE90"
-            BuildableName = "GBA4iOS copy.app"
+            BuildableName = "GBA4iOS Simulator.app"
             BlueprintName = "GBA4iOS-Simulator"
             ReferencedContainer = "container:GBA4iOS.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BF2F34DB183FF6F9002ACE90"
-            BuildableName = "GBA4iOS copy.app"
+            BuildableName = "GBA4iOS Simulator.app"
             BlueprintName = "GBA4iOS-Simulator"
             ReferencedContainer = "container:GBA4iOS.xcodeproj">
          </BuildableReference>
